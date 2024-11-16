@@ -26,7 +26,6 @@ Este es un proyecto de aplicación web para Salmas-Zapatería, una plataforma de
     >https://download.visualstudio.microsoft.com/download/pr/acd3875c-e28a-46a1-85fd-e99948175d90/a98148f58ddb7cc1d31305e1e5244518/dotnet-sdk-8.0.404-win-x86.exe
 
 - **SQL Server**  
-- **Node.js y NPM** - (opcional, si se necesita para la compilación de scripts o paquetes adicionales de JavaScript)
 
 ## Para compilar
 
