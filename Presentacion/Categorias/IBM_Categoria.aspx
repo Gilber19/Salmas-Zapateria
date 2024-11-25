@@ -9,7 +9,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
   <div class="container">
-    <h4 class="text-black mt-5 mb-0">Gestión de Categorías xddddd</h4>
+    <h4 class="text-black mt-5 mb-0">Gestión de Categorías</h4>
     <hr class="bg-success mt-0 mb-3" />
 
     <div class="row">
@@ -32,7 +32,6 @@
     </div>
 
     <div class="container-fluid w-75 mt-5">
-      |
       <uc1:wucMensaje runat="server" ID="lblMensaje" />
       <asp:Panel ID="PnlCapturaDatos" runat="server">
         <div class="card mt-5">

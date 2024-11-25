@@ -4,18 +4,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
   <div class="row">
-    <div class="col-10 bg-azulGris text-white">
+    <div class="col-10 bg-nav text-white">
       <asp:Label ID="lblTipoUsuario" runat="server"></asp:Label>: 
   <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
     </div>
-    <div class="col-2 bg-azulGris text-white">
+    <div class="col-2 bg-nav text-white">
       <asp:LinkButton ID="lbLogOut" runat="server" CssClass="text-white float-right mr-lg-5 btn btn-secondary" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False"> Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i></asp:LinkButton>
     </div>
   </div>
   <div class="conteiner-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-azulGris">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-nav">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Ventas-GN</a>
+        <a class="navbar-brand" href="#">
+            <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="" width="50" height="50" class="d-inline-block align-text-top rounded-circle">
+        </a>
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">

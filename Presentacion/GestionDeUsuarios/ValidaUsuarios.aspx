@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="card-footer">
-            <asp:LinkButton ID="BtnLogin" runat="server" class="btn text-white bg-azulGris form-control" OnClick="BtnLogin_Click">Ingresar</asp:LinkButton>
+            <asp:LinkButton ID="BtnLogin" runat="server" class="btn text-white bg-nav form-control" OnClick="BtnLogin_Click">Ingresar</asp:LinkButton>
 
     </div>
   </div>

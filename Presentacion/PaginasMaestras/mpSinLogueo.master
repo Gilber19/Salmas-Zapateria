@@ -5,8 +5,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
   <div class="row mb-5">
-    <div class="col-12 bg-azulGris text-white mb-5">
-      <h5 class="text-white text-center">Control de ventas Guerrero Negro Ver. 1.0.0.0</h5>
+    <div class="col-12 bg-nav text-white mb-5 p-2">
+      <h5 class="text-white text-center">Salmas Zapatería</h5>
     </div>
   </div>
   <asp:ContentPlaceHolder ID="cphSinLogueo" runat="server">

@@ -8,7 +8,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
   <div class="container">
-    <h4 class="text-black mt-5 mb-0">Gestión de Artículos testeo presti god uwu</h4>
+    <h4 class="text-black mt-5 mb-0">Gestión de Artículos</h4>
     <hr class="bg-success mt-0 mb-3" />
 
     <div class="row">

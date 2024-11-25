@@ -1,9 +1,9 @@
 ﻿body {
 }
 
-.bg-azulGris {
+.bg-nav {
   --bs-bg-opacity: 1;
-  background-color: #131921 !important
+  background-color: #704E2E !important
 }
 
 .imagenvg {  
