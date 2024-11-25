@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/mpBase.Master" AutoEventWireup="true" CodeBehind="mpConLogueo.master.cs" Inherits="Presentacion.PaginasMaestras.mpConLogueo" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
+  <div class="row">
+    <div class="col-10 bg-azulGris text-white">
+      <asp:Label ID="lblTipoUsuario" runat="server"></asp:Label>: 
+  <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+    </div>
+    <div class="col-2 bg-azulGris text-white">
+      <asp:LinkButton ID="lbLogOut" runat="server" CssClass="text-white float-right mr-lg-5 btn btn-secondary" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False"> Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i></asp:LinkButton>
+    </div>
+  </div>
+  <div class="conteiner-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-azulGris">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Ventas-GN</a>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Clientes/IBM_Clientes.aspx">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Proveedores/IBM_Proveedores.aspx">Proveedores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Categorias/IBM_Categoria.aspx">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Articulos/IBM_Articulo.aspx">Articulos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Ventas/Ventas.aspx">Ventas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Ventas/Facturas.aspx">Facturas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Excel/GetExcel.aspx">Excel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Email/EnviarEmail.aspx">Enviar email</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <asp:ContentPlaceHolder ID="cphConLogueo" runat="server">
+  </asp:ContentPlaceHolder>
+</asp:Content>

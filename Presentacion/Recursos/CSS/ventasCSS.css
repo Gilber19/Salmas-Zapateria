@@ -1,0 +1,54 @@
+﻿body {
+}
+
+.bg-azulGris {
+  --bs-bg-opacity: 1;
+  background-color: #131921 !important
+}
+
+.imagenvg {  
+  height: 30px;
+  width: 150px;
+}
+
+/*Mensaje*/
+.messagePanel {
+  border: 1px solid;
+  padding: 10px;
+  margin: 10px 0;
+  display: inline-block;
+}
+
+.success {
+  border-color: green;
+  color: green;
+}
+
+.error {
+  border-color: red;
+  color: red;
+}
+
+.warning {
+  border-color: orange;
+  color: orange;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.scrollable-grid {
+  width: 600px;
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+.grid-view {
+  width: 100%;
+  table-layout: fixed;
+}
