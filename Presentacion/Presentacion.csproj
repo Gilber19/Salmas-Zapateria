@@ -163,6 +163,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
     <Content Include="Categorias\IBM_Categoria.aspx" />
     <Content Include="Clientes\IBM_Clientes.aspx" />
@@ -207,6 +208,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HomePage\HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage\HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Articulos\IBM_Articulo.aspx.cs">
       <DependentUpon>IBM_Articulo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
