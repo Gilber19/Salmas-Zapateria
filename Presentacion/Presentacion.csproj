@@ -477,6 +477,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Facturas\Factura.pdf" />
+    <None Include="appsettings.config" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\mpBase.Master" />
     <Content Include="PaginasMaestras\mpConLogueo.master" />
