@@ -20,13 +20,13 @@ namespace Presentacion.GestionDeUsuarios
 
       if (AutenticarUsuario(tbCorreoElectronico.Text.Trim(), tbPassWord.Text.Trim()))
       {
-        usuario.NombreUsuario = "VICTOR RAFAEL";
+        usuario.NombreUsuario = "Nombre de Usuario";
         usuario.NombreRolLogueado = "Administrador";
-        usuario.EmailUsuario = "vvmejia@ventasgn.com";
+        usuario.EmailUsuario = "admin@salmaszapateria.com";
 
         Session["snSesionUsuario"] = usuario;
 
-        Response.Redirect("/Categorias/IBM_Categoria.aspx");
+        Response.Redirect("/HomePage/HomePage.aspx");
       }
       else
         lblMensaje.Text = "El correo o la contraseña es incorrecto.";
@@ -34,8 +34,7 @@ namespace Presentacion.GestionDeUsuarios
 
     private bool AutenticarUsuario(string usuario, string password)
     {
-      // Aquí debes implementar tu lógica de validación.      
-      return usuario == "vvmejia@ventasgn.com" && password == "123"; // Reemplaza esto con la lógica real
+      return usuario == "admin@salmaszapateria.com" && password == "123";
     }
   }
 }

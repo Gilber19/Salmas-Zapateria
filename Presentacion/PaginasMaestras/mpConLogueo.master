@@ -3,58 +3,181 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
-  <div class="row">
-    <div class="col-10 bg-nav text-white">
-      <asp:Label ID="lblTipoUsuario" runat="server"></asp:Label>: 
-  <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-    </div>
-    <div class="col-2 bg-nav text-white">
-      <asp:LinkButton ID="lbLogOut" runat="server" CssClass="text-white float-right mr-lg-5 btn btn-secondary" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False"> Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i></asp:LinkButton>
-    </div>
-  </div>
-  <div class="conteiner-fluid">
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-light bg-nav">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-            <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="" width="50" height="50" class="d-inline-block align-text-top rounded-circle">
+  <div class="container-fluid m-0 p-0 position-relative">
+    <style>
+      .navbar {
+        background-color: #001514;
+        padding: 0.8rem 1rem;
+        color: white;
+        position: relative;
+      }
+
+      .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .navbar-brand img {
+        border-radius: 50%;
+        width: 60px;
+        aspect-ratio: 1/1;
+        /* border: 1px solid white; */
+      }
+
+      .navbar-nav .nav-item .nav-link {
+        color: white !important;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      a {
+        color: #000 !important;
+      }
+
+      .profile-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+      }
+
+      .profile-icon i {
+        font-size: 26px;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 800px) {
+        .navbar-nav {
+          display: none;
+        }
+      }
+
+      .social-icons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+      }
+  
+      .social-icons a {
+        color: black;
+        font-size: 24px;
+        text-decoration: none;
+      }
+    </style>
+
+    <nav class="navbar navbar-dark">
+        <div class="d-flex align-items-center">
+            <!-- Hamburger Menu -->
+            <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+                    aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link active" href="">Hombre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Mujer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Maquillaje</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/Homepage/Homepage.aspx">
+            <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="Logo">
         </a>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Clientes/IBM_Clientes.aspx">Clientes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Proveedores/IBM_Proveedores.aspx">Proveedores</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Categorias/IBM_Categoria.aspx">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Articulos/IBM_Articulo.aspx">Articulos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Ventas/Ventas.aspx">Ventas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Ventas/Facturas.aspx">Facturas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Excel/GetExcel.aspx">Excel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/Email/EnviarEmail.aspx">Enviar email</a>
-            </li>
-          </ul>
-
+         <!-- Profile Dropdown -->
+        <div class="dropdown">
+        <div class="profile-icon" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-fill" aria-hidden="true"></i>
         </div>
-      </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li>
+                <div class="dropdown-item-text fw-bold" style="color: #000;">
+                <asp:Label ID="lblTipoUsuario" runat="server" Text="Tipo de Usuario"></asp:Label>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown-item-text" style="color: #000;">
+                <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario"></asp:Label>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
+                    Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i>
+                </asp:LinkButton>
+            </li>
+        </ul>
+        </div>
     </nav>
-  </div>
 
-  <asp:ContentPlaceHolder ID="cphConLogueo" runat="server">
-  </asp:ContentPlaceHolder>
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" 
+                aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#hombreSubmenu" role="button" aria-expanded="false" aria-controls="hombreSubmenu">
+            Hombre
+            </a>
+            <div class="collapse" id="hombreSubmenu">
+            <ul class="nav flex-column ms-3">
+                <li class="nav-item"><a class="nav-link" href="">Accesorios</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Calzado</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Ropa</a></li>
+            </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#mujerSubmenu" role="button" aria-expanded="false" aria-controls="mujerSubmenu">
+            Mujer
+            </a>
+            <div class="collapse" id="mujerSubmenu">
+            <ul class="nav flex-column ms-3">
+                <li class="nav-item"><a class="nav-link" href="">Accesorios</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Calzado</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Ropa</a></li>
+            </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#maquillajeSubmenu" role="button" aria-expanded="false" aria-controls="maquillajeSubmenu">
+            Maquillaje
+            </a>
+            <div class="collapse" id="maquillajeSubmenu">
+            <ul class="nav flex-column ms-3">
+                <li class="nav-item"><a class="nav-link" href="">Accesorios</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Calzado</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Ropa</a></li>
+            </ul>
+            </div>
+        </li>
+        </ul>
+    </div>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
+    </div>
+
+    <asp:ContentPlaceHolder ID="cphConLogueo" runat="server">
+    </asp:ContentPlaceHolder>
+  </div>
 </asp:Content>
