@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Entidades
 {
@@ -15,7 +12,7 @@ namespace Entidades
         private decimal montoAbonado;
         private DateTime fechaApartado;
         private DateTime fechaVencimiento;
-        private bool estado;
+        private string estado;
         #endregion
 
         #region Constructores
@@ -30,7 +27,7 @@ namespace Entidades
             Estado = estado;
         }
 
-        public E_Apartados(int idApartado, int idPersona, int idDetalleApartado, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento, bool estado)
+        public E_Apartados(int idApartado, int idPersona, int idDetalleApartado, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento, string estado)
         {
             IdApartado = idApartado;
             IdPersona = idPersona;
@@ -49,7 +46,7 @@ namespace Entidades
         public decimal MontoAbonado { get => montoAbonado; set => montoAbonado = value; }
         public DateTime FechaApartado { get => fechaApartado; set => fechaApartado = value; }
         public DateTime FechaVencimiento { get => fechaVencimiento; set => fechaVencimiento = value; }
-        public bool Estado { get => estado; set => estado = value; }
+        public string Estado { get => estado; set => estado = value; }
         #endregion
 
 

@@ -42,12 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D_Apartados.cs" />
     <Compile Include="D_Articulo.cs" />
     <Compile Include="D_Categoria.cs" />
     <Compile Include="D_Clientes.cs" />
     <Compile Include="D_Compras.cs" />
     <Compile Include="D_ConexionBD.cs" />
+    <Compile Include="D_DetalleApartado.cs" />
+    <Compile Include="D_DetalleIngreso.cs" />
+    <Compile Include="D_DetalleVenta.cs" />
+    <Compile Include="D_Imagenes.cs" />
+    <Compile Include="D_Ingresos.cs" />
+    <Compile Include="D_LimiteCredito.cs" />
+    <Compile Include="D_Pagos.cs" />
+    <Compile Include="D_Personas.cs" />
     <Compile Include="D_Proveedores.cs" />
+    <Compile Include="D_Roles.cs" />
+    <Compile Include="D_SolicitudesCredito.cs" />
+    <Compile Include="D_Usuarios.cs" />
     <Compile Include="D_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
