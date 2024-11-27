@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class E_Pagos
+    public class E_Pagos
     {
         #region Atributos
         private int idPago;

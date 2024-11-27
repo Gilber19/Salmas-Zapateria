@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class E_SolicitudesCredito
+    public class E_SolicitudesCredito
     {
         //#region Atributos
         //private int idSolicitud;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class D_LimitesCredito
+    public class D_LimitesCredito
     {
         #region Atributos
         private int idLimiteCredito;

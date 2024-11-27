@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entidades
+namespace Datos
 {
-  internal class E_Proveedores
-  {
-  }
+    internal class D_Tallas
+    {
+    }
 }

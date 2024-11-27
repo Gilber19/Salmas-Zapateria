@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    internal class E_Imagenes
+    public class E_Imagenes
     {
         #region Atributos
         private int idImagen;

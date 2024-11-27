@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-  internal class E_Compras
-  {
-  }
+    public class E_Compras
+    {
+    }
 }
