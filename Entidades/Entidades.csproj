@@ -41,13 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D_LimitesCredito.cs" />
     <Compile Include="E_Apartados.cs" />
     <Compile Include="E_Articulo.cs" />
     <Compile Include="E_Categoria.cs" />
     <Compile Include="E_Clientes.cs" />
     <Compile Include="E_Compras.cs" />
     <Compile Include="E_DetalleApartado.cs" />
-    <Compile Include="E_Proveedores.cs" />
+    <Compile Include="E_Imagenes.cs" />
+    <Compile Include="E_Pagos.cs" />
+    <Compile Include="E_SolicitudesCredito.cs" />
+    <Compile Include="E_Tallas.cs" />
     <Compile Include="E_Usuario.cs" />
     <Compile Include="E_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
