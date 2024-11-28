@@ -26,7 +26,7 @@
 <link href="../CSS/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <div class="form-group">
-  <div class="col-lg-12 col-md-4 col-sm-6">
+  <div class="col-12">
     <asp:Label ID="lblTitulo" runat="server" CssClass="fw-bold m-2"></asp:Label>
     <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" ></asp:TextBox>
 
