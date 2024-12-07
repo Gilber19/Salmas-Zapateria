@@ -36,6 +36,9 @@ namespace Presentacion.GestionDeUsuarios
         private bool AutenticarUsuario(string usuario, string password)
         {
             N_Usuario validar = new N_Usuario();
+
+            Console.WriteLine(validar.RegistrarUsuario("juan perez", "rancho alegre", "1234560", "email@gmail.com", "asd"));
+
             return validar.ValidarLogin(usuario, password);
         }
     }

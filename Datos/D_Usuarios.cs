@@ -40,6 +40,38 @@ namespace Datos
             }
         }
 
+        public bool NuevoRegistroUsuario(string nombre, string direccion, string telefono, string email, string password, int idRol = 2)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    conexion.Open();
+
+                    using (SqlCommand comando = new SqlCommand("RegistrarUsuario", conexion))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+
+                        comando.Parameters.AddWithValue("@Nombre", nombre);
+                        comando.Parameters.AddWithValue("@Email", email);
+                        comando.Parameters.AddWithValue("@Password", password);
+                        comando.Parameters.AddWithValue("@Direccion", direccion);
+                        comando.Parameters.AddWithValue("@Telefono", telefono);
+                        comando.Parameters.AddWithValue("@IdRol", idRol);
+
+                        int count = comando.ExecuteNonQuery();
+
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al registrar el usuario", ex);
+                }
+            }
+        }
+
+
     }
 }
 

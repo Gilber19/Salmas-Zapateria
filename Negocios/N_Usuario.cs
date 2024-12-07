@@ -19,5 +19,14 @@ namespace Negocios
             return usuario.ValidarUsuario(email, password);
 
         }
+        //el parametro nombre debe venir concatenado con el apellido
+        public bool RegistrarUsuario(string nombre, string direccion, string telefono, string email, string password)
+        {
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(direccion))
+                throw new ArgumentException("Todos los campos son requeridos");
+
+            return usuario.NuevoRegistroUsuario(nombre, direccion, telefono, email, password);
+        }
+
     }
 }

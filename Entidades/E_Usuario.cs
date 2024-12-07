@@ -14,6 +14,8 @@ namespace Entidades
         private string _Nombre;
         private string _Email;
         private string _PassWordHash;
+        private string _Direccion;
+        private string _Telefono;
         private bool _Estado;
         #endregion
 
@@ -26,16 +28,20 @@ namespace Entidades
             _Nombre = string.Empty;
             _Email = string.Empty;
             _PassWordHash = string.Empty;
+            _Direccion = string.Empty;
+            _Telefono = string.Empty;
             _Estado = false;
         }
 
-        public E_Usuario(int idUsuario, int idRol, string nombreUsuario, string email, string passWordHash, bool estado)
+        public E_Usuario(int idUsuario, int idRol, string nombreUsuario, string email, string passWordHash, string direccion, string telefono, bool estado)
         {
             _IdUsuario = idUsuario;
             _IdRol = idRol;
             _Nombre = nombreUsuario;
             _Email = email;
             _PassWordHash = passWordHash;
+            _Direccion = direccion;
+            _Telefono = telefono;
             _Estado = estado;
         }
 
@@ -51,6 +57,8 @@ namespace Entidades
         {
             get => _PassWordHash; set => _PassWordHash = value;
         }
+        public string Direccion { get => _Direccion; set => _Direccion = value; }
+        public string Telefono { get => _Telefono; set => _Telefono = value; }
         public bool Estado { get => _Estado; set => _Estado = value; }
         #endregion
     }
