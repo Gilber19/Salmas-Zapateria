@@ -4,43 +4,53 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 
 using Entidades;
+using System.Configuration;
 
 namespace Datos
 {
     public class D_Articulo : D_ConexionBD
     {
-        public bool InsertarArticulo(E_Articulo articulo)
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
+
+        public string InsertarArticulo(E_Articulo articulo)
         {
-            try
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion)
+                try
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
+                    SqlCommand cmd = new SqlCommand("IBM_Articulos", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-                cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
-                cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
-                cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
-                cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
-                cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@Estado", articulo.Estado);
-                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                    // Parámetros del procedimiento almacenado
+                    cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd.Parameters.AddWithValue("@IdArticulo", 0); // Este valor se genera en el SP.
+                    cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
+                    cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
+                    cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
+                    cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
+                    cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
+                    cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
+                    cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                    cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
+                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                    cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
+                    cmd.Parameters.AddWithValue("@IdImagen", 0);
 
-                AbrirConexion();
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.Write("Error al tratar de insertar la categoría: ", ex.Message);
-                return false;
-            }
-            finally
-            {
-                CerrarConexion();
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    return "Artículo insertado correctamente.";
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
             }
         }
+
         public bool BorrarArticulo(int idArticulo)
         {
             E_Articulo articulo = new E_Articulo();

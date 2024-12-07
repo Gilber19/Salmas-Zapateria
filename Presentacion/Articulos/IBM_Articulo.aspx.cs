@@ -113,6 +113,26 @@ namespace Presentacion.Articulos
             PnlCapturaDatos.Visible = true;
             BtnInsertar.Visible = true;
             BtnCancelar.Visible = true;
+
+            //ESTO SOLO ES UNA PRUEBA
+            //E_Articulo nuevoArticulo = new E_Articulo
+            //{
+            //    IdCategoria = 1,
+            //    CodigoArticulo = "qwe123",
+            //    NombreArticulo = "Camisa test 1",
+            //    PrecioVenta = 12.5,
+            //    DescripcionArticulo = "Camiseta de algodón pro",
+            //    SubCategoria = "Ropa",
+            //    IdImagen = 143,
+            //    Talla = "S",
+            //    Stock = 20,
+            //    IdTalla = 2
+            //};
+
+            //string resultado = NA.InsertarArticulo(nuevoArticulo);
+
+
+
         }
         protected void btnListado_Click(object sender, EventArgs e)
         {
@@ -240,6 +260,7 @@ namespace Presentacion.Articulos
             BtnInsertar.Visible = true;
             BtnCancelar.Visible = true;
         }
+
         protected void btnBorrar_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt16(hfIdArticulo.Value);

@@ -10,36 +10,19 @@ namespace Negocios
     {
         D_Articulo DC = new D_Articulo();
 
-        public string InsertarArticulo(E_Articulo Articulo)
+        private readonly D_Articulo datosArticulo = new D_Articulo();
+
+        public string InsertarArticulo(E_Articulo articulo)
         {
-            string Mensaje = string.Empty;
+            // Validaciones básicas
+            if (string.IsNullOrWhiteSpace(articulo.NombreArticulo))
+                throw new Exception("El nombre del artículo es obligatorio.");
+            if (articulo.PrecioVenta <= 0)
+                throw new Exception("El precio debe ser mayor a 0.");
+            if (articulo.Stock < 0)
+                throw new Exception("El stock no puede ser negativo.");
 
-            // Validaciones
-            if (string.IsNullOrWhiteSpace(Articulo.NombreArticulo))
-                Mensaje = "Error: El nombre de la categoría es obligatorio.";
-
-            if (Articulo.DescripcionArticulo.Length > 250)
-                Mensaje = "Error: La descripción no puede exceder los 250 caracteres.";
-
-            if (DC.BuscarArticuloPorCriterio(Articulo.NombreArticulo).Count > 0) // Llamada a la capa de datos para buscar el nombre de la categoría.
-                Mensaje = "Error: El nombre de la categoría " + Articulo.NombreArticulo + " ya existe en la base de datos.";
-
-            if (Mensaje == string.Empty) //Validaciones correctas
-            {
-                try
-                {
-                    if (DC.InsertarArticulo(Articulo) == true) // Llamada a la capa de datos para insertar los datos.
-                        Mensaje = "Exito: La categoría fue insertada correctamente.";
-                    else
-                        Mensaje = "Error: La categoría no pudo ser insertada.";
-                }
-                catch (Exception ex)
-                {
-                    return "Error: Ocurrió un error inesperado." + ex.Message;
-                }
-            }
-
-            return Mensaje;
+            return datosArticulo.InsertarArticulo(articulo);
         }
         public string BorrarArticulo(int idArticulo)
         {
