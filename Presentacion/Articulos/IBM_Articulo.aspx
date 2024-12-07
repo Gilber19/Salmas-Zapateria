@@ -75,8 +75,8 @@
               <asp:BoundField DataField="CodigoArticulo" HeaderText="CÓDIGO"></asp:BoundField>
               <asp:BoundField DataField="NombreArticulo" HeaderText="ARTÍCULO"></asp:BoundField>
               <asp:BoundField DataField="PrecioVenta" HeaderText="PRECIO"></asp:BoundField>
-              <asp:BoundField DataField="Stock" HeaderText="Stock"></asp:BoundField>
               <asp:BoundField DataField="DescripcionArticulo" HeaderText="DESCRIPCIÓN"></asp:BoundField>
+              <asp:BoundField DataField="IdImagen" HeaderText="IMAGEN"></asp:BoundField>
               <asp:TemplateField InsertVisible="false" ShowHeader="false" HeaderText="EDITAR">
                 <ItemTemplate>
                   <asp:LinkButton ID="GrvBtnEditar" runat="server" CssClass="btn btn-sm btn-primary " ToolTip="Editar los datos de la artículo" CausesValidation="false" CommandName="Edit"><i class="bi bi-pen"></i></asp:LinkButton>
