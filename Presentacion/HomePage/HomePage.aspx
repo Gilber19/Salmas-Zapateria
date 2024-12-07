@@ -1,13 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Presentacion.HomePage.HomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
+    <style>
+        .btn.dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+
     <div class="container mt-4">
         <!-- Mensajes -->
-        <asp:Label
-            ID="lblMensaje"
-            runat="server"
-            Visible="false"
-        />
+        <div id="alertSuccess" runat="server" visible="true" class="mt-4 mb-4">
+            <asp:Label
+                ID="lblMensaje"
+                runat="server"
+                Visible="false"
+            />        
+        </div>
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="mb-0">Novedades</h3>
@@ -50,18 +58,16 @@
                 <ItemTemplate>
                     <div class="col" style="max-width: 700px;">
                         <div class="d-flex align-items-start">
-                            <img src='<%# Eval("Imagen") %>' class="img-fluid" alt='<%# Eval("NombreArticulo") %>' />
-                            
                             <!-- Editar articulo -->
-                            <asp:Panel>
+                            <asp:Panel
                                 ID="pnlEditButtons"
                                 runat="server"
                                 Visible='<%# GetIsEditMode() %>'
                                 class="ms-2">
                                 <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
+                                <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <asp:LinkButton 

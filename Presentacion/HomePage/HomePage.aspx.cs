@@ -58,6 +58,7 @@ namespace Presentacion.HomePage
         private void UpdateEditMode()
         {
             pnlDefaultMode.Visible = !IsEditMode;
+
             pnlEditMode.Visible = IsEditMode;
             btnToggleEditMode.Text = IsEditMode ? "Añadir" : "Editar";
 
@@ -68,6 +69,8 @@ namespace Presentacion.HomePage
         protected void ToggleEditMode_Click(object sender, EventArgs e)
         {
             IsEditMode = !IsEditMode;
+            lblMensaje.Visible = false;
+
             UpdateEditMode();
         }
 
