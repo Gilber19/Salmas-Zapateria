@@ -1,93 +1,196 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Negocios;
 using Entidades;
+using Negocios;
 
 namespace Presentacion.ModificarArticulo
 {
-    public partial class ModificarArticulo : System.Web.UI.Page
+    public partial class ModificarArticulo : Page
     {
-        private int IdArticulo;
+        private N_Articulo N_Articulos = new N_Articulo();
+        private N_Categoria N_Categorias = new N_Categoria();
+        private int idArticulo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string idString = Request.QueryString["id"];
-            if (!string.IsNullOrEmpty(idString) && int.TryParse(idString, out int id))
+            if (!IsPostBack)
             {
-                IdArticulo = id;
-                Console.WriteLine(IdArticulo);
+                if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out idArticulo))
+                {
+                    CargarCategorias();
+                    CargarTallas();
+                    CargarArticulo(idArticulo);
+                }
+                else
+                {
+                    Response.Redirect("~/HomePage/HomePage.aspx");
+                }
+            }
+        }
+
+
+        private void CargarCategorias()
+        {
+            // Obtener categorías desde la capa de negocios
+            var categorias = N_Categorias.ListarCategorias();
+            
+            ddlCategoria.DataSource = categorias;
+            ddlCategoria.DataTextField = "NombreCategoria";
+            ddlCategoria.DataValueField = "IdCategoria";
+            ddlCategoria.DataBind();
+
+            ddlCategoria.Items.Insert(0, new ListItem("Categoría", ""));
+        }
+
+        private void CargarSubcategorias(int categoriaId)
+        {
+            // var subcategorias = N_Categorias.ListarSubcategorias(categoriaId);
+            
+            // ddlSubcategoria.DataSource = subcategorias;
+            // ddlSubcategoria.DataTextField = "NombreSubcategoria";
+            // ddlSubcategoria.DataValueField = "IdSubcategoria";
+            // ddlSubcategoria.DataBind();
+
+            ddlSubcategoria.Items.Insert(0, new ListItem("Subcategoría", ""));
+        }
+
+        private void CargarTallas()
+        {
+            ddlTalla.Items.Clear();
+            ddlTalla.Items.Add(new ListItem("Selecciona talla", ""));
+            ddlTalla.Items.Add(new ListItem("XS", "XS"));
+            ddlTalla.Items.Add(new ListItem("S", "S"));
+            ddlTalla.Items.Add(new ListItem("M", "M"));
+            ddlTalla.Items.Add(new ListItem("L", "L"));
+            ddlTalla.Items.Add(new ListItem("XL", "XL"));
+        }
+
+        private void CargarArticulo(int id)
+        {
+            var articulo = N_Articulos.BuscarArticuloPorID(id);
+            
+            if (articulo != null)
+            {
+                txtNombre.Text = articulo.NombreArticulo;
+                txtDescripcion.Text = articulo.DescripcionArticulo;
+                ddlCategoria.SelectedValue = articulo.IdCategoria.ToString();
+                CargarSubcategorias(articulo.IdCategoria);
+                ddlSubcategoria.SelectedValue = articulo.SubCategoria;
+                txtCodigoArticulo.Text = articulo.CodigoArticulo;
+                ddlTalla.SelectedValue = articulo.Talla;
+                txtStock.Text = articulo.Stock;
+                txtPrecio.Text = articulo.PrecioVenta.ToString("F2");
+                // imgPreviewPrincipal.ImageUrl = articulo.ImagenPrincipalPath;
+
+                // Cargar imágenes secundarias
+                // RepeaterImagenesSecundarias.DataSource = N_Articulos.ListarImagenesSecundarias(id);
+                RepeaterImagenesSecundarias.DataBind();
             }
             else
             {
-                // Handle the case where the id is not valid
-                Console.WriteLine("Invalid or missing id parameter.");
-            }
-
-            if (!IsPostBack)
-            {
-                CargarDetalles();
-            }
-        }
-
-
-        private void CargarDetalles()
-        {
-            N_Articulo N_Articulo = new N_Articulo();
-            E_Articulo articulo = N_Articulo.BuscarArticuloPorID(IdArticulo);
-            //E_Articulo articulo = new E_Articulo();
-            //articulo.IdArticulo = 1;
-            //articulo.NombreArticulo = "Camisa";
-            //articulo.DescripcionArticulo = "Camisa de vestir";
-            //articulo.PrecioVenta = 100;
-            //articulo.Stock = "10,20,30,40,50";
-            //articulo.Talla = "XL,L,M,S,XS";
-            //articulo.Imagenes = "imagen1.png,imagen2.png,imagen3.png";
-
-            if (articulo == null)
-            {
-                // Loggear el ID del artículo que no se encontró
+                // Manejar el error: Artículo no encontrado
                 Response.Redirect("~/HomePage/HomePage.aspx");
             }
-
-            // Cargar datos en los controles
-            lblNombreProducto.Text = articulo.NombreArticulo;
-            txtNombreProducto.Text = articulo.NombreArticulo;
-            lblDescripcion.Text = articulo.DescripcionArticulo;
-            txtDescripcion.Text = articulo.DescripcionArticulo;
-            //ddlTalla.DataSource = articulo.Tallas;
-
-            ddlTalla.DataBind();
-            //txtStock.Text = articulo.Stock.ToString();
-
-            //imgPrincipal.Src = articulo.ImagenPrincipal;
-            //RepeaterGallery.DataSource = articulo.ImagenesAdicionales;
-            RepeaterGallery.DataBind();
         }
 
-        protected void SaveChanges(object sender, EventArgs e)
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            N_Articulo N_Articulo = new N_Articulo();
-            E_Articulo articuloActualizado = N_Articulo.BuscarArticuloPorID(IdArticulo);
-            //E_Articulo articuloActualizado = new E_Articulo();
-            //articuloActualizado.IdArticulo = 1;
-            //articuloActualizado.NombreArticulo = "Camisa";
-            //articuloActualizado.DescripcionArticulo = "Camisa de vestir";
-            //articuloActualizado.PrecioVenta = 100;
-            //articuloActualizado.Stock = "10,20,30,40,50";
-            //articuloActualizado.Talla = "XL,L,M,S,XS";
-            //articuloActualizado.Imagenes = "imagen1.png,imagen2.png,imagen3.png";
-            
-            // Actualizar los datos del artículo
-            articuloActualizado.NombreArticulo = txtNombreProducto.Text;
-            articuloActualizado.DescripcionArticulo = txtDescripcion.Text;
-            //articuloActualizado.Talla = ddlTalla.SelectedValue;
-            //articuloActualizado.Stock = int.Parse(txtStock.Text);
-            //articuloActualizado.ImagenPrincipal = imgPrincipal.Src;
-            //articuloActualizado.ImagenesAdicionales = RepeaterGallery.DataSource as List<string>;
+            if (int.TryParse(ddlCategoria.SelectedValue, out int categoriaId))
+            {
+                CargarSubcategorias(categoriaId);
+            }
+            else
+            {
+                ddlSubcategoria.Items.Clear();
+                ddlSubcategoria.Items.Insert(0, new ListItem("Selecciona subcategoría", ""));
+            }
+        }
 
-            N_Articulo.ModificarArticulo(articuloActualizado);
-            Response.Redirect("~/HomePage/HomePage.aspx");
+        protected void btnModificar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                E_Articulo articulo = new E_Articulo
+                {
+                    IdArticulo = idArticulo,
+                    NombreArticulo = txtNombre.Text.Trim(),
+                    DescripcionArticulo = txtDescripcion.Text.Trim(),
+                    IdCategoria = int.Parse(ddlCategoria.SelectedValue),
+                    SubCategoria = ddlSubcategoria.SelectedValue,
+                    CodigoArticulo = txtCodigoArticulo.Text.Trim(),
+                    Talla = ddlTalla.SelectedValue,
+                    Stock = txtStock.Text.Trim(),
+                    PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
+                    // Manejar imagenes y otros campos según sea necesario
+                };
+
+                // Manejar imagen principal
+                if (fuImagenPrincipal.HasFile)
+                {
+                    string ruta = GuardarImagen(fuImagenPrincipal);
+                    // articulo.ImagenPrincipalPath = ruta;
+                }
+
+                string resultado = N_Articulos.ModificarArticulo(articulo);
+                // Mostrar mensaje al usuario
+                // lblMensaje.Text = resultado;
+            }
+            catch (Exception ex)
+            {
+                // lblMensaje.Text = "Error: " + ex.Message;
+            }
+        }
+
+        private string GuardarImagen(FileUpload archivo)
+        {
+            string carpeta = Server.MapPath("~/Recursos/Imagenes/Articulos/Primarias/");
+            string nombreArchivo = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(archivo.FileName);
+            string ruta = carpeta + nombreArchivo;
+            archivo.SaveAs(ruta);
+            return "~/Recursos/Imagenes/Articulos/Primarias/" + nombreArchivo;
+        }
+
+        protected void btnAgregarImagen_Click(object sender, EventArgs e)
+        {
+            if (fuImagenSecundaria.HasFile)
+            {
+                //string ruta = GuardarImagenSecundaria(fuImagenSecundaria);
+                // Agregar la imagen a la base de datos o al listado
+                //negocioArticulo.AgregarImagenSecundaria(articuloId, ruta);
+                // Recargar las imágenes
+                //RepeaterImagenesSecundarias.DataSource = negocioArticulo.ListarImagenesSecundarias(articuloId);
+                //RepeaterImagenesSecundarias.DataBind();
+            }
+        }
+
+        private string GuardarImagenSecundaria(FileUpload archivo)
+        {
+            string carpeta = Server.MapPath("~/Recursos/Imagenes/Articulos/Secundarias/");
+            string nombreArchivo = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(archivo.FileName);
+            string ruta = carpeta + nombreArchivo;
+            archivo.SaveAs(ruta);
+            return "~/Recursos/Imagenes/Articulos/Secundarias/" + nombreArchivo;
+        }
+
+        protected void EliminarImagen_Click(object sender, EventArgs e)
+        {
+            Button btnEliminar = (Button)sender;
+            string rutaImagen = btnEliminar.CommandArgument;
+
+            // Eliminar la imagen de la base de datos
+            //negocioArticulo.BorrarImagenSecundaria(articuloId, rutaImagen);
+
+            // Eliminar el archivo del servidor
+            string rutaFisica = Server.MapPath(rutaImagen);
+            if (System.IO.File.Exists(rutaFisica))
+            {
+                System.IO.File.Delete(rutaFisica);
+            }
+
+            // Recargar las imágenes
+            //RepeaterImagenesSecundarias.DataSource = negocioArticulo.ListarImagenesSecundarias(articuloId);
+            //RepeaterImagenesSecundarias.DataBind();
         }
     }
 }
