@@ -39,7 +39,6 @@ namespace Presentacion.HomePage
         {
             N_Articulo N_Articulo = new N_Articulo();
             List<E_Articulo> productos = N_Articulo.ListarArticulos();
-
             if (productos != null && productos.Count > 0)
             {
                 rptProductos.DataSource = productos;

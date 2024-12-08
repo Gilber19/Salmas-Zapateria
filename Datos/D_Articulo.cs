@@ -147,15 +147,18 @@ namespace Datos
                         E_Articulo Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            //IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-                            //CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
+                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
+                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
                             PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
-                            //Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
-                            //IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
-                            Imagenes = reader["Imagenes"]?.ToString() ?? string.Empty, //!ARREGLAR EN EL SP EN EL LSTARTICULOS
+                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
+                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            Imagenes = reader["Imagen"]?.ToString() ?? string.Empty, //!ARREGLAR EN EL SP EN EL LSTARTICULOS
                         };
+
+                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+
                         LstArticulos.Add(Articulo);
                     }
                 }
@@ -171,6 +174,8 @@ namespace Datos
 
             return LstArticulos;
         }
+
+
         public E_Articulo BuscarArticuloPorID(int idArticulo)
         {
             E_Articulo Articulo = null;
