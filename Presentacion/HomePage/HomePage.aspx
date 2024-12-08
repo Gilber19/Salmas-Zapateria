@@ -5,6 +5,13 @@
         .btn.dropdown-toggle::after {
             display: none;
         }
+        .image {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 0;
+            width: auto;
+            height: auto;
+        }
     </style>
 
     <div class="container mt-4">
@@ -58,16 +65,17 @@
                 <ItemTemplate>
                     <div class="col" style="max-width: 700px;">
                         <div class="d-flex align-items-start">
+                            <img src="<%# Eval("Imagenes") %>" alt="Imagen del producto" class="image" />
                             <!-- Editar articulo -->
                             <asp:Panel
                                 ID="pnlEditButtons"
                                 runat="server"
                                 Visible='<%# GetIsEditMode() %>'
-                                class="ms-2">
+                                class="ms-auto">
                                 <div class="dropdown">
-                                <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="position: relative;">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
+                                    <button class="btn btn-link dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <asp:LinkButton 
@@ -93,7 +101,6 @@
                                 </div>
                             </asp:Panel>
                         </div>
-                        <img src="<%# Eval("Imagenes") %>" alt="Imagen del producto" />
                         <h5 class="mt-2 mb-0"><%# Eval("NombreArticulo") %></h5>
                         <p class="mt-2 mb-0">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
                     </div>

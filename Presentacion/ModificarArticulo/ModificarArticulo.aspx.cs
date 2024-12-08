@@ -19,7 +19,6 @@ namespace Presentacion.ModificarArticulo
                 if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out idArticulo))
                 {
                     CargarCategorias();
-                    CargarTallas();
                     CargarArticulo(idArticulo);
                 }
                 else
@@ -55,15 +54,26 @@ namespace Presentacion.ModificarArticulo
             ddlSubcategoria.Items.Insert(0, new ListItem("Subcategoría", ""));
         }
 
-        private void CargarTallas()
+        private void CargarTallas(string stock)
         {
             ddlTalla.Items.Clear();
             ddlTalla.Items.Add(new ListItem("Selecciona talla", ""));
-            ddlTalla.Items.Add(new ListItem("XS", "XS"));
-            ddlTalla.Items.Add(new ListItem("S", "S"));
-            ddlTalla.Items.Add(new ListItem("M", "M"));
-            ddlTalla.Items.Add(new ListItem("L", "L"));
-            ddlTalla.Items.Add(new ListItem("XL", "XL"));
+
+            var tallaStockPairs = stock.Split(',');
+            foreach (var pair in tallaStockPairs)
+            {
+                var trimmedPair = pair.Trim(); // e.g., "XL (10)"
+                if (trimmedPair.Contains("(") && trimmedPair.Contains(")"))
+                {
+                    var size = trimmedPair.Split('(')[0].Trim(); // "XL"
+                    var stockValue = trimmedPair.Split('(')[1].Replace(")", "").Trim(); // "10"
+                    ddlTalla.Items.Add(new ListItem($"{size} ({stockValue})", size));
+                }
+                else
+                {
+                    ddlTalla.Items.Add(new ListItem(trimmedPair, trimmedPair));
+                }
+            }
         }
 
         private void CargarArticulo(int id)
@@ -75,9 +85,14 @@ namespace Presentacion.ModificarArticulo
                 txtNombre.Text = articulo.NombreArticulo;
                 txtDescripcion.Text = articulo.DescripcionArticulo;
                 ddlCategoria.SelectedValue = articulo.IdCategoria.ToString();
+                // CargarSubcategorias remains the same
                 CargarSubcategorias(articulo.IdCategoria);
                 ddlSubcategoria.SelectedValue = articulo.SubCategoria;
                 txtCodigoArticulo.Text = articulo.CodigoArticulo;
+                
+                // Populate ddlTalla with size and stock
+                CargarTallas(articulo.Stock);
+
                 ddlTalla.SelectedValue = articulo.Talla;
                 txtStock.Text = articulo.Stock;
                 txtPrecio.Text = articulo.PrecioVenta.ToString("F2");
