@@ -95,6 +95,7 @@
                         </div>
                         <h5 class="mt-2 mb-0"><%# Eval("NombreArticulo") %></h5>
                         <p class="mt-2 mb-0">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
+                        
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>

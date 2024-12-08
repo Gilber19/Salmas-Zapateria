@@ -60,10 +60,10 @@ namespace Negocios
 
             if (Articulo.DescripcionArticulo.Length > 250)
                 Mensaje = "Error: La descripción no puede exceder los 250 caracteres.";
-
+            /* Pendiente de implementar por falta de sp
             if (DC.BuscarArticuloPorCriterioModificar(Articulo.IdArticulo, Articulo.NombreArticulo).Count > 0) // Llamada a la capa de datos para buscar el nombre de la categoría.
                 Mensaje = "Error: El nombre de la categoría " + Articulo.NombreArticulo + " ya existe en la base de datos.";
-
+            */
             if (Mensaje == string.Empty) //Validaciones correctas
             {
                 try

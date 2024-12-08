@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Net;
 
 namespace Datos
 {
@@ -35,7 +36,8 @@ namespace Datos
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error al validar el usuario");
+                    //throw new Exception("Error al validar el usuario");
+                    return false;
                 }
             }
         }

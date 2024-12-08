@@ -25,7 +25,7 @@ namespace Datos
 
                     // Parámetros del procedimiento almacenado
                     cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-                    cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo); // Este valor se genera en el SP.
+                    cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo); 
                     cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                     cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                     cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
@@ -72,7 +72,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
                 cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
-                cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                cmd.Parameters.AddWithValue("@Estado", false); // Se inserta activo por defecto.
                 cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
                 cmd.Parameters.AddWithValue("@IdImagen", 0);
 
@@ -98,8 +98,8 @@ namespace Datos
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 // Parámetros del procedimiento almacenado
-                cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-                cmd.Parameters.AddWithValue("@IdArticulo", 0); // Este valor se genera en el SP.
+                cmd.Parameters.AddWithValue("@Accion", "MODIFICAR");
+                cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo); 
                 cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                 cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                 cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
@@ -112,7 +112,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                 cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                 cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                cmd.Parameters.AddWithValue("@IdImagen", 0);
+                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
 
                 AbrirConexion();
                 cmd.ExecuteNonQuery();
@@ -147,13 +147,14 @@ namespace Datos
                         E_Articulo Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
+                            //IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
+                            //CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
                             PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
-                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
-                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"])
+                            //Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
+                            //IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            Imagenes = reader["Imagenes"]?.ToString() ?? string.Empty, //!ARREGLAR EN EL SP EN EL LSTARTICULOS
                         };
                         LstArticulos.Add(Articulo);
                     }
@@ -176,7 +177,7 @@ namespace Datos
 
             try
             {
-                SqlCommand cmd = new SqlCommand("BuscarArticuloPorId", conexion);
+                SqlCommand cmd = new SqlCommand("ObtenerArticulo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
@@ -197,8 +198,9 @@ namespace Datos
                             Estado = Convert.ToBoolean(reader["Estado"]),
                             IdImagen = Convert.ToInt32(reader["IdImagen"]),
                             Imagenes = reader["Imagenes"].ToString(),
-                            Stock = reader["Stock"].ToString(),
+                            Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
                         };
+
                     }
                 }
             }
