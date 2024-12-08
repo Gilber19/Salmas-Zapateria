@@ -25,7 +25,7 @@ namespace Datos
 
                     // Parámetros del procedimiento almacenado
                     cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-                    cmd.Parameters.AddWithValue("@IdArticulo", 0); // Este valor se genera en el SP.
+                    cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo); // Este valor se genera en el SP.
                     cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                     cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                     cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
@@ -33,12 +33,12 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
                     cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                     cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                    cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                    cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
                     cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
                     cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                    cmd.Parameters.AddWithValue("@IdImagen", 0);
+                    cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
@@ -107,7 +107,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
                 cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                 cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Imagen", ); // CAMBIAR POR IDIMAGEN
                 cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                 cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
