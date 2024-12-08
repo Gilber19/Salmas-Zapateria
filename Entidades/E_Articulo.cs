@@ -14,8 +14,9 @@
         private int idImagen;
         private string talla;
         private string subCategoria;
-        private int stock;
-        private int idTalla;
+        private string idTalla;
+        private string stock; // Stock de cada talla XL (10), L (20), M (30), S (40), XS (50)
+        private string imagenes; // Imágenes separadas por coma   
 
         #endregion
 
@@ -34,11 +35,12 @@
             Stock = stock;
             Talla = talla;
             SubCategoria = subCategoria;
-            idTalla = idTalla;
+            IdTalla = idTalla;
+            Imagenes = imagenes;
         }
 
         // Constructor con parámetros
-        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, int stock, bool estado, int idImagen, int pstock = 0, string talla = "0", string subcategoria = "a", int idTalla = 1)
+        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, string pstock, bool estado, int idImagen, string talla = "0", string subcategoria = "a", string idTalla = "idtalla1, idtalla2", string imagenes = "imagen1.png, imagen2.png")
         {
             IdArticulo = idArticulo;
             IdCategoria = idCategoria;
@@ -52,6 +54,7 @@
             Talla = talla;
             SubCategoria = subcategoria;
             IdTalla = idTalla;
+            Imagenes = imagenes;
 
         }
         #endregion
@@ -67,8 +70,9 @@
         public int IdImagen { get => idImagen; set => idImagen = value; }
         public string Talla { get => talla; set => talla = value; }
         public string SubCategoria { get => subCategoria; set => subCategoria = value; }
-        public int Stock { get => stock; set => stock = value; }
-        public int IdTalla { get => idTalla; set => idTalla = value; }
+        public string Stock { get => stock; set => stock = value; }
+        public string IdTalla { get => idTalla; set => idTalla = value; }
+        public string Imagenes { get => imagenes; set => imagenes = value; }
         #endregion
     }
 }

@@ -59,14 +59,22 @@ namespace Datos
                 SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                // Parámetros del procedimiento almacenado
+                cmd.Parameters.AddWithValue("@Accion", "BORRAR");
+                cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
                 cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                 cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                 cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
                 cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@Estado", articulo.Estado);
-                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
+                cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
+                cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
+                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
+                cmd.Parameters.AddWithValue("@IdImagen", 0);
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -89,14 +97,22 @@ namespace Datos
                 SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion);
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                // Parámetros del procedimiento almacenado
                 cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                cmd.Parameters.AddWithValue("@IdArticulo", 0); // Este valor se genera en el SP.
                 cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                 cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                 cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
                 cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@Estado", articulo.Estado);
-                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
+                cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
+                cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
+                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
+                cmd.Parameters.AddWithValue("@IdImagen", 0);
 
                 AbrirConexion();
                 cmd.ExecuteNonQuery();
@@ -154,7 +170,6 @@ namespace Datos
 
             return LstArticulos;
         }
-
         public E_Articulo BuscarArticuloPorID(int idArticulo)
         {
             E_Articulo Articulo = null;
@@ -174,12 +189,15 @@ namespace Datos
                         Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            CodigoArticulo = reader["CodigoArticulo"].ToString(),
                             NombreArticulo = reader["NombreArticulo"].ToString(),
-                            PrecioVenta = Convert.ToDouble(reader["PrecioVenta"].ToString()),
+                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
+                            CodigoArticulo = reader["CodigoArticulo"].ToString(),
                             DescripcionArticulo = reader["DescripcionArticulo"].ToString(),
+                            PrecioVenta = Convert.ToDouble(reader["PrecioVenta"].ToString()),
                             Estado = Convert.ToBoolean(reader["Estado"]),
-                            IdImagen = Convert.ToInt32(reader["IdImagen"])
+                            IdImagen = Convert.ToInt32(reader["IdImagen"]),
+                            Imagenes = reader["Imagenes"].ToString(),
+                            Stock = reader["Stock"].ToString(),
                         };
                     }
                 }
@@ -196,7 +214,6 @@ namespace Datos
 
             return Articulo;
         }
-
         public E_Articulo BuscarArticuloPorCodigo(string codigoArticulo)
         {
             E_Articulo Articulo = null;

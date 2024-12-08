@@ -19,8 +19,7 @@ namespace Negocios
                 throw new Exception("El nombre del artículo es obligatorio.");
             if (articulo.PrecioVenta <= 0)
                 throw new Exception("El precio debe ser mayor a 0.");
-            if (articulo.Stock < 0)
-                throw new Exception("El stock no puede ser negativo.");
+            
 
             return datosArticulo.InsertarArticulo(articulo);
         }

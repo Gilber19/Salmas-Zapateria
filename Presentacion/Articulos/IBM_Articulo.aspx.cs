@@ -276,8 +276,7 @@ namespace Presentacion.Articulos
             try
             {
                 int ID = Convert.ToInt16(hfIdArticulo.Value);
-                E_Articulo EC = new E_Articulo(ID, 1, "001", tbNombreArticulo.Text, tbDescripcionArticulo.Text, 150, 4, true, 0);
-
+                E_Articulo EC = NA.ObtenerArticuloPorID(ID); // Modificar objeto
                 string[] Msg = NA.ModificarArticulo(EC).Split(':');
                 if (Msg.Length >= 2)
                 {
