@@ -107,7 +107,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
                 cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                 cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                //cmd.Parameters.AddWithValue("@Imagen", ); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
                 cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                 cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
