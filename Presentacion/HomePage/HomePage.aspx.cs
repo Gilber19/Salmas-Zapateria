@@ -37,8 +37,8 @@ namespace Presentacion.HomePage
 
         private void BindProductos()
         {
-            N_Articulo negociosArticulo = new N_Articulo();
-            List<E_Articulo> productos = negociosArticulo.ListarArticulos();
+            N_Articulo N_Articulo = new N_Articulo();
+            List<E_Articulo> productos = N_Articulo.ListarArticulos();
 
             if (productos != null && productos.Count > 0)
             {
@@ -76,7 +76,7 @@ namespace Presentacion.HomePage
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AgregarProducto.aspx");
+            Response.Redirect("~/AgregarArticulo/AgregarArticulo.aspx");
         }
 
         protected void rptProductos_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -84,26 +84,26 @@ namespace Presentacion.HomePage
             if (e.CommandArgument == null)
                 return;
 
-            if (!int.TryParse(e.CommandArgument.ToString(), out int productId))
+            if (!int.TryParse(e.CommandArgument.ToString(), out int idArticulo))
                 return;
 
             switch (e.CommandName)
             {
                 case "Eliminar":
-                    EliminarProducto(productId);
+                    EliminarArticulo(idArticulo);
                     break;
                 case "Modificar":
-                    ModificarProducto(productId);
+                    ModificarArticulo(idArticulo);
                     break;
             }
 
             BindProductos();
         }
 
-        private void EliminarProducto(int productId)
+        private void EliminarArticulo(int idArticulo)
         {
-            N_Articulo negociosArticulo = new N_Articulo();
-            // bool exito = negociosArticulo.EliminarArticulo(productId);
+            N_Articulo N_Articulo = new N_Articulo();
+            // bool exito = negociosArticulo.EliminarArticulo(idArticulo);
             bool exito = true;
 
             lblMensaje.Visible = true;
@@ -120,9 +120,9 @@ namespace Presentacion.HomePage
             }
         }
 
-        private void ModificarProducto(int productId)
+        private void ModificarArticulo(int idArticulo)
         {
-            // Response.Redirect($"ModificarProducto.aspx?id={productId}");
+            Response.Redirect($"~/ModificarArticulo/ModificarArticulo.aspx?id={idArticulo}");
         }
     }
 }

@@ -13,7 +13,7 @@
             <asp:Label
                 ID="lblMensaje"
                 runat="server"
-                Visible="false"
+                Visible= <%# GetIsEditMode() %>
             />        
         </div>
 
