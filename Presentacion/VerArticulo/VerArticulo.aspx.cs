@@ -20,7 +20,7 @@ namespace Presentacion.VerArticulo
                 CargarArticulo();
             }
         }
-        
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
@@ -28,44 +28,62 @@ namespace Presentacion.VerArticulo
 
         private void CargarArticulo()
         {
-            articulo = NA.BuscarArticuloPorID(11); // Aquí se debe de enviar el idArticulo, lo dejo con 1 para obtener datos.
-
-            if (articulo != null)
+            if (int.TryParse(Request.QueryString["idArticulo"], out idArticulo))
             {
-                lblNombreArticulo.Text = articulo.NombreArticulo;
-                lblDescripcionArticulo.Text = articulo.DescripcionArticulo;
-                lblPrecioVenta.Text = $"${articulo.PrecioVenta:F2}";
-                lblEstado.Text = articulo.Estado ? "Disponible" : "No Disponible";
+                articulo = NA.BuscarArticuloPorID(idArticulo);
 
-                // Mostrar imágenes
-                if (!string.IsNullOrEmpty(articulo.Imagenes))
+                if (articulo != null)
                 {
-                    var imagenes = articulo.Imagenes.Split(','); // Dividir las imágenes
-                    rptImagenes.DataSource = imagenes.Select(imagen => new { Imagen = imagen });
-                    rptImagenes.DataBind();
-                }
+                    lblNombreArticulo.Text = articulo.NombreArticulo;
+                    lblDescripcionArticulo.Text = articulo.DescripcionArticulo;
+                    lblPrecioVenta.Text = $"${articulo.PrecioVenta:F2}";
+                    lblEstado.Text = articulo.Estado ? "Disponible" : "No Disponible";
 
-                // Mostrar talla DropDownList
-                if (!string.IsNullOrEmpty(articulo.Stock))
-                {
-                    var stockItems = articulo.Stock.Split(',');
-                    foreach (var stockItem in stockItems)
+                    // Mostrar imágenes
+                    if (!string.IsNullOrEmpty(articulo.Imagenes))
                     {
-                        var stockDetails = stockItem.Split(' '); // Separar talla y cantidad
-                        if (stockDetails.Length == 2)
+                        var imagenes = articulo.Imagenes.Split(','); // Dividir las imágenes
+
+                        // Configurar la primera imagen como predeterminada
+                        string primeraImagen = imagenes.FirstOrDefault();
+                        if (!string.IsNullOrEmpty(primeraImagen))
                         {
-                            string talla = stockDetails[0];
-                            string cantidad = stockDetails[1];
-                            ddlTalla.Items.Add(new ListItem($"{talla}", talla));
+                            mainImage.Src = primeraImagen; // Asignar el atributo src a la imagen principal
+                        }
+
+                        // Vincular imágenes al Repeater
+                        rptImagenes.DataSource = imagenes.Select(imagen => new { Imagen = imagen });
+                        rptImagenes.DataBind();
+                    }
+
+                    // Mostrar talla DropDownList
+                    if (!string.IsNullOrEmpty(articulo.Stock))
+                    {
+                        var stockItems = articulo.Stock.Split(',');
+                        foreach (var stockItem in stockItems)
+                        {
+                            var stockDetails = stockItem.Split(' '); // Separar talla y cantidad
+                            if (stockDetails.Length == 2)
+                            {
+                                string talla = stockDetails[0];
+                                ddlTalla.Items.Add(new ListItem($"{talla}", talla));
+                            }
                         }
                     }
+                }
+                else
+                {
+                    Response.Write("El artículo no está disponible.");
                 }
             }
             else
             {
-                Response.Write("El artículo no está disponible.");
+                Response.Write("Id del artículo no válido.");
             }
         }
+
+
+
     }
 
 }
