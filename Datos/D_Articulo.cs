@@ -158,10 +158,13 @@ namespace Datos
                             Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
                             IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty, //!ARREGLAR EN EL SP EN EL LSTARTICULOS
+                            Stock = reader["Stock"].ToString(),
+                            Talla = reader["Talla"].ToString(),
                             //Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+
 
                         LstArticulos.Add(Articulo);
                     }
@@ -198,18 +201,16 @@ namespace Datos
                         E_Articulo Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
-                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
+                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
-                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
-                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty,
-                            Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
+                            Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock);
 
                         LstArticulos.Add(Articulo);
                     }
@@ -217,6 +218,8 @@ namespace Datos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("ERORORORORORO");
+
                 throw new Exception("Error al listar artículos por categoría: " + ex.Message, ex);
             }
             finally
@@ -359,6 +362,7 @@ namespace Datos
                             Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
 
                         };
+                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
 
                     }
                 }
