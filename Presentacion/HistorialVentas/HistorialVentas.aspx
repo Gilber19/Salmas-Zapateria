@@ -62,27 +62,25 @@
 
             </div>
 
-    <!-- Label para mostrar mensajes -->
-    <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
+            <!-- Label para mostrar mensajes -->
+            <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
 
-                <!-- Lista de Ventas -->
-                <div class="list-group">
-                    <asp:Repeater ID="RepeaterHistorial" runat="server">
-                        <ItemTemplate>
-                            <div class="list-group-item d-flex align-items-start gap-3">
-                                <!-- Imagen del producto -->
-                                <img src='<%# Eval("Imagenes") %>' alt="Producto" class="img-thumbnail" style="width: 100px; height: auto;">
-
-                                <!-- Información de la venta -->
-                                <div>
-                                    <h5 class="mb-1"><%# Eval("serieComprobante") %></h5>
-                                    <p class="mb-1">Fecha de venta: <%# Eval("fechaHora") %></p>
-                                    <p class="mb-1">Total: $<%# Eval("total", "{0:N2}") %></p>
-                                </div>
+            <!-- Lista de Ventas -->
+            <div class="col-md-9 col-lg-10 sales-list">
+                <asp:Repeater ID="RepeaterHistorial" runat="server">
+                    <ItemTemplate>
+                        <div class="list-group-item d-flex align-items-start gap-3">
+                            <!-- Imagen del producto -->
+                            <img src='<%# Eval("Imagenes") %>' alt="Producto" class="img-thumbnail" style="width: 100px; height: auto;">
+                            <!-- Información de la venta -->
+                            <div>
+                                <h5 class="mb-1"><%# Eval("serieComprobante") %></h5>
+                                <p class="mb-1">Fecha de venta: <%# Eval("fechaHora") %></p>
+                                <p class="mb-1">Total: $<%# Eval("total", "{0:N2}") %></p>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
         </div>
     </div>
