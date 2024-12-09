@@ -28,7 +28,6 @@
         .content-section {
             padding: 20px;
         }
-
         /* Estilo para los elementos de la lista */
         .list-group-item {
             border: 1px solid #ddd;
@@ -55,12 +54,13 @@
                     </h6>
                 </div>
                 <ul class="menu list-unstyled p-3">
-                    <li><a href="../HistorialVentas/HistorialVentas.aspx" id="historialLink" class="text-decoration-none">Historial de ventas</a></li>
+                    <li><a href="../HistorialVentas/HistorialVentas.aspx" id="historialLink" class="text-decoration-none active">Historial de ventas</a></li>
                     <li><a href="../ExportarInventario/ExportarInventario.aspx" class="text-decoration-none">Exportar inventario</a></li>
                     <li><a href="../Clientes/Clientes.aspx" class="text-decoration-none">Clientes</a></li>
                 </ul>
 
             </div>
+
 
             <!-- Label para mostrar mensajes -->
             <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
