@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/mpBase.Master" AutoEventWireup="true" CodeBehind="mpConLogueo.master.cs" Inherits="Presentacion.PaginasMaestras.mpConLogueo" %>
+<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/mpBase.Master" AutoEventWireup="true" CodeBehind="mpConLogueo.master.cs" Inherits="Presentacion.PaginasMaestras.mpConLogueo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -83,6 +83,80 @@
                 <ul class="navbar-nav flex-row main-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="HomePage.aspx?genero=1">Hombre</a>
+            <!-- Navigation Links -->
+            <ul class="navbar-nav flex-row main-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.aspx?genero=1">Hombre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.aspx?genero=2">Mujer</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/Homepage/Homepage.aspx">
+            <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="Logo">
+        </a>
+
+         <!-- Profile Dropdown -->
+        <div class="dropdown">
+        <div class="profile-icon" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-fill" aria-hidden="true"></i>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+            <li>
+                <div class="dropdown-item-text fw-bold" style="color: #000;">
+                <asp:Label ID="lblTipoUsuario" runat="server" Text="Tipo de Usuario"></asp:Label>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown-item-text" style="color: #000;">
+                <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario"></asp:Label>
+                </div>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
+                    Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i>
+                </asp:LinkButton>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" 
+                aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Categories and Subcategories -->
+        <ul class="navbar-nav">
+            <asp:Repeater
+                ID="rptCategorias"
+                runat="server"
+                OnItemDataBound="rptCategorias_ItemDataBound">
+                <ItemTemplate>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #000 !important" 
+                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
+                            <%# Eval("NombreCategoria") %>
+                        </a>
+                        <asp:Repeater ID="rptSubcategorias" runat="server">
+                            <ItemTemplate>
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link" style="color: #000 !important" 
+                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("IdSubCategoria") %>'>
+                                            <%# Eval("SubCategoria") %>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="HomePage.aspx?genero=2">Mujer</a>

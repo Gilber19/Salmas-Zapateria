@@ -20,6 +20,7 @@ namespace Entidades
         private string stock; // Stock de cada talla XL (10), L (20), M (30), S (40), XS (50)
         private string imagenes; // Imágenes separadas por coma   
         private int genero; // 1: Hombre, 2: Mujer
+        private string nombreCategoria; //Esto deberia de ser ed la capa de E_Categoria
         #endregion
 
         #region Constructores
@@ -40,10 +41,11 @@ namespace Entidades
             IdTalla = idTalla;
             Imagenes = imagenes;
             Genero = genero;
+            NombreCategoria = nombreCategoria;
         }
 
         // Constructor con parámetros
-        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, string pstock, bool estado, int idImagen, int genero, string talla = "0", string subcategoria = "a", string idTalla = "idtalla1, idtalla2", string imagenes = "imagen1.png, imagen2.png")
+        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, string pstock, bool estado, int idImagen, int genero, string nombreCategoria, string talla = "0", string subcategoria = "a", string idTalla = "idtalla1, idtalla2", string imagenes = "imagen1.png, imagen2.png")
         {
             IdArticulo = idArticulo;
             IdCategoria = idCategoria;
@@ -59,6 +61,7 @@ namespace Entidades
             IdTalla = idTalla;
             Imagenes = imagenes;
             Genero = genero;
+            NombreCategoria = nombreCategoria;
 
         }
         #endregion
@@ -100,6 +103,7 @@ namespace Entidades
         public string IdTalla { get => idTalla; set => idTalla = value; }
         public string Imagenes { get => imagenes; set => imagenes = value; }
         public int Genero { get => genero; set => genero = value; }
+        public string NombreCategoria { get => nombreCategoria; set => nombreCategoria = value; }
         #endregion
     }
 }
