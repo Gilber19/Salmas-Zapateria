@@ -39,7 +39,8 @@ namespace Presentacion.HomePage
         {
             N_Articulo N_Articulo = new N_Articulo();
             List<E_Articulo> productos = new List<E_Articulo>();
-            List<E_Articulo> a = new N_Articulo().ListarArticulosPorSubCategoria(1, 1); //DEBUG ONLY
+            //List<E_Articulo> a = new N_Articulo().ListarArticulosPorSubCategoria(1, 1); //DEBUG ONLY
+            List<E_Personas> b = new N_Personas().ListarClientes(); //DEBUG ONLY
 
             int genero = 0;
             int categoria = 0;
