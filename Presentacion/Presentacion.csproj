@@ -524,6 +524,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\DLL\" />
+    <Folder Include="Recursos\Imagenes\Articulos\" />
     <Folder Include="Recursos\JavaScript\" />
   </ItemGroup>
   <ItemGroup>
