@@ -68,7 +68,7 @@ namespace Entidades
         #endregion
 
         #region Constructores
-        public E_FacturaVentas(int idVenta, int idPersona, int idUsuario, string tipoComprobante, string serieComprobante, string numeroComprobante, DateTime fechaHora, double impuestoVenta, double total, int totalArticulos, List<E_Venta> listaArticulos, int idArticulo, string imagenes)
+    public E_FacturaVentas(int idVenta, int idPersona, int idUsuario, string tipoComprobante, string serieComprobante, string numeroComprobante, DateTime fechaHora, double impuestoVenta, double total, int totalArticulos, List<E_Venta> listaArticulos, int idArticulo, string imagenes)
         {
             this.idVenta = idVenta;
             this.idPersona = idPersona;
@@ -83,7 +83,6 @@ namespace Entidades
             this.listaArticulos = listaArticulos;
             this.idArticulo = idArticulo;
             this.imagenes = imagenes;
-
         }
         public E_FacturaVentas()
         {

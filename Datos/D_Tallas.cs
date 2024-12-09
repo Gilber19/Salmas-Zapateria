@@ -1,16 +1,12 @@
-﻿using Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class D_Tallas : D_ConexionBD
+    internal class D_Tallas
     {
         private bool id = false;
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;

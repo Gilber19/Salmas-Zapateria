@@ -14,7 +14,7 @@ namespace Presentacion.AgregarArticulo
         private N_SubCategoria N_SubCategorias = new N_SubCategoria();
 
         private E_Articulo _articulo
-        {
+        {   
             get { return Session["ArticuloTemporal"] as E_Articulo; }
             set { Session["ArticuloTemporal"] = value; }
         }
@@ -102,8 +102,6 @@ namespace Presentacion.AgregarArticulo
                     return;
                 }
 
-                N_Tallas NT = new N_Tallas();
-                E_Tallas T = new E_Tallas();
                 var stockPorTalla = new List<E_Tallas>();
                 foreach (ListItem item in ddlTallas.Items)
                 {
@@ -112,10 +110,8 @@ namespace Presentacion.AgregarArticulo
                     if (partes.Length >= 2)
                     {
                         string talla = partes[0];
-                        T.idtallas.Add((NT.ObtenerIdTalla(talla)));
                         if (int.TryParse(partes[1], out int stock))
                         {
-                            T.stocks.Add(stock.ToString());
                             stockPorTalla.Add(new E_Tallas
                             {
                                 Talla = talla,
@@ -124,19 +120,13 @@ namespace Presentacion.AgregarArticulo
                         }
                     }
                 }
-               
+
                 List<string> imagenes = new List<string>();
                 
                 if (fuImagenPrincipal.HasFile)
                 {
                     string rutaImagenPrincipal = GuardarImagen(fuImagenPrincipal);
                     imagenes.Add(rutaImagenPrincipal);
-                }
-
-                if (fuImagenSecundaria.HasFile)
-                {
-                    string rutaImagenSecundaria = GuardarImagen(fuImagenSecundaria);
-                    imagenes.Add(rutaImagenSecundaria);
                 }
 
                 // Create article with only essential properties
@@ -149,14 +139,14 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
-                    Talla = string.Join(", ", T.idtallas),
-                    Stock = string.Join(", ", T.stocks),
+                    Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla} {s.Stock}")),
                     Imagenes = string.Join(",", imagenes)
-                },
+                };
 
                 _articulo = articulo;
+
+                // Insert article
                 N_Articulos.InsertarArticulo(articulo);
-                //System.Diagnostics.Debug.WriteLine("{TALLAS Y STOCK}" + stockPorTalla.Select(s => $"{s.Talla}:{s.Stock}));
 
                 lblMensaje.Text = "Artículo agregado correctamente.";
                 lblMensaje.CssClass = "alert alert-success";
@@ -206,7 +196,7 @@ namespace Presentacion.AgregarArticulo
             string nombreArchivo = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(archivo.FileName);
             string ruta = System.IO.Path.Combine(carpeta, nombreArchivo);
             archivo.SaveAs(ruta);
-            return archivo.FileName.Replace("System.Web.UI.WebControls.FileUpload", "");
+            return "~/Recursos/Imagenes/Articulos/" + nombreArchivo;
         }
     }
 }

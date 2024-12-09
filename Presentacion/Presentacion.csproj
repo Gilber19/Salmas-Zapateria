@@ -164,11 +164,48 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
-    <Content Include="Clientes\IBM_Clientes.aspx" />
+    <Content Include="DetalleClientes\DetalleClientes.aspx" />
+    <Content Include="ExportarInventario\ExportarInventario.aspx" />
+    <Content Include="HistorialVentas\HistorialVentas.aspx" />
+    <Content Include="Recursos\Imagenes\Articulos\025f77a3-45de-4209-8e99-5156dabae35f.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\0372c527-443b-4f18-91da-b9957ec1eaf4.png" />
+    <Content Include="Recursos\Imagenes\Articulos\0f53da8c-1b75-4a90-85b1-9673c37b7406.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\165eaed2-69aa-4451-9c5a-b69c973a837e.png" />
+    <Content Include="Recursos\Imagenes\Articulos\18a3ea13-db5c-49d9-816a-22c614227b34.png" />
+    <Content Include="Recursos\Imagenes\Articulos\26e7d20e-dfd0-46d4-89e4-b771f1499b2c.png" />
+    <Content Include="Recursos\Imagenes\Articulos\270c291a-d0cd-41eb-8a77-8d38c8556649.png" />
+    <Content Include="Recursos\Imagenes\Articulos\3634b67f-400b-4db1-b2f2-4161a51f630e.png" />
+    <Content Include="Recursos\Imagenes\Articulos\3774351a-b789-40ab-89a7-5183514f9559.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\5dc2488d-6cb2-479a-be74-e82b9a12f13c.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\6d6d78da-3134-4d03-bec3-78bee3efd217.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\75938c4a-c7b9-4469-b3be-ece8659eedfd.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\7a29978b-7e16-4803-a6a8-36d36c3d3f15.png" />
+    <Content Include="Recursos\Imagenes\Articulos\7dce6ad8-0d72-4a24-9740-b8765f39b662.png" />
+    <Content Include="Recursos\Imagenes\Articulos\84f5f115-713a-40c4-8633-2f295e26f702.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\8ad09239-801c-44a7-a1a6-ad19fdfce757.png" />
+    <Content Include="Recursos\Imagenes\Articulos\8f09d3c1-4cde-466e-a01e-b7cdc8e8ef4f.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\9145d9d7-f3bd-46e0-8457-22b0012320a2.png" />
+    <Content Include="Recursos\Imagenes\Articulos\9eaea47d-2033-4a4e-bd0e-ce59864d3859.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\BannerGN.png" />
+    <Content Include="Recursos\Imagenes\Articulos\Botas.png" />
+    <Content Include="Recursos\Imagenes\Articulos\ced137b7-16aa-4075-a7e4-c9b4f20dd2af.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\cff41d62-4dc5-4183-abce-bc8fece446b1.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\da9610d5-0550-474e-9005-7520106c3f5a.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\dd124c8b461e027c1d640cb0de7abd9d.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\df466f3a-0ccc-4a95-8167-4bd73176b48a.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\df54c0ec-6695-42b2-82b5-05ebe0e20d95.jpg" />
+    <Content Include="Recursos\Imagenes\Articulos\FondoInicio.png" />
+    <Content Include="Recursos\Imagenes\Articulos\ImagenGN.png" />
+    <Content Include="Recursos\Imagenes\Articulos\natagod.png" />
+    <Content Include="Recursos\Imagenes\Articulos\SalmasZapateriaLogo.png" />
+    <Content Include="Recursos\Imagenes\Articulos\Tenis.png" />
+    <Content Include="Recursos\Imagenes\Botas.png" />
+    <Content Include="VerArticulo\VerArticulo.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
     <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
     <Content Include="Categorias\IBM_Categoria.aspx" />
+    <Content Include="Clientes\Clientes.aspx" />
     <Content Include="Compras\IBM_Compras.aspx" />
     <Content Include="Email\EnviarEmail.aspx" />
     <Content Include="Excel\GetExcel.aspx" />
@@ -199,6 +236,7 @@
     <Content Include="Recursos\Controles\wucTexto.ascx" />
     <Content Include="Recursos\Controles\wucTextoRequerido.ascx" />
     <Content Include="Recursos\CSS\bootstrap.css" />
+    <Content Include="Recursos\CSS\Clientes.css" />
     <Content Include="Recursos\CSS\ventasCSS.css" />
     <Content Include="Recursos\Imagenes\Articulos\natagod.png" />
     <Content Include="Recursos\Imagenes\Articulos\BannerGN.png" />
@@ -225,12 +263,33 @@
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="DetalleClientes\DetalleClientes.aspx.cs">
+      <DependentUpon>DetalleClientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.designer.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="DetalleClientes\DetalleClientes.aspx.designer.cs">
+      <DependentUpon>DetalleClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarInventario\ExportarInventario.aspx.cs">
+      <DependentUpon>ExportarInventario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExportarInventario\ExportarInventario.aspx.designer.cs">
+      <DependentUpon>ExportarInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.designer.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.designer.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarArticulo\ModificarArticulo.aspx.cs">
       <DependentUpon>ModificarArticulo.aspx</DependentUpon>
@@ -259,6 +318,13 @@
     </Compile>
     <Compile Include="Categorias\IBM_Categoria.aspx.designer.cs">
       <DependentUpon>IBM_Categoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clientes\Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras\IBM_Compras.aspx.cs">
       <DependentUpon>IBM_Compras.aspx</DependentUpon>
@@ -550,7 +616,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53532</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44335/</IISUrl>
+          <IISUrl>https://localhost:44345/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
