@@ -75,6 +75,7 @@
                                 runat="server"
                                 Visible='<%# GetIsEditMode() %>'
                                 CssClass="d-flex justify-content-end edit-buttons">
+                                
                                 <div class="dropdown">
                                     <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-three-dots-vertical"></i>
@@ -103,13 +104,22 @@
                                     </ul>
                                 </div>
                             </asp:Panel>
+                            <asp:LinkButton 
+                             ID="lnkProducto" 
+                             runat="server" 
+                             CssClass="card h-100" 
+                             CommandArgument='<%# Eval("IdArticulo") %>' 
+                             OnClick="RedireccionarAProducto" 
+                             style="cursor: pointer;">
                             <img src="<%# Eval("Imagenes") %>" alt="Imagen del producto" class="card-img-top image" />
-                            <div class="card-body">
-                                <h5 class="card-title"><%# Eval("NombreArticulo") %></h5>
-                                <p class="card-text">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
-                            </div>
+                                <div class="card-body">
+                                     <h5 class="card-title"><%# Eval("NombreArticulo") %></h5>
+                                    <p class="card-text">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
+                                </div>
+                            </asp:LinkButton>
                         </div>
                     </div>
+                    <asp:HiddenField ID="hfIdArticulo" runat="server" Value='<%# Eval("IdArticulo") %>' />
                 </ItemTemplate>
                 <FooterTemplate>
                     </div>
