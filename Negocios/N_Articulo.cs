@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using Datos;
 using Entidades;
 
@@ -89,7 +89,7 @@ namespace Negocios
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine("Error en N_Articulo.ListarArticulos: " + ex.Message);
                 return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
             }
         }
