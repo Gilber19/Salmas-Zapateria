@@ -34,8 +34,8 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                     cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
                     cmd.Parameters.AddWithValue("@Imagenes", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
-                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTallaInt); // Adding the missing parameter
+                    cmd.Parameters.AddWithValue("@Stock", articulo.StockInt);
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
@@ -162,7 +162,7 @@ namespace Datos
                             //Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
 
 
                         LstArticulos.Add(Articulo);
