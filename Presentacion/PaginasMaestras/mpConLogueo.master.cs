@@ -70,6 +70,11 @@ namespace Presentacion.PaginasMaestras
             // Additional logic for rptGeneros if needed
         }
 
+        protected void BtnHistorialVentas(object sender, EventArgs e)
+        {
+            Response.Redirect("~/HistorialVentas/HistorialVentas.aspx");
+        }
+
         protected void BtnLogOut_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();

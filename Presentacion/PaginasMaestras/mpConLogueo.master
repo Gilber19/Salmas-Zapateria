@@ -1,84 +1,88 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/mpBase.Master" AutoEventWireup="true" CodeBehind="mpConLogueo.master.cs" Inherits="Presentacion.PaginasMaestras.mpConLogueo" %>
+<%@ Master Language="C#" MasterPageFile="~/PaginasMaestras/mpBase.Master" AutoEventWireup="true" CodeBehind="mpConLogueo.master.cs" Inherits="Presentacion.PaginasMaestras.mpConLogueo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
-  <div class="container-fluid m-0 p-0 position-relative">
-    <style>
-      .navbar {
-        background-color: #001514;
-        padding: 0.8rem 1rem;
-        color: white;
-        position: relative;
-      }
+    <div class="container-fluid m-0 p-0 position-relative">
+        <style>
+            .navbar {
+                background-color: #001514;
+                padding: 0.8rem 1rem;
+                color: white;
+                position: relative;
+            }
 
-      .navbar-brand {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
+            .navbar-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
-      .navbar-brand img {
-        border-radius: 50%;
-        width: 60px;
-        aspect-ratio: 1/1;
-      }
+                .navbar-brand img {
+                    border-radius: 50%;
+                    width: 60px;
+                    aspect-ratio: 1/1;
+                }
 
-      /* Main Navbar Links - White */
-      .navbar-nav .nav-item .nav-link {
-        color: white !important;
-        padding-left: 15px;
-        padding-right: 15px;
-      }
+            /* Main Navbar Links - White */
+            .navbar-nav .nav-item .nav-link {
+                color: white !important;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
 
-      .nav-link.active {
-        background-color: #0056b3;
-        border-radius: 4px;
-      }
+            .nav-link.active {
+                background-color: #0056b3;
+                border-radius: 4px;
+            }
 
-      .profile-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px;
-      }
+            .profile-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+            }
 
-      .profile-icon i {
-        font-size: 26px;
-        color: white;
-        cursor: pointer;
-      }
+                .profile-icon i {
+                    font-size: 26px;
+                    color: white;
+                    cursor: pointer;
+                }
 
-      @media (max-width: 800px) {
-        .main-nav {
-            display: none;
-        }
-      }
+            @media (max-width: 800px) {
+                .main-nav {
+                    display: none;
+                }
+            }
 
-      .social-icons {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-      }
-  
-      .social-icons a {
-        color: black;
-        font-size: 24px;
-        text-decoration: none;
-      }
-    </style>
+            .social-icons {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
 
-    <nav class="navbar navbar-dark">
-        <div class="d-flex align-items-center">
-            <!-- Hamburger Menu -->
-            <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" 
+                .social-icons a {
+                    color: black;
+                    font-size: 24px;
+                    text-decoration: none;
+                }
+        </style>
+
+        <nav class="navbar navbar-dark">
+            <div class="d-flex align-items-center">
+                <!-- Hamburger Menu -->
+                <button class="navbar-toggler me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                     aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <!-- Navigation Links -->
+                <ul class="navbar-nav flex-row main-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="HomePage.aspx?genero=1">Hombre</a>
             <!-- Navigation Links -->
             <ul class="navbar-nav flex-row main-nav">
                 <li class="nav-item">
@@ -154,18 +158,112 @@
                             </ItemTemplate>
                         </asp:Repeater>
                     </li>
-                </ItemTemplate>
-            </asp:Repeater>
-        </ul>
-    </div>
-    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="HomePage.aspx?genero=2">Mujer</a>
+                    </li>
+                </ul>
+            </div>
 
-    <div class="social-icons">
-        <a href="https://www.facebook.com/salmas.zapateria" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
-    </div>
+            <!-- Logo -->
+            <a class="navbar-brand" href="/Homepage/Homepage.aspx">
+                <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="Logo">
+            </a>
 
-    <asp:ContentPlaceHolder ID="cphConLogueo" runat="server">
-    </asp:ContentPlaceHolder>
-  </div>
+            <!-- Profile Dropdown -->
+            <div class="dropdown">
+                <div class="profile-icon" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-fill" aria-hidden="true"></i>
+                </div>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                    <li>
+                        <div class="dropdown-item-text fw-bold" style="color: #000;">
+                            <asp:Label ID="lblTipoUsuario" runat="server" Text="Tipo de Usuario"></asp:Label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown-item-text" style="color: #000;">
+                            <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario"></asp:Label>
+                        </div>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lbHistorialVentas" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnHistorialVentas" Visible="true">
+                    Historial de ventas <i class="fa fa-power-off" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
+                    Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Offcanvas Sidebar -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Géneros</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close">
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                <!-- Géneros List -->
+                <ul class="navbar-nav mb-3">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=1">Hombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=2">Mujer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=3">Maquillaje</a>
+                    </li>
+                </ul>
+
+                <!-- Categories and Subcategories -->
+                <ul class="navbar-nav">
+                    <asp:Repeater
+                        ID="rptCategorias"
+                        runat="server"
+                        OnItemDataBound="rptCategorias_ItemDataBound">
+                        <ItemTemplate>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color: #000 !important"
+                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
+                                    <%# Eval("NombreCategoria") %>
+                                </a>
+                                <asp:Repeater ID="rptSubcategorias" runat="server">
+                                    <ItemTemplate>
+                                        <ul class="nav flex-column ms-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" style="color: #000 !important"
+                                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
+                                                    <%# Eval("SubCategoria") %>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </ul>
+            </div>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/salmas.zapateria" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
+        </div>
+
+        <asp:ContentPlaceHolder ID="cphConLogueo" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
 </asp:Content>

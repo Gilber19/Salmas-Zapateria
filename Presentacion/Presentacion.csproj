@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
+    <Content Include="HistorialVentas\HistorialVentas.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
     <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
@@ -218,6 +219,13 @@
     </Compile>
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.designer.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarArticulo\ModificarArticulo.aspx.cs">
       <DependentUpon>ModificarArticulo.aspx</DependentUpon>
@@ -503,7 +511,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Facturas\Factura.pdf" />
-    <None Include="appsettings.config" />
+    <Content Include="appsettings.config" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\mpBase.Master" />
     <Content Include="PaginasMaestras\mpConLogueo.master" />
@@ -517,6 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\DLL\" />
+    <Folder Include="Recursos\Imagenes\Articulos\" />
     <Folder Include="Recursos\JavaScript\" />
   </ItemGroup>
   <ItemGroup>
