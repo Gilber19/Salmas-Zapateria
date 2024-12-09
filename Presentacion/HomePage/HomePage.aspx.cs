@@ -168,5 +168,19 @@ namespace Presentacion.HomePage
         {
             Response.Redirect($"~/ModificarArticulo/ModificarArticulo.aspx?id={idArticulo}");
         }
+
+        protected void RedireccionarAProducto(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender; // Correct type casting
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer; // Get the RepeaterItem
+            HiddenField hfIdArticulo = (HiddenField)item.FindControl("hfIdArticulo");
+
+            if (hfIdArticulo != null && !string.IsNullOrEmpty(hfIdArticulo.Value))
+            {
+                Response.Redirect($"~/VerArticulo/VerArticulo.aspx?idArticulo={hfIdArticulo.Value}");
+            }
+        }
+
+
     }
 }
