@@ -168,7 +168,7 @@
     <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
     <Content Include="Categorias\IBM_Categoria.aspx" />
-    <Content Include="Clientes\IBM_Clientes.aspx" />
+    <Content Include="Clientes\Clientes.aspx" />
     <Content Include="Compras\IBM_Compras.aspx" />
     <Content Include="Email\EnviarEmail.aspx" />
     <Content Include="Excel\GetExcel.aspx" />
@@ -199,6 +199,7 @@
     <Content Include="Recursos\Controles\wucTexto.ascx" />
     <Content Include="Recursos\Controles\wucTextoRequerido.ascx" />
     <Content Include="Recursos\CSS\bootstrap.css" />
+    <Content Include="Recursos\CSS\Clientes.css" />
     <Content Include="Recursos\CSS\ventasCSS.css" />
     <Content Include="Recursos\Imagenes\BannerGN.png" />
     <Content Include="Recursos\Imagenes\FondoInicio.png" />
@@ -246,12 +247,12 @@
     <Compile Include="Categorias\IBM_Categoria.aspx.designer.cs">
       <DependentUpon>IBM_Categoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="Clientes\Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.designer.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="Clientes\Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras\IBM_Compras.aspx.cs">
       <DependentUpon>IBM_Compras.aspx</DependentUpon>

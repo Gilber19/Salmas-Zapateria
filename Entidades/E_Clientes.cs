@@ -8,10 +8,10 @@ namespace Entidades
 {
   public class E_ddlClientes
   {
-    private int idPersona;
-    private string nombrePersona;
+   private int idPersona;
+   private string nombrePersona;
 
-    public int IdPersona { get => idPersona; set => idPersona = value; }
-    public string NombrePersona { get => nombrePersona; set => nombrePersona = value; }
+   public int IdPersona { get => idPersona; set => idPersona = value; }
+   public string NombrePersona { get => nombrePersona; set => nombrePersona = value; }
   }
 }

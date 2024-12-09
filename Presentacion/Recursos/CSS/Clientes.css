@@ -1,0 +1,66 @@
+﻿body {
+    background-color: #f8f9fa;
+}
+
+.btn-primary {
+    background-color: #FFA500;
+    border: none;
+}
+
+.btn-primary:hover {
+        background-color: #FF8C00;
+   }
+
+h4 {
+    font-family: 'Merryweather', serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.client-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.client-item {
+    font-family: 'Merriweather' sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+    .client-item button {
+        margin-left: auto;
+        background-color: orange;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .client-item button:hover {
+            background-color: darkorange;
+        }
+
+.search-bar-container {
+    position: relative;
+}
+
+.search-bar {
+    padding-right: 40px;
+}
+
+.search-bar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
