@@ -365,7 +365,7 @@ namespace Datos
 
                         };
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
-
+                        //Commit insano
                     }
                 }
             }
