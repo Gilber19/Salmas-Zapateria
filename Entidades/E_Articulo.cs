@@ -41,7 +41,7 @@ namespace Entidades
             IdTalla = idTalla;
             Imagenes = imagenes;
             Genero = genero;
-            nombreCategoria = nombreCategoria;
+            NombreCategoria = nombreCategoria;
         }
 
         // Constructor con parámetros

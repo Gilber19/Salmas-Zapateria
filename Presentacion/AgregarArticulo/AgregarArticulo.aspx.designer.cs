@@ -96,22 +96,13 @@ namespace Presentacion.AgregarArticulo
         protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtCodigoArticulo;
 
         /// <summary>
-        /// Control gvStock.
+        /// Control txtTallaNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvStock;
-
-        /// <summary>
-        /// Control rptTallas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptTallas;
+        protected global::System.Web.UI.WebControls.TextBox txtTallaNuevo;
 
         /// <summary>
         /// Control btnAgregarTalla.
@@ -121,6 +112,24 @@ namespace Presentacion.AgregarArticulo
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarTalla;
+
+        /// <summary>
+        /// Control ddlTallas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTallas;
+
+        /// <summary>
+        /// Control txtStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
         /// Control txtPrecio.
@@ -148,6 +157,15 @@ namespace Presentacion.AgregarArticulo
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterImagenesSecundarias;
+
+        /// <summary>
+        /// Control fuImagenSecundaria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuImagenSecundaria;
 
         /// <summary>
         /// Control btnAgregarImagen.
