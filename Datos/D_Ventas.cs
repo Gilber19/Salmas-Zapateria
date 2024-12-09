@@ -83,6 +83,8 @@ namespace Datos
                             SerieComprobante = reader["SerieComprobante"].ToString(),
                             FechaHora = Convert.ToDateTime(reader["FechaHora"].ToString()),
                             Total = Convert.ToDouble(reader["Total"].ToString()),
+                            IdArticulo = Convert.ToInt32(reader["IdArticulo"].ToString()),
+                            Imagenes = reader["Imagenes"].ToString()
                         };
 
                         LstFacturas.Add(venta);
