@@ -28,21 +28,8 @@ namespace Presentacion.PaginasMaestras
 
             if (!IsPostBack)
             {
-                CargarGeneros();
                 CargarCategorias();
             }
-        }
-
-        private void CargarGeneros()
-        {
-            N_Genero negocioGenero = new N_Genero();
-            List<E_Genero> generos = negocioGenero.ListarGeneros();
-
-            rptGeneros.DataSource = generos;
-            rptGeneros.DataBind();
-
-            rptNavGeneros.DataSource = generos;
-            rptNavGeneros.DataBind();
         }
 
         private void CargarCategorias()

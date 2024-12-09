@@ -38,7 +38,35 @@ namespace Presentacion.HomePage
         private void BindProductos()
         {
             N_Articulo N_Articulo = new N_Articulo();
-            List<E_Articulo> productos = N_Articulo.ListarArticulos();
+            List<E_Articulo> productos = new List<E_Articulo>();
+
+            int genero = 0;
+            int categoria = 0;
+            int subcategoria = 0;
+
+            if (int.TryParse(Request.QueryString["genero"], out genero))
+            {
+                if (int.TryParse(Request.QueryString["categoria"], out categoria))
+                {
+                    if (int.TryParse(Request.QueryString["subcategoria"], out subcategoria))
+                    {
+                        productos = N_Articulo.ListarArticulosPorSubCategoria(genero, subcategoria);
+                    }
+                    else
+                    {
+                        productos = N_Articulo.ListarArticulosPorCategoria(genero, categoria);
+                    }
+                }
+                else
+                {
+                    productos = N_Articulo.ListarArticulosPorGenero(genero);
+                }
+            }
+            else
+            {
+                productos = N_Articulo.ListarArticulos();
+            }
+
             if (productos != null && productos.Count > 0)
             {
                 rptProductos.DataSource = productos;
@@ -52,27 +80,19 @@ namespace Presentacion.HomePage
                 IsEditMode = true;
                 pnlNoData.Visible = true;
             }
-
-            //Debug para listar subcategorias
-            //List<E_SubCategoria> subCategorias = new N_SubCategoria().ListarSubCategorias(3);
         }
 
         private void UpdateEditMode()
         {
             pnlDefaultMode.Visible = !IsEditMode;
-
             pnlEditMode.Visible = IsEditMode;
             btnToggleEditMode.Text = IsEditMode ? "Añadir" : "Editar";
-
-            rptProductos.DataSource = new N_Articulo().ListarArticulos();
-            rptProductos.DataBind();
         }
 
         protected void ToggleEditMode_Click(object sender, EventArgs e)
         {
             IsEditMode = !IsEditMode;
             lblMensaje.Visible = false;
-
             UpdateEditMode();
         }
 
@@ -105,19 +125,17 @@ namespace Presentacion.HomePage
         private void EliminarArticulo(int idArticulo)
         {
             N_Articulo N_Articulo = new N_Articulo();
-            // bool exito = negociosArticulo.EliminarArticulo(idArticulo);
-            bool exito = true;
+            string resultado = N_Articulo.BorrarArticulo(idArticulo);
 
             lblMensaje.Visible = true;
-
-            if (exito)
+            if (resultado.StartsWith("Exito"))
             {
-                lblMensaje.Text = "Producto eliminado exitosamente.";
+                lblMensaje.Text = resultado;
                 lblMensaje.CssClass = "alert alert-success";
             }
             else
             {
-                lblMensaje.Text = "Error al eliminar el producto.";
+                lblMensaje.Text = resultado;
                 lblMensaje.CssClass = "alert alert-danger";
             }
         }

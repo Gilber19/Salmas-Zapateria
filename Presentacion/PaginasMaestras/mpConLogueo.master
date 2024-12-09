@@ -81,17 +81,12 @@
 
             <!-- Navigation Links -->
             <ul class="navbar-nav flex-row main-nav">
-                <asp:Repeater
-                    ID="rptNavGeneros" runat="server">
-                    <ItemTemplate>
-                        <li class="nav-item">
-                            <a class='<%# GetNavLinkClass(Eval("IdGenero")) %>'
-                               href='HomePage.aspx?genero=<%# Eval("IdGenero") %>'>
-                                <%# Eval("NombreGenero") %>
-                            </a>
-                        </li>
-                    </ItemTemplate>
-                </asp:Repeater>
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.aspx?genero=1">Hombre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="HomePage.aspx?genero=2">Mujer</a>
+                </li>
             </ul>
         </div>
 
@@ -136,17 +131,15 @@
     <div class="offcanvas-body">
         <!-- Géneros List -->
         <ul class="navbar-nav mb-3">
-        <asp:Repeater
-            ID="rptGeneros" runat="server" OnItemDataBound="rptGeneros_ItemDataBound">
-            <ItemTemplate>
             <li class="nav-item">
-                <a class='<%# GetNavLinkClass(Eval("IdGenero")) %>' style="color: #000 !important" 
-                   href='HomePage.aspx?genero=<%# Eval("IdGenero") %>'>
-                <%# Eval("NombreGenero") %>
-                </a>
+                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=1">Hombre</a>
             </li>
-            </ItemTemplate>
-        </asp:Repeater>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=2">Mujer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=3">Maquillaje</a>
+            </li>
         </ul>
         
         <!-- Categories and Subcategories -->
@@ -166,7 +159,7 @@
                                 <ul class="nav flex-column ms-3">
                                     <li class="nav-item">
                                         <a class="nav-link" style="color: #000 !important" 
-                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("IdSubCategoria") %>'>
+                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
                                             <%# Eval("SubCategoria") %>
                                         </a>
                                     </li>
