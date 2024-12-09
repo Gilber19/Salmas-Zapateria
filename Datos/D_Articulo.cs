@@ -105,14 +105,14 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
                 cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
+                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo
                 cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); 
+                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); 
                 cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
-                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
-                cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
-                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
                 cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                cmd.Parameters.AddWithValue("@Estado", articulo.Estado); // Se inserta activo por defecto
 
                 AbrirConexion();
                 cmd.ExecuteNonQuery();
