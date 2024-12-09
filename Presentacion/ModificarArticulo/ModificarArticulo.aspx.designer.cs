@@ -15,13 +15,22 @@ namespace Presentacion.ModificarArticulo
     {
 
         /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
+
+        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtNombre;
 
         /// <summary>
         /// Control txtDescripcion.
@@ -30,7 +39,16 @@ namespace Presentacion.ModificarArticulo
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtDescripcion;
+
+        /// <summary>
+        /// Control ddlGenero.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlGenero;
 
         /// <summary>
         /// Control ddlCategoria.
@@ -66,7 +84,7 @@ namespace Presentacion.ModificarArticulo
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage imgPreviewPrincipal;
+        protected global::System.Web.UI.WebControls.Image imgPreviewPrincipal;
 
         /// <summary>
         /// Control txtCodigoArticulo.
@@ -75,16 +93,16 @@ namespace Presentacion.ModificarArticulo
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigoArticulo;
+        protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtCodigoArticulo;
 
         /// <summary>
-        /// Control ddlTalla.
+        /// Control txtTallaNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTalla;
+        protected global::System.Web.UI.WebControls.TextBox txtTallaNuevo;
 
         /// <summary>
         /// Control txtStock.
@@ -96,13 +114,31 @@ namespace Presentacion.ModificarArticulo
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
-        /// Control RepeaterImagenesSecundarias.
+        /// Control btnAgregarTalla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterImagenesSecundarias;
+        protected global::System.Web.UI.WebControls.Button btnAgregarTalla;
+
+        /// <summary>
+        /// Control ddlTallas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTallas;
+
+        /// <summary>
+        /// Control txtPrecio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtPrecio;
 
         /// <summary>
         /// Control fuImagenSecundaria.
@@ -114,6 +150,15 @@ namespace Presentacion.ModificarArticulo
         protected global::System.Web.UI.WebControls.FileUpload fuImagenSecundaria;
 
         /// <summary>
+        /// Control imgPreviewSecundaria.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPreviewSecundaria;
+
+        /// <summary>
         /// Control btnAgregarImagen.
         /// </summary>
         /// <remarks>
@@ -123,21 +168,21 @@ namespace Presentacion.ModificarArticulo
         protected global::System.Web.UI.WebControls.Button btnAgregarImagen;
 
         /// <summary>
-        /// Control txtPrecio.
+        /// Control RepeaterImagenesSecundarias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecio;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterImagenesSecundarias;
 
         /// <summary>
-        /// Control btnAgregar.
+        /// Control btnModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        protected global::System.Web.UI.WebControls.Button btnModificar;
     }
 }
