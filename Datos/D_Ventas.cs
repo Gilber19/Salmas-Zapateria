@@ -83,10 +83,15 @@ namespace Datos
                             SerieComprobante = reader["SerieComprobante"].ToString(),
                             FechaHora = Convert.ToDateTime(reader["FechaHora"].ToString()),
                             Total = Convert.ToDouble(reader["Total"].ToString()),
+                            IdArticulo = Convert.ToInt32(reader["IdArticulo"].ToString()),
+                            Imagenes = reader["Imagenes"].ToString()
                         };
 
+                        venta.Imagenes = "/Recursos/Imagenes/Articulos/" + venta.Imagenes;
+
+
                         LstFacturas.Add(venta);
-                        //System.Diagnostics.Debug.WriteLine("(DATOS): " + venta.SerieComprobante);
+                        System.Diagnostics.Debug.WriteLine("(DATOS): " + venta.SerieComprobante + venta.Imagenes);
                     }
                 }
             }

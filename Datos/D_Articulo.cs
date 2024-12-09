@@ -210,7 +210,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
 
 
                         LstArticulos.Add(Articulo);
@@ -263,7 +263,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.NombreCategoria);
 
                         LstArticulos.Add(Articulo);
@@ -316,7 +316,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.SubCategoria);
 
 
@@ -367,7 +367,7 @@ namespace Datos
                             Imagenes = reader["Imagenes"].ToString(),
 
                         };
-                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
                         //Commit insano
                     }
                 }
