@@ -203,6 +203,7 @@
     <Content Include="Recursos\Imagenes\BannerGN.png" />
     <Content Include="Recursos\Imagenes\FondoInicio.png" />
     <Content Include="Recursos\Imagenes\ImagenGN.png" />
+    <Content Include="Recursos\Imagenes\Tenis.png" />
     <Content Include="Recursos\Imagenes\SalmasZapateriaLogo.png" />
     <Content Include="Ventas\Facturas.aspx" />
     <Content Include="Ventas\ventas.aspx" />
