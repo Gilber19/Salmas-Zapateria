@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
+    <Content Include="VerArticulo\VerArticulo.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
     <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.designer.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarArticulo\ModificarArticulo.aspx.cs">
       <DependentUpon>ModificarArticulo.aspx</DependentUpon>
@@ -502,7 +510,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Facturas\Factura.pdf" />
-    <None Include="appsettings.config" />
+    <Content Include="appsettings.config" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\mpBase.Master" />
     <Content Include="PaginasMaestras\mpConLogueo.master" />
@@ -543,7 +551,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53532</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44335/</IISUrl>
+          <IISUrl>https://localhost:44345/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
