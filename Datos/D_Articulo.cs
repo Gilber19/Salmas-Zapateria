@@ -312,10 +312,12 @@ namespace Datos
                             PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty,
                             SubCategoria = reader["SubCategoria"]?.ToString() ?? string.Empty,
-                            Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
+                            Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.SubCategoria);
+
 
                         LstArticulos.Add(Articulo);
                     }
