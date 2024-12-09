@@ -16,13 +16,14 @@
         </div>
         <div class="client-list">
             <asp:Repeater ID="RepeaterClientes" runat="server">
-                <itemtemplate>
+                <ItemTemplate>
                     <div class="client-item">
                         <span><%# Eval("Nombre") %></span>
-                        <button class="btn btn-primary">Ver detalles</button>
+                        <a href='<%# ResolveUrl("~/DetalleClientes/DetalleClientes.aspx?idPersona=" + Eval("IdPersona")) %>' class="btn btn-primary">Ver detalles</a>
                     </div>
-                </itemtemplate>
+                </ItemTemplate>
             </asp:Repeater>
+
         </div>
     </div>
 </asp:Content>
