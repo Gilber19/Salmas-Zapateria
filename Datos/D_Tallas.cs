@@ -12,6 +12,7 @@ namespace Datos
 {
     public class D_Tallas : D_ConexionBD
     {
+        private bool id = false;
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
         public E_Tallas ObtenerIdTalla(string Talla)
         {
@@ -32,7 +33,24 @@ namespace Datos
                         {
                             IdTalla = Convert.ToInt32(reader["IdTalla"]),
                         };
+                        id = true;
+                    }
+                }
 
+                if (!id)
+                {
+                    SqlCommand cmd2 = new SqlCommand("IBMO_Tallas", conexion);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd2.Parameters.AddWithValue("@Talla", Talla);
+
+                    var idTallaResult = cmd2.ExecuteScalar();
+                    if (idTallaResult != null)
+                    {
+                        talla = new E_Tallas
+                        {
+                            IdTalla = Convert.ToInt32(idTallaResult),
+                        };
                     }
                 }
             }
