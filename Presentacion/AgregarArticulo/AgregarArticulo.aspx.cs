@@ -149,9 +149,11 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
+                    IdTalla = "1",
                     Talla = string.Join(",", T.idtallas),
                     Stock = string.Join(",", T.stocks),
-                    Imagenes = string.Join(",", imagenes)
+                    Imagenes = string.Join(",", imagenes),
+
                 };
 
                 _articulo = articulo;

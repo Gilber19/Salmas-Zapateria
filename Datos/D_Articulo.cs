@@ -39,6 +39,8 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+                    cmd.Parameters.AddWithValue("@Tallas", articulo.Talla);
+                    cmd.Parameters.AddWithValue("@Stocks", articulo.Stock);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
