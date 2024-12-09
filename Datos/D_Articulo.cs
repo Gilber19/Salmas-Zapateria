@@ -163,6 +163,7 @@ namespace Datos
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes);
 
 
                         LstArticulos.Add(Articulo);
@@ -362,9 +363,10 @@ namespace Datos
                             Estado = Convert.ToBoolean(reader["Estado"]),
                             IdImagen = Convert.ToInt32(reader["IdImagen"]),
                             Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
+                            Imagenes = reader["Imagenes"].ToString(),
 
                         };
-                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
+                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
                         //Commit insano
                     }
                 }

@@ -44,6 +44,8 @@ namespace Presentacion.HomePage
             //List<E_Personas> b = new N_Personas().ListarClientes(); //DEBUG ONLY
             //List<E_FacturaVentas> c = new N_Ventas().ListarVentas(); //DEBUG ONLY
             //List<E_Personas> d = new N_Personas().ObtenerDetalleCliente(2); //DEBUG ONLY
+            E_Articulo e = new N_Articulo().BuscarArticuloPorID(1); //DEBUG ONLY
+            //List<E_Articulo> f = new N_Articulo().ListarArticulos(); //DEBUG ONLY
 
             bool hasGenero = int.TryParse(Request.QueryString["genero"], out int genero);
             bool hasCategoria = int.TryParse(Request.QueryString["categoria"], out int categoria);
