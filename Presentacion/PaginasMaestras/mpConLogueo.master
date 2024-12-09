@@ -129,19 +129,6 @@
                 aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <!-- Géneros List -->
-        <ul class="navbar-nav mb-3">
-            <li class="nav-item">
-                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=1">Hombre</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=2">Mujer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" style="color: #000 !important" href="HomePage.aspx?genero=3">Maquillaje</a>
-            </li>
-        </ul>
-        
         <!-- Categories and Subcategories -->
         <ul class="navbar-nav">
             <asp:Repeater
@@ -159,7 +146,7 @@
                                 <ul class="nav flex-column ms-3">
                                     <li class="nav-item">
                                         <a class="nav-link" style="color: #000 !important" 
-                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
+                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("IdSubCategoria") %>'>
                                             <%# Eval("SubCategoria") %>
                                         </a>
                                     </li>
