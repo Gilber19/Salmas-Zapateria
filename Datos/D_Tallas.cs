@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace Datos
 {
-    internal class D_Tallas : D_ConexionBD
+    public class D_Tallas : D_ConexionBD
     {
         private bool id = false;
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
