@@ -19,7 +19,7 @@ namespace Negocios
                 throw new Exception("El nombre del artículo es obligatorio.");
             if (articulo.PrecioVenta <= 0)
                 throw new Exception("El precio debe ser mayor a 0.");
-            
+
 
             return datosArticulo.InsertarArticulo(articulo);
         }
@@ -93,7 +93,24 @@ namespace Negocios
                 return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
             }
         }
-
+        public List<E_Articulo> ListarArticulosPorGenero(int genero)
+        {
+            if (genero <= 0)
+            {
+                return new List<E_Articulo>();
+            }
+            else
+            {
+                try
+                {
+                    return DC.ListarPorGenero(genero);
+                }
+                catch (Exception)
+                {
+                    return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
+                }
+            }
+        }
         public List<E_Articulo> ListarArticulosPorCategoria(int genero, int idCategoria)
         {
             if (idCategoria <= 0)
@@ -105,6 +122,24 @@ namespace Negocios
                 try
                 {
                     return DC.ListarPorCategoria(genero, idCategoria);
+                }
+                catch (Exception)
+                {
+                    return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
+                }
+            }
+        }
+        public List<E_Articulo> ListarArticulosPorSubCategoria(int genero, int idSubCategoria)
+        {
+            if (idSubCategoria <= 0)
+            {
+                return new List<E_Articulo>();
+            }
+            else
+            {
+                try
+                {
+                    return DC.ListarPorSubCategoria(genero, idSubCategoria);
                 }
                 catch (Exception)
                 {
