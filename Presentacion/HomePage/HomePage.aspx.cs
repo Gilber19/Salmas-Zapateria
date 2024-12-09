@@ -42,7 +42,7 @@ namespace Presentacion.HomePage
 
             //List<E_Articulo> a = new N_Articulo().ListarArticulosPorSubCategoria(1, 1); //DEBUG ONLY
             //List<E_Personas> b = new N_Personas().ListarClientes(); //DEBUG ONLY
-
+            //List<E_FacturaVentas> c = new N_Ventas().ListarVentas(); //DEBUG ONLY
 
             bool hasGenero = int.TryParse(Request.QueryString["genero"], out int genero);
             bool hasCategoria = int.TryParse(Request.QueryString["categoria"], out int categoria);

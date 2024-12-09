@@ -34,9 +34,9 @@ namespace Datos
                             Nombre = reader["Nombre"].ToString(),
                         };
 
-                        System.Diagnostics.Debug.WriteLine("CARGAR: " + cliente.Nombre);
 
                         LstClientes.Add(cliente);
+                        //System.Diagnostics.Debug.WriteLine("CARGAR: " + cliente.Nombre);
                     }
                 }
             }

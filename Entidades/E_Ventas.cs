@@ -60,13 +60,13 @@ namespace Entidades
     private string numeroComprobante;
     private DateTime fechaHora;
     private double impuestoVenta;
-    private double totalVenta;
+    private double total;
     private int totalArticulos;
     private List<E_Venta> listaArticulos;
     #endregion
 
     #region Constructores
-    public E_FacturaVentas(int idVenta, int idPersona, int idUsuario, string tipoComprobante, string serieComprobante, string numeroComprobante, DateTime fechaHora, double impuestoVenta, double totalVenta, int totalArticulos, List<E_Venta> listaArticulos)
+    public E_FacturaVentas(int idVenta, int idPersona, int idUsuario, string tipoComprobante, string serieComprobante, string numeroComprobante, DateTime fechaHora, double impuestoVenta, double total, int totalArticulos, List<E_Venta> listaArticulos)
     {
       this.idVenta = idVenta;
       this.idPersona = idPersona;
@@ -76,7 +76,7 @@ namespace Entidades
       this.numeroComprobante = numeroComprobante;
       this.fechaHora = fechaHora;
       this.impuestoVenta = impuestoVenta;
-      this.totalVenta = totalVenta;
+      this.total = total;
       this.totalArticulos = totalArticulos;
       this.listaArticulos = listaArticulos;
     }
@@ -90,7 +90,7 @@ namespace Entidades
       numeroComprobante = string.Empty;
       fechaHora = DateTime.Today;
       impuestoVenta = 0;
-      totalVenta = 0;
+      total = 0;
       totalArticulos = 0;
       listaArticulos = new List<E_Venta>();
     }
@@ -104,7 +104,7 @@ namespace Entidades
     public string NumeroComprobante { get => numeroComprobante; set => numeroComprobante = value; }
     public DateTime FechaHora { get => fechaHora; set => fechaHora = value; }
     public double ImpuestoVenta { get => impuestoVenta; set => impuestoVenta = value; }
-    public double TotalVenta { get => totalVenta; set => totalVenta = value; }
+    public double Total { get => total; set => total = value; }
     public int TotalArticulos { get => totalArticulos; set => totalArticulos = value; }
     public List<E_Venta> ListaArticulos { get => listaArticulos; set => listaArticulos = value; }
   }

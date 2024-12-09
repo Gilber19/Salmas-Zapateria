@@ -119,11 +119,11 @@ namespace Presentacion.Ventas
         {
           Factura.TotalArticulos -= (int)(importe / precioVenta);
           Factura.TotalArticulos += cantidad;
-          Factura.TotalVenta -= importe;
+          Factura.Total -= importe;
           importe = cantidad * precioVenta;
-          Factura.TotalVenta += importe;
-          Factura.ImpuestoVenta = Factura.TotalVenta * 0.08;
-          Factura.TotalVenta += Factura.ImpuestoVenta;
+          Factura.Total += importe;
+          Factura.ImpuestoVenta = Factura.Total * 0.08;
+          Factura.Total += Factura.ImpuestoVenta;
 
           lblImporte.Text = importe.ToString("C2");
 
@@ -174,7 +174,7 @@ namespace Presentacion.Ventas
           impuesto = subtotal * 0.08;
           total = subtotal + impuesto;
 
-          Factura.TotalVenta = total;
+          Factura.Total = total;
           Factura.ImpuestoVenta = impuesto;
           Factura.TotalArticulos = cantidad;
 
@@ -228,7 +228,7 @@ namespace Presentacion.Ventas
           commandFactura.Parameters.AddWithValue("@SerieComprobante", tbSerieComprobante.Text);
           commandFactura.Parameters.AddWithValue("@NumeroComprobante", tbNumeroComprobante.Text);
           commandFactura.Parameters.AddWithValue("@FechaHara", Convert.ToDateTime("2024/12/12"));
-          commandFactura.Parameters.AddWithValue("@TotalVenta", Factura.TotalVenta);
+          commandFactura.Parameters.AddWithValue("@TotalVenta", Factura.Total);
           commandFactura.Parameters.AddWithValue("@ImpuestoVenta", Factura.ImpuestoVenta);
           commandFactura.Parameters.AddWithValue("@Estado", true);
 
