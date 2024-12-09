@@ -60,6 +60,7 @@ namespace Presentacion.HomePage
                 }
                 else
                 {
+                    genero = 0;
                     productos = N_Articulo.ListarArticulosPorGenero(genero);
                 }
             }
