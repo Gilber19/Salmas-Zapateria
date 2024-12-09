@@ -24,6 +24,7 @@ namespace Presentacion.AgregarArticulo
             if (!IsPostBack)
             {
                 CargarCategorias();
+                imgPreviewPrincipal.Style["display"] = "none"; 
             }
         }
 
