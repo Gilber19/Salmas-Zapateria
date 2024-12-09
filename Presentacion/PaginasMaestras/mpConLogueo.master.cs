@@ -75,6 +75,17 @@ namespace Presentacion.PaginasMaestras
             Response.Redirect("~/HistorialVentas/HistorialVentas.aspx");
         }
 
+        protected void BtnExportarInventario(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ExportarInventario/ExportarInventario.aspx");
+        }
+
+        protected void BtnClientes(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Clientes/Clientes.aspx");
+        }
+
+
         protected void BtnLogOut_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
