@@ -6,11 +6,16 @@
             display: none;
         }
         .image {
-            max-width: 200px;
-            max-height: 200px;
-            margin: 0;
-            width: auto;
+            max-width: 100%;
             height: auto;
+        }
+        .card {
+            position: relative;
+        }
+        .edit-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
     </style>
 
@@ -20,14 +25,14 @@
             <asp:Label
                 ID="lblMensaje"
                 runat="server"
-                Visible= <%# GetIsEditMode() %>
+                Visible='<%# GetIsEditMode() %>'
             />        
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="mb-0">Novedades</h3>
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+            <h3 class="mb-3 mb-md-0">Novedades</h3>
             <!-- Editar -->
-            <asp:Panel ID="pnlDefaultMode" runat="server" Visible="true">
+            <asp:Panel ID="pnlDefaultMode" runat="server" Visible="true" class="mb-2 mb-md-0">
                 <asp:Button
                     ID="btnToggleEditMode"
                     runat="server"
@@ -37,18 +42,18 @@
             </asp:Panel>
 
             <!-- Añadir y confirmar -->
-            <asp:Panel ID="pnlEditMode" runat="server" Visible="false">
+            <asp:Panel ID="pnlEditMode" runat="server" Visible="false" class="d-flex flex-wrap">
                 <asp:LinkButton
                     ID="btnAdd"
                     runat="server"
-                    CssClass="btn btn-success me-2"
+                    CssClass="btn btn-success me-2 mb-2"
                     OnClick="btnAdd_Click">
                     <i class="bi bi-plus"></i> Añadir
                 </asp:LinkButton>
                 <asp:LinkButton
                     ID="btnExitEditMode"
                     runat="server"
-                    CssClass="btn btn-secondary"
+                    CssClass="btn btn-secondary mb-2"
                     OnClick="ToggleEditMode_Click">
                     <i class="bi bi-check"></i>
                 </asp:LinkButton>
@@ -60,23 +65,21 @@
             <!-- Repeater de productos -->
             <asp:Repeater ID="rptProductos" runat="server" OnItemCommand="rptProductos_ItemCommand">
                 <HeaderTemplate>
-                    <div class="row row-cols-2 row-cols-md-5 g-3" style="align-content: center; justify-content: start;">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
                 </HeaderTemplate>
                 <ItemTemplate>
-                    <div class="col" style="max-width: 700px;">
-                        <div class="d-flex align-items-start">
-                            <img src="<%# Eval("Imagenes") %>" alt="Imagen del producto" class="image" />
-                            <!-- Editar articulo -->
+                    <div class="col">
+                        <div class="card h-100">
                             <asp:Panel
                                 ID="pnlEditButtons"
                                 runat="server"
                                 Visible='<%# GetIsEditMode() %>'
-                                class="ms-auto">
+                                CssClass="d-flex justify-content-end edit-buttons">
                                 <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle p-0 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </button>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
                                             <asp:LinkButton 
                                                 ID="lnkEliminar" 
@@ -100,9 +103,12 @@
                                     </ul>
                                 </div>
                             </asp:Panel>
+                            <img src="<%# Eval("Imagenes") %>" alt="Imagen del producto" class="card-img-top image" />
+                            <div class="card-body">
+                                <h5 class="card-title"><%# Eval("NombreArticulo") %></h5>
+                                <p class="card-text">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
+                            </div>
                         </div>
-                        <h5 class="mt-2 mb-0"><%# Eval("NombreArticulo") %></h5>
-                        <p class="mt-2 mb-0">$<%# Eval("PrecioVenta", "{0:N2}") %></p>
                     </div>
                 </ItemTemplate>
                 <FooterTemplate>
