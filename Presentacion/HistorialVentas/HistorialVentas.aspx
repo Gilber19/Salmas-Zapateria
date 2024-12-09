@@ -1,85 +1,89 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="HistorialVentas.aspx.cs" Inherits="Presentacion.HistorialVentas.HistorialVentas" %>
+﻿<%@ Page Title="Historial de Ventas" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="HistorialVentas.aspx.cs" Inherits="Presentacion.HistorialVentas.HistorialVentas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
-
-    <div class="sidebar">
-        <!-- Mostrar el nombre del usuario -->
-        <div class="user-info">
-            <p>
-                Hola, 
-                <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
-            </p>
-        </div>
-
-        <!-- Opciones de menú -->
-        <ul class="menu">
-            <li><a href="#historial" id="historialLink">Historial de ventas</a></li>
-            <li><a href="#exportar">Exportar inventario</a></li>
-            <li><a href="#clientes">Clientes</a></li>
-        </ul>
-    </div>
-
     <style>
-        /* Estilo general para el sidebar */
+        /* Estilos generales del sidebar */
         .sidebar {
-            width: 200px;
-            background-color: #f9f9f9; /* Fondo claro */
-            border-right: 1px solid #ccc;
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            height: 100vh; /* Ocupa toda la altura */
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
         }
 
-        /* Información del usuario */
-        .user-info {
-            margin-bottom: 20px;
-            font-size: 16px;
-            color: #333;
+        .menu a {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
         }
 
-            .user-info .user-name {
+            .menu a.active {
                 font-weight: bold;
+                background-color: #e0e0e0;
+                border-radius: 5px;
             }
 
-        /* Estilo para la lista de navegación */
-        .menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            .menu a:hover {
+                background-color: #f1f1f1;
+            }
+
+        .content-section {
+            padding: 20px;
         }
 
-            .menu li {
-                margin-bottom: 10px;
-            }
+        /* Estilo para los elementos de la lista */
+        .list-group-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
 
-                .menu li a {
-                    text-decoration: none;
-                    color: #333;
-                    font-size: 14px;
-                    display: block;
-                    padding: 5px 0;
-                }
-
-                    .menu li a:hover {
-                        color: #007BFF; /* Azul para hover */
-                    }
-
-                    .menu li a.active {
-                        font-weight: bold;
-                        color: #000;
-                    }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #ccc;
+            /* Imagen de los productos */
+            .list-group-item img {
+                max-width: 100px;
                 height: auto;
+                object-fit: cover;
             }
-        }
     </style>
 
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar bg-light border-end">
+                <div class="user-info p-3">
+                    <h6>Hola,
+                        <asp:Label ID="lblNombreUsuario" runat="server"></asp:Label>
+                    </h6>
+                </div>
+                <ul class="menu list-unstyled p-3">
+                    <li><a href="../HistorialVentas/HistorialVentas.aspx" id="historialLink" class="text-decoration-none">Historial de ventas</a></li>
+                    <li><a href="../ExportarInventario/ExportarInventario.aspx" class="text-decoration-none">Exportar inventario</a></li>
+                    <li><a href="../Clientes/Clientes.aspx" class="text-decoration-none">Clientes</a></li>
+                </ul>
 
+            </div>
 
+    <!-- Label para mostrar mensajes -->
+    <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
 
+                <!-- Lista de Ventas -->
+                <div class="list-group">
+                    <asp:Repeater ID="RepeaterHistorial" runat="server">
+                        <ItemTemplate>
+                            <div class="list-group-item d-flex align-items-start gap-3">
+                                <!-- Imagen del producto -->
+                                <img src='<%# Eval("Imagenes") %>' alt="Producto" class="img-thumbnail" style="width: 100px; height: auto;">
+
+                                <!-- Información de la venta -->
+                                <div>
+                                    <h5 class="mb-1"><%# Eval("serieComprobante") %></h5>
+                                    <p class="mb-1">Fecha de venta: <%# Eval("fechaHora") %></p>
+                                    <p class="mb-1">Total: $<%# Eval("total", "{0:N2}") %></p>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
