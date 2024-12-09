@@ -103,7 +103,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.ListarPorGenero(genero);
+                    return DC.ListarArticulosPorGenero(genero);
                 }
                 catch (Exception)
                 {
