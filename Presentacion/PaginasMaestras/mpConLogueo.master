@@ -22,17 +22,18 @@
         border-radius: 50%;
         width: 60px;
         aspect-ratio: 1/1;
-        /* border: 1px solid white; */
       }
 
+      /* Main Navbar Links - White */
       .navbar-nav .nav-item .nav-link {
-        color: black !important;
+        color: white !important;
         padding-left: 15px;
         padding-right: 15px;
       }
 
-      a {
-        color: #000 !important;
+      .nav-link.active {
+        background-color: #0056b3;
+        border-radius: 4px;
       }
 
       .profile-icon {
@@ -49,8 +50,8 @@
       }
 
       @media (max-width: 800px) {
-        .navbar-nav {
-          display: none;
+        .main-nav {
+            display: none;
         }
       }
 
@@ -79,16 +80,18 @@
             </button>
 
             <!-- Navigation Links -->
-            <ul class="navbar-nav flex-row">
-                <li class="nav-item">
-                    <a class="nav-link active" href="">Hombre</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Mujer</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Maquillaje</a>
-                </li>
+            <ul class="navbar-nav flex-row main-nav">
+                <asp:Repeater
+                    ID="rptNavGeneros" runat="server">
+                    <ItemTemplate>
+                        <li class="nav-item">
+                            <a class='<%# GetNavLinkClass(Eval("IdGenero")) %>'
+                               href='HomePage.aspx?genero=<%# Eval("IdGenero") %>'>
+                                <%# Eval("NombreGenero") %>
+                            </a>
+                        </li>
+                    </ItemTemplate>
+                </asp:Repeater>
             </ul>
         </div>
 
@@ -125,42 +128,60 @@
 
     <!-- Offcanvas Sidebar -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Géneros</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" 
                 aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/FilteredPage/Accesorios">Accesorios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/FilteredPage/Calzado">Calzado</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ropaSubmenu" role="button" aria-expanded="false" aria-controls="ropaSubmenu">
-              Ropa
-            </a>
-            <div class="collapse" id="ropaSubmenu">
-              <ul class="nav flex-column ms-3">
-                <li class="nav-item"><a class="nav-link" href="/Ropa/VerTodo">Ver todo</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Camisas">Camisas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Polos">Polos</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Camisetas">Camisetas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Pantalones">Pantalones</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Sueteres">Suéteres</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Sudaderas">Sudaderas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/Ropa/Chamarras">Chamarras</a></li>
-              </ul>
-            </div>
-          </li>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Géneros List -->
+        <ul class="navbar-nav mb-3">
+        <asp:Repeater
+            ID="rptGeneros" runat="server" OnItemDataBound="rptGeneros_ItemDataBound">
+            <ItemTemplate>
+            <li class="nav-item">
+                <a class='<%# GetNavLinkClass(Eval("IdGenero")) %>' style="color: #000 !important" 
+                   href='HomePage.aspx?genero=<%# Eval("IdGenero") %>'>
+                <%# Eval("NombreGenero") %>
+                </a>
+            </li>
+            </ItemTemplate>
+        </asp:Repeater>
         </ul>
-      </div>
+        
+        <!-- Categories and Subcategories -->
+        <ul class="navbar-nav">
+            <asp:Repeater
+                ID="rptCategorias"
+                runat="server"
+                OnItemDataBound="rptCategorias_ItemDataBound">
+                <ItemTemplate>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color: #000 !important" 
+                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
+                            <%# Eval("NombreCategoria") %>
+                        </a>
+                        <asp:Repeater ID="rptSubcategorias" runat="server">
+                            <ItemTemplate>
+                                <ul class="nav flex-column ms-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link" style="color: #000 !important" 
+                                        href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("IdSubCategoria") %>'>
+                                            <%# Eval("SubCategoria") %>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+    </div>
     </div>
 
     <div class="social-icons">
-        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.facebook.com/salmas.zapateria" target="_blank"><i class="bi bi-facebook"></i></a>
         <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
     </div>
 
