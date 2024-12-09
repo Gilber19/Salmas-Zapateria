@@ -50,29 +50,28 @@
                     <!-- Imagen Principal -->
                     <div class="mb-3">
                         <label for="fuImagenPrincipal" class="form-label">Imagen Principal *</label>
-                        <asp:FileUpload ID="fuImagenPrincipal" runat="server" CssClass="form-control" />
-                        <asp:Image ID="imgPreviewPrincipal" runat="server" CssClass="img-fluid mt-2" alt="Imagen Principal" />
+                        <asp:FileUpload ID="fuImagenPrincipal" runat="server" CssClass="form-control" 
+                            onchange="previewImage(this, 'imgPreviewPrincipal')" />
+                        <asp:Image ID="imgPreviewPrincipal" runat="server" CssClass="img-fluid mt-2" 
+                            ClientIDMode="Static" Style="max-width: 200px; display: none;" alt="Imagen Principal" />
                     </div>
                     <!-- Código del Artículo -->
                     <div class="mb-3">
                         <label for="txtCodigoArticulo" class="form-label">Código del Artículo *</label>
                         <uc1:wucTextoRequerido ID="txtCodigoArticulo" runat="server" CssClass="form-control" Placeholder="Código" />
                     </div>
-                    <!-- Añadir Talla -->
+                    <!-- Sección de Tallas y Stock -->
                     <div class="mb-3">
-                        <label for="txtTallaNuevo" class="form-label">Añadir Talla *</label>
-                        <asp:TextBox ID="txtTallaNuevo" runat="server" CssClass="form-control" Placeholder="Nueva Talla"></asp:TextBox>
-                        <asp:Button ID="btnAgregarTalla" runat="server" Text="Agregar Talla" CssClass="btn btn-primary mt-2" OnClick="btnAgregarTalla_Click" />
+                        <label for="txtTallaNuevo" class="form-label">Añadir Talla y Stock *</label>
+                        <div class="input-group">
+                            <asp:TextBox ID="txtTallaNuevo" runat="server" CssClass="form-control" Placeholder="Nueva Talla"></asp:TextBox>
+                            <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" Placeholder="Stock" TextMode="Number"></asp:TextBox>
+                            <asp:Button ID="btnAgregarTalla" runat="server" Text="Agregar" CssClass="btn btn-primary" OnClick="btnAgregarTalla_Click" />
+                        </div>
                     </div>
-                    <!-- Tallas Disponibles -->
                     <div class="mb-3">
-                        <label class="form-label">Tallas Disponibles *</label>
+                        <label class="form-label">Tallas y Stock Disponibles *</label>
                         <asp:DropDownList ID="ddlTallas" runat="server" CssClass="form-select"></asp:DropDownList>
-                    </div>
-                    <!-- Stock -->
-                    <div class="mb-3">
-                        <label for="txtStock" class="form-label">Stock *</label>
-                        <asp:TextBox ID="txtStock" runat="server" CssClass="form-control" Placeholder="Cantidad"></asp:TextBox>
                     </div>
                 </div>
 
@@ -86,8 +85,13 @@
                     <!-- Imágenes Secundarias -->
                     <div class="mb-3">
                         <label for="fuImagenSecundaria" class="form-label">Imágenes Secundarias</label>
-                        <asp:FileUpload ID="fuImagenSecundaria" runat="server" CssClass="form-control" />
-                        <asp:Button ID="btnAgregarImagen" runat="server" Text="Agregar Imagen" CssClass="btn btn-primary mt-2" OnClick="btnAgregarImagen_Click" />
+                        <asp:FileUpload ID="fuImagenSecundaria" runat="server" CssClass="form-control" 
+                            onchange="previewImage(this, 'imgPreviewSecundaria')" />
+                        <asp:Image ID="imgPreviewSecundaria" runat="server" CssClass="img-fluid mt-2"
+                            ClientIDMode="Static" Style="max-width: 200px; display: none;" alt="Imagen Secundaria" />
+                        <asp:Button ID="btnAgregarImagen" runat="server" Text="Agregar Imagen" 
+                            CssClass="btn btn-primary mt-2" OnClick="btnAgregarImagen_Click" />
+
                         <asp:Repeater ID="RepeaterImagenesSecundarias" runat="server">
                             <ItemTemplate>
                                 <div class="d-flex align-items-center mt-2">
@@ -105,4 +109,22 @@
             </div>
         </asp:Panel>
     </div>
+
+    <script>
+        function previewImage(input, imgPreview) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var preview = document.getElementById(imgPreview);
+                    if(preview) {
+                        preview.src = e.target.result;
+                        preview.style.display = 'block';
+                    } else {
+                        console.log('Preview element not found:', imgPreview);
+                    }
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </asp:Content>
