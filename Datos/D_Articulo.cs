@@ -179,6 +179,58 @@ namespace Datos
             return LstArticulos;
         }
 
+        public List<E_Articulo> ListarPorCategoria(int idGenero, int idCategoria)
+        {
+            List<E_Articulo> LstArticulos = new List<E_Articulo>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("ObtenerArticulosPorCategoria", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
+                cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
+
+                AbrirConexion();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_Articulo Articulo = new E_Articulo
+                        {
+                            IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
+                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
+                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
+                            NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
+                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
+                            DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
+                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
+                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            Imagenes = reader["Imagen"]?.ToString() ?? string.Empty, 
+                            Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
+                        };
+
+                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+
+                        LstArticulos.Add(Articulo);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al listar artículos por categoría: " + ex.Message, ex);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstArticulos;
+
+        }
 
         public E_Articulo BuscarArticuloPorID(int idArticulo)
         {

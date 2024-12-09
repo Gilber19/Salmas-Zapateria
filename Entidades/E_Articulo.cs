@@ -17,7 +17,7 @@
         private string idTalla;
         private string stock; // Stock de cada talla XL (10), L (20), M (30), S (40), XS (50)
         private string imagenes; // Imágenes separadas por coma   
-        private int genero;
+        private int genero; // 1: Hombre, 2: Mujer
 
         #endregion
 

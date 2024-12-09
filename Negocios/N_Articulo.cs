@@ -93,6 +93,25 @@ namespace Negocios
                 return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
             }
         }
+
+        public List<E_Articulo> ListarArticulosPorCategoria(int genero, int idCategoria)
+        {
+            if (idCategoria <= 0)
+            {
+                return new List<E_Articulo>();
+            }
+            else
+            {
+                try
+                {
+                    return DC.ListarPorCategoria(genero, idCategoria);
+                }
+                catch (Exception)
+                {
+                    return new List<E_Articulo>();  // Retornar una lista vacía en caso de error
+                }
+            }
+        }
         public E_Articulo BuscarArticuloPorID(int idArticulo)
         {
             if (idArticulo <= 0)
