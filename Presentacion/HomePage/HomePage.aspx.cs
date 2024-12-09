@@ -39,17 +39,21 @@ namespace Presentacion.HomePage
         {
             N_Articulo N_Articulo = new N_Articulo();
             List<E_Articulo> productos = new List<E_Articulo>();
-            List<E_Articulo> a = new N_Articulo().ListarArticulosPorCategoria(1, 1); //DEBUG ONLY
 
-            int genero = 0;
-            int categoria = 0;
-            int subcategoria = 0;
+            //List<E_Articulo> a = new N_Articulo().ListarArticulosPorSubCategoria(1, 1); //DEBUG ONLY
+            //List<E_Personas> b = new N_Personas().ListarClientes(); //DEBUG ONLY
+            //List<E_FacturaVentas> c = new N_Ventas().ListarVentas(); //DEBUG ONLY
+            //List<E_Personas> d = new N_Personas().ObtenerDetalleCliente(2); //DEBUG ONLY
 
-            if (int.TryParse(Request.QueryString["genero"], out genero))
+            bool hasGenero = int.TryParse(Request.QueryString["genero"], out int genero);
+            bool hasCategoria = int.TryParse(Request.QueryString["categoria"], out int categoria);
+            bool hasSubcategoria = int.TryParse(Request.QueryString["subcategoria"], out int subcategoria);
+
+            if (hasGenero)
             {
-                if (int.TryParse(Request.QueryString["categoria"], out categoria))
+                if (hasCategoria)
                 {
-                    if (int.TryParse(Request.QueryString["subcategoria"], out subcategoria))
+                    if (hasSubcategoria)
                     {
                         productos = N_Articulo.ListarArticulosPorSubCategoria(genero, subcategoria);
                     }
@@ -65,7 +69,21 @@ namespace Presentacion.HomePage
             }
             else
             {
-                productos = N_Articulo.ListarArticulos();
+                if (hasCategoria)
+                {
+                    if (hasSubcategoria)
+                    {
+                        productos = N_Articulo.ListarArticulosPorSubCategoria(categoria, subcategoria);
+                    }
+                    else
+                    {
+                        productos = N_Articulo.ListarArticulosPorCategoria(1, categoria);
+                    }
+                }
+                else
+                {
+                    productos = N_Articulo.ListarArticulos();
+                }
             }
 
             if (productos != null && productos.Count > 0)

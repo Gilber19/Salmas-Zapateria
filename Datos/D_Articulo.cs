@@ -33,12 +33,11 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
                     cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                     cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                    cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
-                    cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
-                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
-                    cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                    cmd.Parameters.AddWithValue("@Imagenes", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
                     cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
+                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                    cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
 
                     conexion.Open();
@@ -294,8 +293,8 @@ namespace Datos
                     CommandType = CommandType.StoredProcedure
                 };
 
-                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
                 cmd.Parameters.AddWithValue("@IdSubCategoria", idSubCategoria);
+                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
 
                 AbrirConexion();
 
@@ -306,18 +305,18 @@ namespace Datos
                         E_Articulo Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
-                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
+                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
-                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
-                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty,
-                            Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
+                            SubCategoria = reader["SubCategoria"]?.ToString() ?? string.Empty,
+                            Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.SubCategoria);
+
 
                         LstArticulos.Add(Articulo);
                     }
@@ -325,6 +324,8 @@ namespace Datos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("ERROR LISTAR POR SUBCATEGORIA (DATOS)");
+
                 throw new Exception("Error al listar artículos por subcategoría: " + ex.Message, ex);
             }
             finally
@@ -360,11 +361,10 @@ namespace Datos
                             PrecioVenta = Convert.ToDouble(reader["PrecioVenta"].ToString()),
                             Estado = Convert.ToBoolean(reader["Estado"]),
                             IdImagen = Convert.ToInt32(reader["IdImagen"]),
-                            Imagenes = reader["Imagenes"].ToString(),
                             Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
 
                         };
-                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
 
                     }
                 }
@@ -372,6 +372,7 @@ namespace Datos
             catch (Exception ex)
             {
                 // Manejo de excepciones
+                System.Diagnostics.Debug.WriteLine("ERROR EN BUSCAR ARTICULO POR ID (DATOS)");
                 Console.WriteLine(ex.Message);
             }
             finally
@@ -509,3 +510,4 @@ namespace Datos
         }
     }
 }
+               
