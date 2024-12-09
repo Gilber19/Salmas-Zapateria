@@ -34,11 +34,13 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                     cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
                     cmd.Parameters.AddWithValue("@Imagenes", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
-                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
+                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTallaInt); // Adding the missing parameter
+                    cmd.Parameters.AddWithValue("@Stock", articulo.StockInt);
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+                    cmd.Parameters.AddWithValue("@Tallas", articulo.Talla);
+                    cmd.Parameters.AddWithValue("@Stocks", articulo.Stock);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
@@ -162,8 +164,7 @@ namespace Datos
                             //Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
-                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes);
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
 
 
                         LstArticulos.Add(Articulo);
@@ -209,7 +210,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
 
 
                         LstArticulos.Add(Articulo);
@@ -262,7 +263,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.NombreCategoria);
 
                         LstArticulos.Add(Articulo);
@@ -315,7 +316,7 @@ namespace Datos
                             Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
-                        Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
+                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.SubCategoria);
 
 
@@ -366,7 +367,7 @@ namespace Datos
                             Imagenes = reader["Imagenes"].ToString(),
 
                         };
-                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
                         //Commit insano
                     }
                 }

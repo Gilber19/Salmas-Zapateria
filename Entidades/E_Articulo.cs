@@ -21,6 +21,8 @@ namespace Entidades
         private string imagenes; // Imágenes separadas por coma   
         private int genero; // 1: Hombre, 2: Mujer
         private string nombreCategoria; //Esto deberia de ser ed la capa de E_Categoria
+        private int idTallaInt;
+        private int stockInt;
         #endregion
 
         #region Constructores
@@ -42,10 +44,13 @@ namespace Entidades
             Imagenes = imagenes;
             Genero = genero;
             NombreCategoria = nombreCategoria;
+            IdTallaInt = idTallaInt;
+            StockInt = stockInt;
+
         }
 
         // Constructor con parámetros
-        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, string pstock, bool estado, int idImagen, int genero, string nombreCategoria, string talla = "0", string subcategoria = "a", string idTalla = "idtalla1, idtalla2", string imagenes = "imagen1.png, imagen2.png")
+        public E_Articulo(int idArticulo, int idCategoria, string codigoArticulo, string nombreArticulo, string descripcionArticulo, double precioVenta, string pstock, bool estado, int idImagen, int genero, string nombreCategoria, string talla = "0", string subcategoria = "a", string idTalla = "idtalla1, idtalla2", string imagenes = "imagen1.png, imagen2.png", int idTallaInt = 1, int stockInt = 1)
         {
             IdArticulo = idArticulo;
             IdCategoria = idCategoria;
@@ -62,6 +67,8 @@ namespace Entidades
             Imagenes = imagenes;
             Genero = genero;
             NombreCategoria = nombreCategoria;
+            IdTallaInt = idTallaInt;
+            StockInt = stockInt;
 
         }
         #endregion
@@ -104,6 +111,9 @@ namespace Entidades
         public string Imagenes { get => imagenes; set => imagenes = value; }
         public int Genero { get => genero; set => genero = value; }
         public string NombreCategoria { get => nombreCategoria; set => nombreCategoria = value; }
+        public int IdTallaInt { get => idTallaInt; set => idTallaInt = value; }
+
+        public int StockInt { get => stockInt; set => stockInt = value; }
         #endregion
     }
 }
