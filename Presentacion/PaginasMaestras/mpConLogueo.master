@@ -18,11 +18,11 @@
                 transform: translateX(-50%);
             }
 
-                .navbar-brand img {
-                    border-radius: 50%;
-                    width: 60px;
-                    aspect-ratio: 1/1;
-                }
+            .navbar-brand img {
+                border-radius: 50%;
+                width: 60px;
+                aspect-ratio: 1/1;
+            }
 
             /* Main Navbar Links - White */
             .navbar-nav .nav-item .nav-link {
@@ -132,7 +132,7 @@
                     </li>
                     <li>
                         <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
-                            Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i>
+                            Cerrar sesion <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
                 </ul>
