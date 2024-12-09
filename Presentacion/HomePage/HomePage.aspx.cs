@@ -28,9 +28,9 @@ namespace Presentacion.HomePage
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            BindProductos();
             if (!IsPostBack)
             {
-                BindProductos();
                 UpdateEditMode();
             }
         }
@@ -87,6 +87,9 @@ namespace Presentacion.HomePage
             pnlDefaultMode.Visible = !IsEditMode;
             pnlEditMode.Visible = IsEditMode;
             btnToggleEditMode.Text = IsEditMode ? "Añadir" : "Editar";
+
+            // Actualizar la fuente de datos
+            BindProductos();
         }
 
         protected void ToggleEditMode_Click(object sender, EventArgs e)

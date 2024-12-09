@@ -130,9 +130,6 @@ namespace Presentacion.Articulos
             //};
 
             //string resultado = NA.InsertarArticulo(nuevoArticulo);
-
-
-
         }
         protected void btnListado_Click(object sender, EventArgs e)
         {

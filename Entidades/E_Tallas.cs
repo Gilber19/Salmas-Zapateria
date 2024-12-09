@@ -11,7 +11,7 @@ namespace Entidades
         #region Atributos
         private int idTalla;
         private int idArticulo;
-        private char talla;
+        private string talla;
         private int stock;
         #endregion
 
@@ -25,7 +25,7 @@ namespace Entidades
             Stock = stock;
         }
 
-        public E_Tallas(int idTalla, int idArticulo, char talla, int stock)
+        public E_Tallas(int idTalla, int idArticulo, string talla, int stock)
         {
             IdTalla = idTalla;
             IdArticulo = idArticulo;
@@ -38,7 +38,7 @@ namespace Entidades
         #region Encapsulamientos
         public int IdTalla { get => idTalla; set => idTalla = value; }
         public int IdArticulo { get => idArticulo; set => idArticulo = value; }
-        public char Talla { get => talla; set => talla = value; }
+        public string Talla { get => talla; set => talla = value; }
         public int Stock { get => stock; set => stock = value; }
         #endregion
 

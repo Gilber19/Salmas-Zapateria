@@ -1,4 +1,6 @@
-﻿namespace Entidades
+﻿using System.Collections.Generic;
+
+namespace Entidades
 {
     public class E_Articulo
     {
@@ -18,7 +20,6 @@
         private string stock; // Stock de cada talla XL (10), L (20), M (30), S (40), XS (50)
         private string imagenes; // Imágenes separadas por coma   
         private int genero; // 1: Hombre, 2: Mujer
-
         #endregion
 
         #region Constructores
@@ -74,6 +75,28 @@
         public string Talla { get => talla; set => talla = value; }
         public string SubCategoria { get => subCategoria; set => subCategoria = value; }
         public string Stock { get => stock; set => stock = value; }
+        public Dictionary<string, int> ObtenerStock()
+        {
+            var stockDict = new Dictionary<string, int>();
+            var stockItems = Stock.Split(',');
+
+            foreach (var item in stockItems)
+            {
+                var partes = item.Trim().Split('(');
+                if (partes.Length == 2)
+                {
+                    var talla = partes[0].Trim();
+                    var cantidadStr = partes[1].Replace(")", "").Trim();
+
+                    if (int.TryParse(cantidadStr, out int cantidad))
+                    {
+                        stockDict[talla] = cantidad;
+                    }
+                }
+            }
+
+            return stockDict;
+        }
         public string IdTalla { get => idTalla; set => idTalla = value; }
         public string Imagenes { get => imagenes; set => imagenes = value; }
         public int Genero { get => genero; set => genero = value; }
