@@ -28,51 +28,44 @@ namespace Presentacion.VerArticulo
 
         private void CargarArticulo()
         {
-            if (int.TryParse(Request.QueryString["idArticulo"], out idArticulo))
+            articulo = NA.BuscarArticuloPorID(11); // Aquí se debe de enviar el idArticulo, lo dejo con 1 para obtener datos.
+
+            if (articulo != null)
             {
-                articulo = NA.BuscarArticuloPorID(idArticulo); // Use the dynamic idArticulo here.
+                lblNombreArticulo.Text = articulo.NombreArticulo;
+                lblDescripcionArticulo.Text = articulo.DescripcionArticulo;
+                lblPrecioVenta.Text = $"${articulo.PrecioVenta:F2}";
+                lblEstado.Text = articulo.Estado ? "Disponible" : "No Disponible";
 
-                if (articulo != null)
+                // Mostrar imágenes
+                if (!string.IsNullOrEmpty(articulo.Imagenes))
                 {
-                    lblNombreArticulo.Text = articulo.NombreArticulo;
-                    lblDescripcionArticulo.Text = articulo.DescripcionArticulo;
-                    lblPrecioVenta.Text = $"${articulo.PrecioVenta:F2}";
-                    lblEstado.Text = articulo.Estado ? "Disponible" : "No Disponible";
+                    var imagenes = articulo.Imagenes.Split(','); // Dividir las imágenes
+                    rptImagenes.DataSource = imagenes.Select(imagen => new { Imagen = imagen });
+                    rptImagenes.DataBind();
+                }
 
-                    // Mostrar imágenes
-                    if (!string.IsNullOrEmpty(articulo.Imagenes))
+                // Mostrar talla DropDownList
+                if (!string.IsNullOrEmpty(articulo.Stock))
+                {
+                    var stockItems = articulo.Stock.Split(',');
+                    foreach (var stockItem in stockItems)
                     {
-                        var imagenes = articulo.Imagenes.Split(','); // Dividir las imágenes
-                        rptImagenes.DataSource = imagenes.Select(imagen => new { Imagen = imagen });
-                        rptImagenes.DataBind();
-                    }
-
-                    // Mostrar talla DropDownList
-                    if (!string.IsNullOrEmpty(articulo.Stock))
-                    {
-                        var stockItems = articulo.Stock.Split(',');
-                        foreach (var stockItem in stockItems)
+                        var stockDetails = stockItem.Split(' '); // Separar talla y cantidad
+                        if (stockDetails.Length == 2)
                         {
-                            var stockDetails = stockItem.Split(' '); // Separar talla y cantidad
-                            if (stockDetails.Length == 2)
-                            {
-                                string talla = stockDetails[0];
-                                ddlTalla.Items.Add(new ListItem($"{talla}", talla));
-                            }
+                            string talla = stockDetails[0];
+                            string cantidad = stockDetails[1];
+                            ddlTalla.Items.Add(new ListItem($"{talla}", talla));
                         }
                     }
-                }
-                else
-                {
-                    Response.Write("El artículo no está disponible.");
                 }
             }
             else
             {
-                Response.Write("Id del artículo no válido.");
+                Response.Write("El artículo no está disponible.");
             }
         }
-
     }
 
 }
