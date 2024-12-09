@@ -52,6 +52,9 @@ namespace Presentacion.HomePage
                 IsEditMode = true;
                 pnlNoData.Visible = true;
             }
+
+            //Debug para listar subcategorias
+            //List<E_SubCategoria> subCategorias = new N_SubCategoria().ListarSubCategorias(3);
         }
 
         private void UpdateEditMode()

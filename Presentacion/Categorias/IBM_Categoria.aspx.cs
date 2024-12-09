@@ -77,7 +77,6 @@ namespace Presentacion.Categorias
     {
       E_Categoria Categoria = new E_Categoria()
       {
-        ClaveCategoria = tbClaveCategoria.Text.Trim(),
         NombreCategoria = tbNombreCategoria.Text.Trim(),
         DescripcionCategoria = tbDescripcionCategoria.Text.Trim(),
       };
@@ -88,7 +87,6 @@ namespace Presentacion.Categorias
     {
       E_Categoria Categoria = NC.BuscarCategoriaPorID(idCategoria);
 
-      tbClaveCategoria.Text = Categoria.ClaveCategoria.Trim();
       tbNombreCategoria.Text = Categoria.NombreCategoria.Trim();
       tbDescripcionCategoria.Text = Categoria.DescripcionCategoria.Trim();
     }
@@ -237,7 +235,7 @@ namespace Presentacion.Categorias
     protected void BtnModificar_Click(object sender, EventArgs e)
     {
       int ID = Convert.ToInt16(hfIdCategoria.Value);
-      E_Categoria EC = new E_Categoria(ID, tbClaveCategoria.Text.Trim(), tbNombreCategoria.Text.Trim(), tbDescripcionCategoria.Text.Trim(), true);
+      E_Categoria EC = new E_Categoria(ID, tbNombreCategoria.Text.Trim(), tbDescripcionCategoria.Text.Trim(), true);
 
       string[] Msg = NC.ModificarCategoria(EC).Split(':');
       lblMensaje.ShowMessage(Msg[0], Msg[1]);

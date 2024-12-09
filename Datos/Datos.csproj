@@ -58,6 +58,7 @@
     <Compile Include="D_Personas.cs" />
     <Compile Include="D_Roles.cs" />
     <Compile Include="D_SolicitudesCredito.cs" />
+    <Compile Include="D_SubCategoria.cs" />
     <Compile Include="D_Tallas.cs" />
     <Compile Include="D_Usuarios.cs" />
     <Compile Include="D_Ventas.cs" />

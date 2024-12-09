@@ -51,6 +51,7 @@
     <Compile Include="E_Imagenes.cs" />
     <Compile Include="E_Pagos.cs" />
     <Compile Include="E_SolicitudesCredito.cs" />
+    <Compile Include="E_SubCategoria.cs" />
     <Compile Include="E_Tallas.cs" />
     <Compile Include="E_Usuario.cs" />
     <Compile Include="E_Ventas.cs" />

@@ -22,7 +22,6 @@ namespace Datos
         };
 
         cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-        cmd.Parameters.AddWithValue("@ClaveCategoria", categoria.ClaveCategoria );
         cmd.Parameters.AddWithValue("@IdCategoria", categoria.IdCategoria);
         cmd.Parameters.AddWithValue("@NombreCategoria", categoria.NombreCategoria);
         cmd.Parameters.AddWithValue("@DescripcionCategoria", categoria.DescripcionCategoria);
@@ -48,7 +47,6 @@ namespace Datos
 
         cmd.Parameters.AddWithValue("@Accion", "BORRAR");
         cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
-        cmd.Parameters.AddWithValue("@ClaveCategoria", Categoria.ClaveCategoria);
         cmd.Parameters.AddWithValue("@NombreCategoria", Categoria.NombreCategoria);
         cmd.Parameters.AddWithValue("@DescripcionCategoria", Categoria.DescripcionCategoria);
         cmd.Parameters.AddWithValue("@Estado", Categoria.Estado);
@@ -76,7 +74,6 @@ namespace Datos
 
         cmd.Parameters.AddWithValue("@Accion", "MODIFICAR");
         cmd.Parameters.AddWithValue("@IdCategoria", Categoria.IdCategoria);
-        cmd.Parameters.AddWithValue("@ClaveCategoria", Categoria.ClaveCategoria);
         cmd.Parameters.AddWithValue("@NombreCategoria", Categoria.NombreCategoria);
         cmd.Parameters.AddWithValue("@DescripcionCategoria", Categoria.DescripcionCategoria);
         cmd.Parameters.AddWithValue("@Estado", Categoria.Estado);
@@ -113,7 +110,6 @@ namespace Datos
             E_Categoria Categoria = new E_Categoria
             {
               IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-              ClaveCategoria = reader["ClaveCategoria"].ToString(),
               NombreCategoria = reader["NombreCategoria"].ToString(),
               DescripcionCategoria = reader["DescripcionCategoria"].ToString(),
               Estado = Convert.ToBoolean(reader["Estado"])
@@ -153,7 +149,6 @@ namespace Datos
             Categoria = new E_Categoria
             {
               IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-              ClaveCategoria = reader["ClaveCategoria"].ToString(),
               NombreCategoria = reader["NombreCategoria"].ToString(),
               DescripcionCategoria = reader["DescripcionCategoria"].ToString(),
               Estado = Convert.ToBoolean(reader["Estado"])
@@ -173,7 +168,6 @@ namespace Datos
 
       return Categoria;
     }
-
     public List<E_Categoria> BuscarCategoriaPorCriterio(string criterio)
     {
       List<E_Categoria> LstCategorias = new List<E_Categoria>();
@@ -193,7 +187,6 @@ namespace Datos
             E_Categoria Categoria = new E_Categoria
             {
               IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-              ClaveCategoria = reader["ClaveCategoria"].ToString(),
               NombreCategoria = reader["NombreCategoria"].ToString(),
               DescripcionCategoria = reader["DescripcionCategoria"].ToString(),
               Estado = Convert.ToBoolean(reader["Estado"])
@@ -234,7 +227,6 @@ namespace Datos
             E_Categoria Categoria = new E_Categoria
             {
               IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-              ClaveCategoria = reader["ClaveCategoria"].ToString(),
               NombreCategoria = reader["NombreCategoria"].ToString(),
               DescripcionCategoria = reader["DescripcionCategoria"].ToString(),
               Estado = Convert.ToBoolean(reader["Estado"])
