@@ -102,6 +102,8 @@ namespace Presentacion.AgregarArticulo
                     return;
                 }
 
+                N_Tallas NT = new N_Tallas();
+                E_Tallas T = new E_Tallas();
                 var stockPorTalla = new List<E_Tallas>();
                 foreach (ListItem item in ddlTallas.Items)
                 {
@@ -110,8 +112,10 @@ namespace Presentacion.AgregarArticulo
                     if (partes.Length >= 2)
                     {
                         string talla = partes[0];
+                        T.idtallas.Add((NT.ObtenerIdTalla(talla)));
                         if (int.TryParse(partes[1], out int stock))
                         {
+                            T.stocks.Add(stock.ToString());
                             stockPorTalla.Add(new E_Tallas
                             {
                                 Talla = talla,
@@ -120,7 +124,7 @@ namespace Presentacion.AgregarArticulo
                         }
                     }
                 }
-
+               
                 List<string> imagenes = new List<string>();
                 
                 if (fuImagenPrincipal.HasFile)
@@ -145,11 +149,10 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
-                    IdTallaInt = 1, // Agregar Tallas
-                    //Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla}:{s.Stock}")),
-                    StockInt = 3, // Agregar Stock
+                    Talla = string.Join(", ", T.idtallas),
+                    Stock = string.Join(", ", T.stocks),
                     Imagenes = string.Join(",", imagenes)
-                };
+                },
 
                 _articulo = articulo;
                 N_Articulos.InsertarArticulo(articulo);
