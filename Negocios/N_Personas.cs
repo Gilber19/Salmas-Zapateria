@@ -26,8 +26,20 @@ namespace Negocios
                 Debug.WriteLine("Error en N_Personas.ListarClientes: " + ex.Message);
                 throw new Exception("Error al listar los clientes: " + ex.Message, ex);
             }
-
-
         }
+
+        public List<E_Personas> ObtenerDetalleCliente(int idPersona)
+        {
+            try
+            {
+                return DP.ObtenerDetalleCliente(idPersona);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error en N_Personas.ObtenerDetalleCliente: " + ex.Message);
+                throw new Exception("Error al obtener el detalle del cliente: " + ex.Message, ex);
+            }
+        }
+
     }
 }
