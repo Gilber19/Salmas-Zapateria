@@ -62,10 +62,8 @@
 
             </div>
 
-            <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 p-4">
-                <!-- Mensaje -->
-                <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
+    <!-- Label para mostrar mensajes -->
+    <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
 
                 <!-- Lista de Ventas -->
                 <div class="list-group">

@@ -129,12 +129,6 @@ namespace Presentacion.AgregarArticulo
                     imagenes.Add(rutaImagenPrincipal);
                 }
 
-                if (fuImagenSecundaria.HasFile)
-                {
-                    string rutaImagenSecundaria = GuardarImagen(fuImagenSecundaria);
-                    imagenes.Add(rutaImagenSecundaria);
-                }
-
                 // Create article with only essential properties
                 E_Articulo articulo = new E_Articulo
                 {
@@ -145,15 +139,14 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
-                    IdTallaInt = 1, // Agregar Tallas
-                    //Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla}:{s.Stock}")),
-                    StockInt = 3, // Agregar Stock
+                    Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla} {s.Stock}")),
                     Imagenes = string.Join(",", imagenes)
                 };
 
                 _articulo = articulo;
+
+                // Insert article
                 N_Articulos.InsertarArticulo(articulo);
-                //System.Diagnostics.Debug.WriteLine("{TALLAS Y STOCK}" + stockPorTalla.Select(s => $"{s.Talla}:{s.Stock}));
 
                 lblMensaje.Text = "Artículo agregado correctamente.";
                 lblMensaje.CssClass = "alert alert-success";
@@ -203,7 +196,7 @@ namespace Presentacion.AgregarArticulo
             string nombreArchivo = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(archivo.FileName);
             string ruta = System.IO.Path.Combine(carpeta, nombreArchivo);
             archivo.SaveAs(ruta);
-            return archivo.FileName.Replace("System.Web.UI.WebControls.FileUpload", "");
+            return "~/Recursos/Imagenes/Articulos/" + nombreArchivo;
         }
     }
 }
