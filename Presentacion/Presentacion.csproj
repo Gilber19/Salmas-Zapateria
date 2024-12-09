@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
+    <Content Include="DetalleClientes\DetalleClientes.aspx" />
     <Content Include="HistorialVentas\HistorialVentas.aspx" />
     <Content Include="VerArticulo\VerArticulo.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
@@ -220,6 +221,13 @@
     </Compile>
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleClientes\DetalleClientes.aspx.cs">
+      <DependentUpon>DetalleClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleClientes\DetalleClientes.aspx.designer.cs">
+      <DependentUpon>DetalleClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="HistorialVentas\HistorialVentas.aspx.cs">
       <DependentUpon>HistorialVentas.aspx</DependentUpon>
