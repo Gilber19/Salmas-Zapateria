@@ -70,12 +70,12 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
                 cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                 cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                cmd.Parameters.AddWithValue("@Imagen", 0); // CAMBIAR POR IDIMAGEN
+                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
                 cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                 cmd.Parameters.AddWithValue("@Estado", false); // Se inserta activo por defecto.
                 cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                cmd.Parameters.AddWithValue("@IdImagen", 0);
+                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                 cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
 
                 conexion.Open();
