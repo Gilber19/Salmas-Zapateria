@@ -111,13 +111,25 @@
                             <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario"></asp:Label>
                         </div>
                     </li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li>
                         <asp:LinkButton ID="lbHistorialVentas" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnHistorialVentas" Visible="true">
                             Historial de ventas <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
-                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnExportarInventario" Visible="true">  Exportar Inventario <i class="fa fa-power-off" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnClientes" Visible="true">Clientes <i class="fa fa-power-off" aria-hidden="true"></i>
+                        </asp:LinkButton>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
                     <li>
                         <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
                             Cerrar sesión <i class="fa fa-power-off" aria-hidden="true"></i>
@@ -140,8 +152,8 @@
                     <asp:Repeater ID="rptCategorias" runat="server" OnItemDataBound="rptCategorias_ItemDataBound">
                         <ItemTemplate>
                             <li class="nav-item">
-                                <a class="nav-link" style="color: #000 !important" 
-                                   href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
+                                <a class="nav-link" style="color: #000 !important"
+                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
                                     <%# Eval("NombreCategoria") %>
                                 </a>
                                 <asp:Repeater ID="rptSubcategorias" runat="server">
@@ -149,7 +161,7 @@
                                         <ul class="nav flex-column ms-3">
                                             <li class="nav-item">
                                                 <a class="nav-link" style="color: #000 !important"
-                                                   href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
+                                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
                                                     <%# Eval("SubCategoria") %>
                                                 </a>
                                             </li>
