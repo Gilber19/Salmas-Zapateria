@@ -141,24 +141,6 @@ namespace Presentacion.AgregarArticulo
         protected global::Presentacion.Recursos.Controles.wucTextoRequerido txtPrecio;
 
         /// <summary>
-        /// Control btnAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
-
-        /// <summary>
-        /// Control RepeaterImagenesSecundarias.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterImagenesSecundarias;
-
-        /// <summary>
         /// Control fuImagenSecundaria.
         /// </summary>
         /// <remarks>
@@ -175,5 +157,23 @@ namespace Presentacion.AgregarArticulo
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarImagen;
+
+        /// <summary>
+        /// Control RepeaterImagenesSecundarias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterImagenesSecundarias;
+
+        /// <summary>
+        /// Control btnAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
     }
 }

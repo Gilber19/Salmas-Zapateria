@@ -12,8 +12,12 @@ namespace Presentacion.AgregarArticulo
         private N_Articulo N_Articulos = new N_Articulo();
         private N_Categoria N_Categorias = new N_Categoria();
         private N_SubCategoria N_SubCategorias = new N_SubCategoria();
-        private E_Articulo _articulo;
 
+        private E_Articulo _articulo
+        {
+            get { return Session["ArticuloTemporal"] as E_Articulo; }
+            set { Session["ArticuloTemporal"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,8 +64,22 @@ namespace Presentacion.AgregarArticulo
         {
             if (!string.IsNullOrWhiteSpace(txtTallaNuevo.Text))
             {
-                ddlTallas.Items.Add(new ListItem(txtTallaNuevo.Text.Trim()));
+                // Validar el stock
+                if (!int.TryParse(txtStock.Text, out int cantidad) || cantidad < 0)
+                {
+                    lblMensaje.Text = "Por favor ingrese una cantidad válida para el stock";
+                    lblMensaje.CssClass = "alert alert-danger";
+                    lblMensaje.Visible = true;
+                    return;
+                }
+
+                // Agregar la talla con su stock en el nuevo formato "TALLA STOCK"
+                string tallaConStock = $"{txtTallaNuevo.Text.Trim()} {cantidad}";
+                ddlTallas.Items.Add(new ListItem(tallaConStock, txtTallaNuevo.Text.Trim()));
+                
+                // Limpiar los campos
                 txtTallaNuevo.Text = string.Empty;
+                txtStock.Text = string.Empty;
             }
         }
 
@@ -69,7 +87,6 @@ namespace Presentacion.AgregarArticulo
         {
             try
             {
-                // Validate required fields
                 if (string.IsNullOrEmpty(txtNombre.Text) || 
                     string.IsNullOrEmpty(ddlCategoria.SelectedValue) ||
                     string.IsNullOrEmpty(ddlSubcategoria.SelectedValue) ||
@@ -87,19 +104,20 @@ namespace Presentacion.AgregarArticulo
                 var stockPorTalla = new List<E_Tallas>();
                 foreach (ListItem item in ddlTallas.Items)
                 {
-                    if (!int.TryParse(txtStock.Text.Trim(), out int cantidad) || cantidad < 0)
+                    // Extraer la talla y el stock del texto del item en formato "TALLA STOCK"
+                    string[] partes = item.Text.Split(' ');
+                    if (partes.Length >= 2)
                     {
-                        lblMensaje.Text = "La cantidad debe ser un número positivo.";
-                        lblMensaje.CssClass = "alert alert-danger";
-                        lblMensaje.Visible = true;
-                        return;
+                        string talla = partes[0];
+                        if (int.TryParse(partes[1], out int stock))
+                        {
+                            stockPorTalla.Add(new E_Tallas
+                            {
+                                Talla = talla,
+                                Stock = stock
+                            });
+                        }
                     }
-
-                    stockPorTalla.Add(new E_Tallas
-                    {
-                        Talla = item.Text,
-                        Stock = cantidad
-                    });
                 }
 
                 List<string> imagenes = new List<string>();
@@ -120,9 +138,10 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
-                    Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla}:{s.Stock}")),
+                    Stock = string.Join(", ", stockPorTalla.Select(s => $"{s.Talla} {s.Stock}")),
                     Imagenes = string.Join(",", imagenes)
                 };
+
                 _articulo = articulo;
 
                 // Insert article
