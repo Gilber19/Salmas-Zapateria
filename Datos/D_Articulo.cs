@@ -361,18 +361,19 @@ namespace Datos
                             PrecioVenta = Convert.ToDouble(reader["PrecioVenta"].ToString()),
                             Estado = Convert.ToBoolean(reader["Estado"]),
                             IdImagen = Convert.ToInt32(reader["IdImagen"]),
-                            Imagenes = reader["Imagenes"].ToString(),
                             Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
+                            Imagenes = reader["Imagenes"].ToString(),
 
                         };
-                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Stock );
-
+                        System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
+                        //Commit insano
                     }
                 }
             }
             catch (Exception ex)
             {
                 // Manejo de excepciones
+                System.Diagnostics.Debug.WriteLine("ERROR EN BUSCAR ARTICULO POR ID (DATOS)");
                 Console.WriteLine(ex.Message);
             }
             finally

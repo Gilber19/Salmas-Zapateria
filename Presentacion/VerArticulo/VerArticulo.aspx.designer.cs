@@ -7,65 +7,83 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion.PaginasMaestras
+namespace Presentacion.VerArticulo
 {
 
 
-    public partial class mpConLogueo
+    public partial class VerArticulo
     {
 
         /// <summary>
-        /// Control lblTipoUsuario.
+        /// Control rptImagenes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoUsuario;
+        protected global::System.Web.UI.WebControls.Repeater rptImagenes;
 
         /// <summary>
-        /// Control lblNombreUsuario.
+        /// Control lblNombreArticulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreUsuario;
+        protected global::System.Web.UI.WebControls.Label lblNombreArticulo;
 
         /// <summary>
-        /// Control lbHistorialVentas.
+        /// Control lblPrecioVenta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbHistorialVentas;
+        protected global::System.Web.UI.WebControls.Label lblPrecioVenta;
 
         /// <summary>
-        /// Control lbLogOut.
+        /// Control lblDescripcionArticulo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbLogOut;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionArticulo;
 
         /// <summary>
-        /// Control rptCategorias.
+        /// Control lblEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCategorias;
+        protected global::System.Web.UI.WebControls.Label lblEstado;
 
         /// <summary>
-        /// Control cphConLogueo.
+        /// Control ddlTalla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphConLogueo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTalla;
+
+        /// <summary>
+        /// Control ddlCantidad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCantidad;
+
+        /// <summary>
+        /// Control btnAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
     }
 }

@@ -164,11 +164,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
+    <Content Include="HistorialVentas\HistorialVentas.aspx" />
+    <Content Include="VerArticulo\VerArticulo.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
     <Content Include="HomePage\HomePage.aspx" />
     <Content Include="Articulos\IBM_Articulo.aspx" />
     <Content Include="Categorias\IBM_Categoria.aspx" />
-    <Content Include="Clientes\IBM_Clientes.aspx" />
+    <Content Include="Clientes\Clientes.aspx" />
     <Content Include="Compras\IBM_Compras.aspx" />
     <Content Include="Email\EnviarEmail.aspx" />
     <Content Include="Excel\GetExcel.aspx" />
@@ -199,6 +201,7 @@
     <Content Include="Recursos\Controles\wucTexto.ascx" />
     <Content Include="Recursos\Controles\wucTextoRequerido.ascx" />
     <Content Include="Recursos\CSS\bootstrap.css" />
+    <Content Include="Recursos\CSS\Clientes.css" />
     <Content Include="Recursos\CSS\ventasCSS.css" />
     <Content Include="Recursos\Imagenes\Articulos\b23f35d9-e795-440a-8580-b5bb2db00285.jpg" />
     <Content Include="Recursos\Imagenes\Articulos\BannerGN.png" />
@@ -224,6 +227,20 @@
     </Compile>
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialVentas\HistorialVentas.aspx.designer.cs">
+      <DependentUpon>HistorialVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerArticulo\VerArticulo.aspx.designer.cs">
+      <DependentUpon>VerArticulo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarArticulo\ModificarArticulo.aspx.cs">
       <DependentUpon>ModificarArticulo.aspx</DependentUpon>
@@ -253,12 +270,12 @@
     <Compile Include="Categorias\IBM_Categoria.aspx.designer.cs">
       <DependentUpon>IBM_Categoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="Clientes\Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Clientes\IBM_Clientes.aspx.designer.cs">
-      <DependentUpon>IBM_Clientes.aspx</DependentUpon>
+    <Compile Include="Clientes\Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Compras\IBM_Compras.aspx.cs">
       <DependentUpon>IBM_Compras.aspx</DependentUpon>
@@ -550,7 +567,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53532</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44335/</IISUrl>
+          <IISUrl>https://localhost:44345/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
