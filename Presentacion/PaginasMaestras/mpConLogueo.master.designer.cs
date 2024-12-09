@@ -15,15 +15,6 @@ namespace Presentacion.PaginasMaestras
     {
 
         /// <summary>
-        /// Control rptNavGeneros.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptNavGeneros;
-
-        /// <summary>
         /// Control lblTipoUsuario.
         /// </summary>
         /// <remarks>
@@ -42,6 +33,15 @@ namespace Presentacion.PaginasMaestras
         protected global::System.Web.UI.WebControls.Label lblNombreUsuario;
 
         /// <summary>
+        /// Control lbHistorialVentas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbHistorialVentas;
+
+        /// <summary>
         /// Control lbLogOut.
         /// </summary>
         /// <remarks>
@@ -49,15 +49,6 @@ namespace Presentacion.PaginasMaestras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbLogOut;
-
-        /// <summary>
-        /// Control rptGeneros.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptGeneros;
 
         /// <summary>
         /// Control rptCategorias.
