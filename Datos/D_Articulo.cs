@@ -294,8 +294,8 @@ namespace Datos
                     CommandType = CommandType.StoredProcedure
                 };
 
-                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
                 cmd.Parameters.AddWithValue("@IdSubCategoria", idSubCategoria);
+                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
 
                 AbrirConexion();
 
@@ -306,14 +306,12 @@ namespace Datos
                         E_Articulo Articulo = new E_Articulo
                         {
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"]),
-                            IdCategoria = Convert.ToInt32(reader["IdCategoria"]),
-                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
-                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
+                            CodigoArticulo = reader["CodigoArticulo"]?.ToString() ?? string.Empty,
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
-                            Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
-                            IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
+                            PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty,
+                            SubCategoria = reader["SubCategoria"]?.ToString() ?? string.Empty,
                             Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
                         };
 
@@ -325,6 +323,8 @@ namespace Datos
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("ERROR LISTAR POR SUBCATEGORIA (DATOS)");
+
                 throw new Exception("Error al listar artículos por subcategoría: " + ex.Message, ex);
             }
             finally
@@ -509,3 +509,4 @@ namespace Datos
         }
     }
 }
+               
