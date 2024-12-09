@@ -502,7 +502,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Facturas\Factura.pdf" />
-    <None Include="appsettings.config" />
+    <Content Include="appsettings.config" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\mpBase.Master" />
     <Content Include="PaginasMaestras\mpConLogueo.master" />
@@ -516,6 +516,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Recursos\DLL\" />
+    <Folder Include="Recursos\Imagenes\Articulos\" />
     <Folder Include="Recursos\JavaScript\" />
   </ItemGroup>
   <ItemGroup>
