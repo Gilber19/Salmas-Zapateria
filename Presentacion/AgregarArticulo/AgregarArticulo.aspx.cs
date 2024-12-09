@@ -14,7 +14,7 @@ namespace Presentacion.AgregarArticulo
         private N_SubCategoria N_SubCategorias = new N_SubCategoria();
 
         private E_Articulo _articulo
-        {
+        {   
             get { return Session["ArticuloTemporal"] as E_Articulo; }
             set { Session["ArticuloTemporal"] = value; }
         }
