@@ -86,7 +86,7 @@ namespace Datos
                             IdArticulo = Convert.ToInt32(reader["IdArticulo"].ToString()),
                             Imagenes = reader["Imagenes"].ToString()
                         };
-
+                        venta.Imagenes = "/Recursos/Imagenes/Articulos/" + venta.Imagenes;
                         LstFacturas.Add(venta);
                         //System.Diagnostics.Debug.WriteLine("(DATOS): " + venta.SerieComprobante);
                     }
