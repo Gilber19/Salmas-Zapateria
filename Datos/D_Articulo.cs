@@ -238,8 +238,8 @@ namespace Datos
                     CommandType = CommandType.StoredProcedure
                 };
 
-                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
                 cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
+                cmd.Parameters.AddWithValue("@IdGenero", idGenero);
 
                 AbrirConexion();
 
@@ -255,8 +255,8 @@ namespace Datos
                             DescripcionArticulo = reader["DescripcionArticulo"]?.ToString() ?? string.Empty,
                             PrecioVenta = reader["PrecioVenta"] == DBNull.Value ? 0.0 : Convert.ToDouble(reader["PrecioVenta"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty,
-                            Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                             NombreCategoria = reader["NombreCategoria"]?.ToString() ?? string.Empty,
+                            Genero = reader["IdGenero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdGenero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
