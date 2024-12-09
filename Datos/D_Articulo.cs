@@ -211,12 +211,15 @@ namespace Datos
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
 
+
                         LstArticulos.Add(Articulo);
                     }
                 }
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("ERROR LISTAR POR GENERO (DATOS)");
+
 
                 throw new Exception("Error al listar artículos por categoría: " + ex.Message, ex);
             }
