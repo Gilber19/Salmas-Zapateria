@@ -39,6 +39,7 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                    cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
@@ -75,6 +76,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@Estado", false); // Se inserta activo por defecto.
                 cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
                 cmd.Parameters.AddWithValue("@IdImagen", 0);
+                cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -113,6 +115,7 @@ namespace Datos
                 cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                 cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                 cmd.Parameters.AddWithValue("@Estado", articulo.Estado); // Se inserta activo por defecto
+                cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
 
                 AbrirConexion();
                 cmd.ExecuteNonQuery();
@@ -155,6 +158,7 @@ namespace Datos
                             Estado = reader["Estado"] == DBNull.Value ? false : Convert.ToBoolean(reader["Estado"]),
                             IdImagen = reader["IdImagen"] == DBNull.Value ? 0 : Convert.ToInt32(reader["IdImagen"]),
                             Imagenes = reader["Imagen"]?.ToString() ?? string.Empty, //!ARREGLAR EN EL SP EN EL LSTARTICULOS
+                            Genero = reader["Genero"] == DBNull.Value ? 0 : Convert.ToInt32(reader["Genero"]),
                         };
 
                         Articulo.Imagenes = "/Recursos/Imagenes/" + Articulo.Imagenes;
@@ -204,6 +208,7 @@ namespace Datos
                             IdImagen = Convert.ToInt32(reader["IdImagen"]),
                             Imagenes = reader["Imagenes"].ToString(),
                             Stock = reader["Tallas_Stock"].ToString(), // Cambiado para coincidir con el nombre del SP
+
                         };
 
                     }

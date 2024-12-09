@@ -248,6 +248,9 @@ namespace Presentacion.Articulos
         #region Botones IBM
         protected void btnInsertar_Click(object sender, EventArgs e)
         {
+            // Genero Hombre = 1, Mujer = 2
+            // Categoria Accesorios = 1, Ropa = 2, Zapatos = 3
+            // Subcategorias Camisas = 1 , Polos = 2, Camisetas = 3, Pantalones = 4, Sueters = 5, Sudaderas = 6, Chammaras = 7, VerTodo = 8
             E_Articulo EC = ControlesWebForm_ObjetoEntidad();
 
             string[] Msg = NA.InsertarArticulo(EC).Split(':');
