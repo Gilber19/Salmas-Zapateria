@@ -8,7 +8,7 @@ namespace Negocios
 {
     public class N_Articulo
     {
-        D_Articulo DC = new D_Articulo();
+        D_Articulo DA = new D_Articulo();
 
         private readonly D_Articulo datosArticulo = new D_Articulo();
 
@@ -29,16 +29,16 @@ namespace Negocios
 
             // Validación del ID
             if (idArticulo <= 0)
-                Mensaje = "Error: El ID de la categoría debe ser mayor que cero.";
+                Mensaje = "Error: El ID del artículo debe ser mayor que cero.";
 
             if (Mensaje == string.Empty) //Validaciones correctas
             {
                 try
                 {
-                    if (DC.BorrarArticulo(idArticulo)) // Llamada a la capa de datos para borrar los datos.
-                        Mensaje = "Exito: La categoría fue borrada correctamente.";
+                    if (DA.BorrarArticulo(idArticulo)) // Llamada a la capa de datos para borrar los datos.
+                        Mensaje = "Exito: El artículo fue borrado correctamente.";
                     else
-                        Mensaje = "Error: La categoría no pudo ser borrada.";
+                        Mensaje = "Error: El artículo no pudo ser borrado.";
                 }
                 catch (Exception ex)
                 {
@@ -68,7 +68,7 @@ namespace Negocios
             {
                 try
                 {
-                    if (DC.ModificarArticulo(Articulo)) // Llamada a la capa de datos para insertar los datos.
+                    if (DA.ModificarArticulo(Articulo)) // Llamada a la capa de datos para insertar los datos.
                         Mensaje = "Exito: La categoría fue modificada correctamente.";
                     else
                         Mensaje = "Error: La categoría no pudo ser modificada.";
@@ -85,7 +85,7 @@ namespace Negocios
         {
             try
             {
-                return DC.ListarArticulos();
+                return DA.ListarArticulos();
             }
             catch (Exception ex)
             {
@@ -103,7 +103,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.ListarArticulosPorGenero(genero);
+                    return DA.ListarArticulosPorGenero(genero);
                 }
                 catch (Exception)
                 {
@@ -121,7 +121,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.ListarPorCategoria(genero, idCategoria);
+                    return DA.ListarPorCategoria(genero, idCategoria);
                 }
                 catch (Exception)
                 {
@@ -139,7 +139,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.ListarPorSubCategoria(genero, idSubCategoria);
+                    return DA.ListarPorSubCategoria(genero, idSubCategoria);
                 }
                 catch (Exception)
                 {
@@ -157,7 +157,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.BuscarArticuloPorID(idArticulo);
+                    return DA.BuscarArticuloPorID(idArticulo);
                 }
                 catch (Exception)
                 {
@@ -173,7 +173,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.BuscarArticuloPorCodigo(codigoArticulo);
+                    return DA.BuscarArticuloPorCodigo(codigoArticulo);
                 }
                 catch (Exception)
                 {
@@ -191,7 +191,7 @@ namespace Negocios
             {
                 try
                 {
-                    return DC.BuscarArticuloPorCriterio(criterio);
+                    return DA.BuscarArticuloPorCriterio(criterio);
                 }
                 catch (Exception)
                 {

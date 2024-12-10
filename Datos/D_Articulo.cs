@@ -57,26 +57,14 @@ namespace Datos
             E_Articulo articulo = new E_Articulo();
             try
             {
-                SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion) {
+                    CommandType = CommandType.StoredProcedure
+                };
 
                 // Parámetros del procedimiento almacenado
                 cmd.Parameters.AddWithValue("@Accion", "BORRAR");
                 cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
-                cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
-                cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
-                cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
-                cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
-                cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
-                cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
-                cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
-                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
-                cmd.Parameters.AddWithValue("@Estado", false); // Se inserta activo por defecto.
-                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
-                cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -84,7 +72,7 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al borrar la Articulo: ", ex.Message);
+                Console.WriteLine("Error al borrar el Articulo: ", ex.Message);
                 return false;
             }
             finally
@@ -92,6 +80,7 @@ namespace Datos
                 CerrarConexion();
             }
         }
+
         public bool ModificarArticulo(E_Articulo articulo)
         {
             try

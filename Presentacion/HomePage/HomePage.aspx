@@ -102,22 +102,22 @@
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
                                             <asp:LinkButton 
-                                                ID="lnkEliminar" 
-                                                runat="server" 
-                                                CssClass="dropdown-item"
-                                                CommandName="Eliminar" 
-                                                CommandArgument='<%# Eval("IdArticulo") %>'>
-                                                Eliminar
-                                            </asp:LinkButton>
-                                        </li>
-                                        <li>
-                                            <asp:LinkButton 
                                                 ID="lnkModificar" 
                                                 runat="server"
                                                 CssClass="dropdown-item" 
                                                 CommandName="Modificar" 
                                                 CommandArgument='<%# Eval("IdArticulo") %>'>
                                                 Modificar
+                                            </asp:LinkButton>
+                                        </li>
+                                        <li>
+                                            <asp:LinkButton 
+                                                ID="lnkEliminar" 
+                                                runat="server" 
+                                                CssClass="dropdown-item"
+                                                CommandName="Eliminar" 
+                                                CommandArgument='<%# Eval("IdArticulo") %>'>
+                                                Eliminar
                                             </asp:LinkButton>
                                         </li>
                                     </ul>
