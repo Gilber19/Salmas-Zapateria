@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using Entidades;
 using System.Configuration;
-using System.Net;
+using System.Linq;
 
 namespace Datos
 {
-    public class D_Usuarios
+    public class D_Usuarios : D_ConexionBD
     {
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
 
@@ -36,6 +35,7 @@ namespace Datos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine("ERROR ValidarUsuario (DATOS) " + ex.Message);
                     //throw new Exception("Error al validar el usuario");
                     return false;
                 }
@@ -74,7 +74,49 @@ namespace Datos
             }
         }
 
+        public List<E_Usuario> RetornarId(string email)
+        {
+            List<E_Usuario> LstId = new List<E_Usuario>();
 
+            try
+            {
+                SqlCommand cmd = new SqlCommand("ObtenerRolYNombrePorEmail", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                AbrirConexion();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_Usuario Id = new E_Usuario
+                        {
+                            IdRol = Convert.ToInt32(reader["IdRol"].ToString()),
+                            NombreUsuario = reader["Nombre"].ToString()
+                        };
+
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes);
+
+                        LstId.Add(Id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR RetornarId (DATOS)");
+
+                throw new Exception("Error al listar artículos: " + ex.Message, ex);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstId;
+        }
     }
 }
 
