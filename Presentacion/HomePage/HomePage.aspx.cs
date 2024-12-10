@@ -72,18 +72,18 @@ namespace Presentacion.HomePage
 
             // ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION
             // ASI SE CREAN VENTAS
-            
+            /*
             N_Ventas nventas = new N_Ventas();
             List<E_DetalleVentas> detalles = new List<E_DetalleVentas>()
             {
-                new E_DetalleVentas { IdArticulo = 1, IdTalla = 2, Cantidad = 3, Descuento = 0 },
-                new E_DetalleVentas { IdArticulo = 3, IdTalla = 1, Cantidad = 1, Descuento = 0 }
+                new E_DetalleVentas { IdArticulo = 1, IdTalla = 3, Cantidad = 1, Descuento = 0 },
+                new E_DetalleVentas { IdArticulo = 3, IdTalla = 5, Cantidad = 1, Descuento = 0 }
             };
 
             // Crear el objeto E_Venta y asignar los valores correspondientes
             E_Venta venta = new E_Venta
             {
-                IdUsuario = 1,               
+                IdUsuario = 2,               
                 IdTipoVenta = "3",             
                 TipoComprobante = "Factura", 
                 SerieComprobante = "A001",   
