@@ -56,7 +56,7 @@ namespace Negocios
                 return false;
             }
         }
-    
+
         public List<E_Apartados> ObtenerApartadosPorVencer()
         {
             try
@@ -72,5 +72,17 @@ namespace Negocios
             }
         }
 
+        public List<E_Apartados> HistorialClientes(int idUsuario)
+        {
+            try
+            {
+                return DA.HistorialClientes(idUsuario);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ERROR HistorialClientes (NEGOCIOS)");
+                Console.WriteLine("Error al buscar por criterio: ", ex.Message);
+                return null;
+            }
     }
 }

@@ -207,6 +207,48 @@ namespace Datos
             return LstApartado;
         }
 
+        public List<E_Apartados> HistorialClientes(int id)
+        {
+            List<E_Apartados> LstApartado = new List<E_Apartados>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("HistorialComprasCliente", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@IdPersona", id);
+                AbrirConexion();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_Apartados Apartado = new E_Apartados
+                        {
+                            Nombre = reader["Nombre"]?.ToString() ?? string.Empty,
+                            TotalCosto = Convert.ToDouble(reader["TotalCosto"]),
+                            LimiteCredito = reader["LimiteCredito"]?.ToString() ?? string.Empty,
+                            NombreArticulo = reader["NombreArticulo"]?.ToString() ?? string.Empty,
+                            ImagenesArticulo = reader["ImagenesArticulo"]?.ToString() ?? string.Empty,
+                            FechaApartado = Convert.ToDateTime(reader["FechaApartado"]),
+                        };
+
+                        LstApartado.Add(Apartado);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error ObtenerApartadosPorVencer (DATOS) " + ex.Message, ex);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstApartado;
+        }
 
     }
 }
