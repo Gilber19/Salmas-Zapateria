@@ -2,6 +2,7 @@
 using Negocios;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,6 +17,7 @@ namespace Presentacion.AgregarVenta
             if (!IsPostBack)
             {
                 ListarVentas();
+
             }
         }
         private void ListarVentas()
@@ -51,5 +53,21 @@ namespace Presentacion.AgregarVenta
             lblMensaje.Text = mensaje;
             lblMensaje.Visible = true;
         }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            // Capturar el valor del TextBox
+            string codigo = txtCodigo.Text;
+
+            // Ahora puedes usar la variable "codigo" como desees
+            // Ejemplo: Mostrar el valor en consola o guardarlo en la base de datos
+            Console.WriteLine("Código ingresado: " + codigo);
+        }
+
     }
+
 }
+
+
+
+

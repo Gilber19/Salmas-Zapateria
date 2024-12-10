@@ -138,8 +138,9 @@
 
                 <div class="form-group">
                     <label for="codigo">Código del artículo *</label>
-                    <input type="text" id="codigo" name="codigo" placeholder="Código">
+                    <asp:TextBox ID="txtCodigo" runat="server" CssClass="form-control" placeholder="Código"></asp:TextBox>
                 </div>
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar Código" OnClick="btnGuardar_Click" CssClass="btn btn-primary" />
 
                 <div class="form-group">
                     <label for="talla">Talla *</label>
