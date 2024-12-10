@@ -41,5 +41,18 @@ namespace Negocios
             }
         }
 
+        public List<E_Personas> ListarClientesPorNombre(string Nombre)
+        {
+            try
+            {
+                return DP.ListarClientesPorNombre(Nombre);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error en N_Personas.ListarClientesPorNombre: " + ex.Message);
+                throw new Exception("Error al listar los clientes por nombre: " + ex.Message, ex);
+            }
+        }
+
     }
 }
