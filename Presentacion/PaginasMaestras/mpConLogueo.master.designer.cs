@@ -15,6 +15,15 @@ namespace Presentacion.PaginasMaestras
     {
 
         /// <summary>
+        /// Control hlBag.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlBag;
+
+        /// <summary>
         /// Control lblTipoUsuario.
         /// </summary>
         /// <remarks>
@@ -76,5 +85,14 @@ namespace Presentacion.PaginasMaestras
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptCategorias;
+
+        /// <summary>
+        /// Control cphConLogueo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphConLogueo;
     }
 }
