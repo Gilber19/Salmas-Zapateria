@@ -60,12 +60,12 @@ namespace Presentacion.DetalleClientes
         protected global::System.Web.UI.WebControls.Label LblMensaje;
 
         /// <summary>
-        /// LiteralApartados control.
+        /// RepeaterApartados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal LiteralApartados;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterApartados;
     }
 }

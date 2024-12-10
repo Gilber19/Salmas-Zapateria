@@ -104,7 +104,7 @@ namespace Datos
 
             try
             {
-                SqlCommand cmd = new SqlCommand("BuscarClientesPorNombre", conexion)
+                SqlCommand cmd = new SqlCommand("BuscarClientePorNombre", conexion)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -140,4 +140,3 @@ namespace Datos
         }
     }
 }
-

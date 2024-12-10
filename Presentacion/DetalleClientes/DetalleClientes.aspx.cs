@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Web.UI.WebControls;
 using Entidades;
 using Negocios;
 
@@ -8,13 +10,12 @@ namespace Presentacion.DetalleClientes
     public partial class DetalleClientes : System.Web.UI.Page
     {
         private readonly N_Personas negocioPersonas = new N_Personas();
-        private readonly N_Apartados negocioApartados = new N_Apartados(); // Capa de negocio para apartados
+        private readonly N_Apartados negocioApartados = new N_Apartados();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Obtener el idPersona desde la query string
                 string idPersonaQuery = Request.QueryString["idPersona"];
 
                 if (!string.IsNullOrEmpty(idPersonaQuery) && int.TryParse(idPersonaQuery, out int idPersona))
@@ -24,7 +25,7 @@ namespace Presentacion.DetalleClientes
                 }
                 else
                 {
-                    Response.Redirect("Clientes.aspx"); // Redirigir si no hay un id válido
+                    Response.Redirect("Clientes.aspx");
                 }
             }
         }
@@ -33,7 +34,6 @@ namespace Presentacion.DetalleClientes
         {
             try
             {
-                // Obtener los detalles del cliente desde la capa de negocios
                 List<E_Personas> clientes = negocioPersonas.ObtenerDetalleCliente(idPersona);
 
                 if (clientes != null && clientes.Count > 0)
@@ -65,24 +65,8 @@ namespace Presentacion.DetalleClientes
 
                 if (apartados != null && apartados.Count > 0)
                 {
-                    foreach (var apartado in apartados)
-                    {
-                        // Crear dinámicamente los controles HTML para cada apartado
-                        string apartadoHtml = $@"
-                            <div class='apartado-item'>
-                                <img src='{apartado.ImagenesArticulo}' alt='Imagen Artículo'>
-                                <div class='apartado-details'>
-                                    <p>{apartado.NombresArticulos}</p>
-                                    <p>Fecha Apartado: {apartado.FechaApartado}</p>
-                                    <p>ID: {apartado.IdApartado}</p>
-                                    <p>Fecha de vencimiento: {apartado.FechaVencimiento: dd/MM/yyyy}</p>
-                                    <button class='btn btn-detalle'>Ver detalles</button>
-                                </div>
-                            </div>";
-
-                        // Agregar el HTML al contenedor dinámicamente
-                        LiteralApartados.Text += apartadoHtml;
-                    }
+                    RepeaterApartados.DataSource = apartados;
+                    RepeaterApartados.DataBind();
                 }
                 else
                 {
@@ -95,11 +79,40 @@ namespace Presentacion.DetalleClientes
             }
         }
 
+        protected void BtnAbonar_Click(object sender, EventArgs e)
+        {
+            var button = (System.Web.UI.WebControls.Button)sender;
+            int idApartado = int.Parse(button.CommandArgument);
+
+            var repeaterItem = (RepeaterItem)button.NamingContainer;
+            var textBox = (System.Web.UI.WebControls.TextBox)repeaterItem.FindControl("txtAbono");
+
+            if (textBox != null && int.TryParse(textBox.Text, out int cantidadAbono))
+            {
+                Debug.WriteLine($"Intentando abonar {cantidadAbono} al apartado con ID {idApartado}");
+
+                if (negocioApartados.AbonarApartado(idApartado, cantidadAbono))
+                {
+                    MostrarMensaje("Abono realizado con éxito.");
+                    CargarApartadosCliente(int.Parse(Request.QueryString["idPersona"]));
+                }
+                else
+                {
+                    MostrarMensaje("Error al realizar el abono.");
+                }
+            }
+            else
+            {
+                MostrarMensaje("Ingrese una cantidad válida para abonar.");
+            }
+        }
+
         private void MostrarMensaje(string mensaje)
         {
-            // Usa un control Label en la página para mostrar mensajes al usuario
             LblMensaje.Text = mensaje;
             LblMensaje.Visible = true;
         }
+
+        protected Literal LiteralApartados; // Add this line to declare the LiteralApartados control
     }
 }

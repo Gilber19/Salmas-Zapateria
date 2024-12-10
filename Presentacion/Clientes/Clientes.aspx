@@ -5,23 +5,28 @@
     <div class="container mt-4">
         <div class="row align-items-center mb-3">
             <div class="col-md-4">
-                <div class="search-bar-container">
-                    <asp:TextBox ID="TbCriterioBusqueda" runat="server" CssClass="form-control search-bar" placeholder="Buscar cliente..." ToolTip="Buscar"></asp:TextBox>
-                    <i class="bi bi-search search-bar-icon"></i>
-                </div>
+                <asp:TextBox 
+                    ID="TbCriterioBusqueda" 
+                    runat="server" 
+                    CssClass="form-control search-bar" 
+                    placeholder="Buscar cliente..." 
+                    AutoPostBack="true" 
+                    OnTextChanged="TbCriterioBusqueda_TextChanged">
+                </asp:TextBox>
             </div>
             <div class="col-md-4">
                 <h4>CLIENTES</h4>
             </div>
         </div>
+
         <div class="client-list">
             <asp:Repeater ID="RepeaterClientes" runat="server">
-                <itemTemplate>
+                <ItemTemplate>
                     <div class="client-item">
                         <span><%# Eval("Nombre") %></span>
                         <a href='/DetalleClientes/DetalleClientes.aspx?idPersona=<%# Eval("IdPersona") %>' class="btn btn-primary">Ver detalles</a>
                     </div>
-                </itemTemplate>
+                </ItemTemplate>
             </asp:Repeater>
         </div>
     </div>
