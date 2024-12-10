@@ -84,5 +84,6 @@ namespace Negocios
                 Console.WriteLine("Error al buscar por criterio: ", ex.Message);
                 return null;
             }
+        }
     }
 }

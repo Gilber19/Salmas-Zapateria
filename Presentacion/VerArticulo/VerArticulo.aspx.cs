@@ -56,17 +56,6 @@ namespace Presentacion.VerArticulo
             string tallaSeleccionada = ddlTalla.SelectedValue;
             int cantidadSeleccionada = int.Parse(ddlCantidad.SelectedValue);
 
-            // Obtener stock disponible para la talla seleccionada
-            int stockDisponible = ObtenerStockDisponible(tallaSeleccionada);
-
-            if (cantidadSeleccionada > stockDisponible)
-            {
-                lblMensaje.Text = $"La cantidad seleccionada excede el stock disponible ({stockDisponible}) para la talla {tallaSeleccionada}.";
-                lblMensaje.CssClass = "alert alert-danger";
-                lblMensaje.Visible = true;
-                return;
-            }
-
             // Agregar el artículo a los apartados en sesión
             List<E_ArticuloApartado> apartados = Session["Apartados"] as List<E_ArticuloApartado> ?? new List<E_ArticuloApartado>();
 
@@ -82,33 +71,6 @@ namespace Presentacion.VerArticulo
             lblMensaje.Text = "Artículo agregado a tus apartados.";
             lblMensaje.CssClass = "alert alert-success";
             lblMensaje.Visible = true;
-        }
-        private int ObtenerStockDisponible(string talla)
-        {
-            if (articulo == null)
-                return 0;
-
-            int stockDisponible = 0;
-
-            if (!string.IsNullOrEmpty(articulo.Stock))
-            {
-                var stockItems = articulo.Stock.Split(',');
-                foreach (var stockItem in stockItems)
-                {
-                    var stockDetails = stockItem.Trim().Split(' ');
-                    if (stockDetails.Length == 2)
-                    {
-                        string tallaItem = stockDetails[0];
-                        if (int.TryParse(stockDetails[1], out int cantidadItem) && tallaItem.Equals(talla, StringComparison.OrdinalIgnoreCase))
-                        {
-                            stockDisponible = cantidadItem;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            return stockDisponible;
         }
 
         private void CargarArticulo()
@@ -152,7 +114,9 @@ namespace Presentacion.VerArticulo
                             if (stockDetails.Length == 2)
                             {
                                 string talla = stockDetails[0];
-                                ddlTalla.Items.Add(new ListItem($"{talla}", talla));
+                                string idTalla = new N_Tallas().ObtenerIdTalla(talla);
+
+                                ddlTalla.Items.Add(new ListItem($"{talla}", idTalla));
                             }
                         }
                     }

@@ -24,6 +24,7 @@ namespace Presentacion.GestionDeUsuarios
 
                 E_Usuario usuarioInfo = negocioUsuario.RetornarId(tbCorreoElectronico.Text.Trim()).FirstOrDefault();
 
+                System.Diagnostics.Debug.WriteLine(usuarioInfo.IdUsuario);
                 if (usuarioInfo != null)
                 {
                     E_SesionUsuario usuario = new E_SesionUsuario

@@ -10,6 +10,7 @@ namespace Presentacion.Apartados
     public partial class Apartados : System.Web.UI.Page
     {
         private N_Articulo negocioArticulo = new N_Articulo();
+        private N_Ventas negocioVentas = new N_Ventas();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -54,7 +55,6 @@ namespace Presentacion.Apartados
             else if (e.CommandName == "Actualizar")
             {
                 int idArticulo = Convert.ToInt32(e.CommandArgument);
-                // Encontrar el TextBox dentro del Repeater
                 TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
                 if (txtCantidad != null)
                 {
@@ -62,11 +62,6 @@ namespace Presentacion.Apartados
                     if (int.TryParse(txtCantidad.Text, out nuevaCantidad) && nuevaCantidad > 0)
                     {
                         ActualizarCantidad(idArticulo, nuevaCantidad);
-                    }
-                    else
-                    {
-                        // Opcional: Manejar cantidades inválidas
-                        // Por ejemplo, mostrar un mensaje de error
                     }
                 }
             }
@@ -107,19 +102,43 @@ namespace Presentacion.Apartados
             var apartados = Session["Apartados"] as List<E_ArticuloApartado>;
             if (apartados != null && apartados.Count > 0)
             {
-                // Implementar la lógica para guardar el apartado en la base de datos
-                // Por ejemplo:
-                // foreach(var item in apartados)
-                // {
-                //     negocioArticulo.ApartarArticulo(item);
-                // }
+                try
+                {
 
-                // Limpiar la sesión después de apartar
-                Session["Apartados"] = null;
-                BindApartados();
+                    E_SesionUsuario sesion = (E_SesionUsuario)Session["snSesionUsuario"];
+                    System.Diagnostics.Debug.WriteLine(sesion.IdUsuario);
+                    E_Venta venta = new E_Venta
+                    {
+                        IdUsuario = sesion.IdUsuario,
+                        IdTipoVenta = "3",
+                        Fecha = DateTime.Now
+                    };
 
-                // Opcional: redirigir a una página de confirmación
-                Response.Redirect("~/HomePage/HomePage.aspx");
+                    List<E_DetalleVentas> detalles = new List<E_DetalleVentas>();
+                    foreach (var item in apartados)
+                    {
+                        detalles.Add(new E_DetalleVentas
+                        {
+                            IdArticulo = item.IdArticulo,
+                            Cantidad = item.Cantidad,
+                            IdTalla = int.Parse(item.Talla)
+                        });
+                    }
+
+                    decimal montoAbonado = 1;
+
+                    int idVenta = negocioVentas.ProcesarVenta(venta, detalles, montoAbonado);
+
+                    // Limpiar la sesión después de apartar
+                    Session["Apartados"] = null;
+                    BindApartados();
+                }
+                catch (Exception ex)
+                {
+                    lblMensaje.Text = "Error al procesar el apartado: " + ex.Message;
+                    lblMensaje.CssClass = "alert alert-danger";
+                    lblMensaje.Visible = true;
+                }
             }
         }
 

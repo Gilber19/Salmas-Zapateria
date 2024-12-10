@@ -8,10 +8,18 @@
             aspect-ratio: 1 / 1;
             object-fit: cover;
             border: none;
-        }
+        } 
     </style>
 
     <div class="container mt-4">
+        <!-- Mensajes -->
+        <div id="alertSuccess" runat="server" visible="true" class="mt-4 mb-4">
+            <asp:Label
+                ID="lblMensaje"
+                runat="server"
+            />
+        </div>
+
         <div class="row">
             <!-- Parte Izquierda: Lista de Artículos -->
             <div class="col-lg-8 col-md-12">
