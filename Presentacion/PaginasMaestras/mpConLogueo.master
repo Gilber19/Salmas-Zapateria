@@ -175,7 +175,7 @@
             </div>
         </div>
 
-        <div class="social-icons">
+        <div class="social-icons" style="z-index: 1000;">
             <a href="https://www.facebook.com/salmas.zapateria" target="_blank"><i class="bi bi-facebook"></i></a>
             <a href="https://whatsapp.com" target="_blank"><i class="bi bi-whatsapp"></i></a>
         </div>

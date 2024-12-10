@@ -90,8 +90,10 @@
                             <asp:Panel
                                 ID="pnlEditButtons"
                                 runat="server"
-                                Visible='<%# GetIsEditMode() %>'
-                                CssClass="d-flex justify-content-end edit-buttons">
+                                Visible='<%# IsEditMode %>'
+                                CssClass="d-flex justify-content-end edit-buttons"
+                                Style="z-index: 100;"
+                                >
                                 
                                 <div class="dropdown">
                                     <button class="btn btn-link dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">

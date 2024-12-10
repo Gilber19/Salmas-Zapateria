@@ -29,7 +29,6 @@ namespace Presentacion.ModificarArticulo
                 {
                     CargarCategorias();
                     CargarArticulo(idArticulo);
-                    imgPreviewPrincipal.Style["display"] = "none";
                 }
                 else
                 {
@@ -92,10 +91,16 @@ namespace Presentacion.ModificarArticulo
             {
                 txtNombre.Text = _articulo.NombreArticulo;
                 txtDescripcion.Text = _articulo.DescripcionArticulo;
+                
+                // Populate and set Género
                 ddlGenero.SelectedValue = _articulo.Genero.ToString();
+                
+                // Populate Categoría and set selected value
                 ddlCategoria.SelectedValue = _articulo.IdCategoria.ToString();
                 CargarSubcategorias(_articulo.IdCategoria);
-                if (_articulo.SubCategoria != null)
+                
+                // Set Subcategoría
+                if (_articulo.SubCategoria != null && ddlSubcategoria.Items.FindByValue(_articulo.SubCategoria.ToString()) != null)
                 {
                     ddlSubcategoria.SelectedValue = _articulo.SubCategoria.ToString();
                 }

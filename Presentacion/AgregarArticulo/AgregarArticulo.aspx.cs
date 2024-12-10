@@ -125,9 +125,9 @@ namespace Presentacion.AgregarArticulo
                     }
                 }
                 System.Diagnostics.Debug.WriteLine("{TALLAS Y STOCK} "
-    + string.Join(", ", T.idtallas)
-    + " | "
-    + string.Join(", ", T.stocks));
+                    + string.Join(", ", T.idtallas)
+                    + " | "
+                    + string.Join(", ", T.stocks));
                 List<string> imagenes = new List<string>();
                 
                 if (fuImagenPrincipal.HasFile)
