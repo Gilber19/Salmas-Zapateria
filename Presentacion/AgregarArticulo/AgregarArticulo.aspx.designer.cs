@@ -150,6 +150,15 @@ namespace Presentacion.AgregarArticulo
         protected global::System.Web.UI.WebControls.FileUpload fuImagenSecundaria;
 
         /// <summary>
+        /// btnAgregarImagenes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarImagenes;
+
+        /// <summary>
         /// imgPreviewSecundaria control.
         /// </summary>
         /// <remarks>

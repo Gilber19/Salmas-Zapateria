@@ -8,11 +8,13 @@
     }
 
     .image {
-        width: 210px;
-        height: 210px;
-        object-fit: cover;
-        border: none;
-    }
+    width: 210px;
+    height: 210px;
+    object-fit: contain;
+    border: none;
+    background-color: #f8f9fa;
+}
+
 
     .card {
         font-family: 'Merriweather';

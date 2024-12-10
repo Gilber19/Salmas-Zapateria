@@ -5,8 +5,7 @@
         <div id="alertSuccess" runat="server" visible="true" class="mt-4 mb-4">
             <asp:Label
                 ID="lblMensaje"
-                runat="server"
-            />
+                runat="server" />
         </div>
 
         <div class="row">
@@ -14,13 +13,15 @@
             <div class="col-md-6 mt-5 d-flex flex-column align-items-center gap-4">
 
                 <img id="mainImage" runat="server" alt="Imagen principal"
-                    style="width: 100%; height: 400px; object-fit: cover; border: 1px solid #ddd; border-radius: 20px;" />
+                    style="width: 100%; height: 400px; object-fit: contain; border: 1px solid #ddd; border-radius: 20px;" />
+
                 <div class="d-flex gap-2 mt-3">
                     <asp:Repeater ID="rptImagenes" runat="server">
                         <ItemTemplate>
                             <img src='<%# Eval("Imagen") %>' alt="Imagen"
-                                style="width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 1px solid #ddd; border-radius: 10px;"
+                                style="width: 80px; height: 80px; object-fit: contain; cursor: pointer; border: 1px solid #ddd; border-radius: 10px;"
                                 onclick="document.getElementById('<%= mainImage.ClientID %>').src=this.src;" />
+
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
