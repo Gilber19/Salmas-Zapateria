@@ -1,12 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Datos;
 
 namespace Negocios
@@ -19,11 +14,73 @@ namespace Negocios
         {
             return DV.ListarVentas();
         }
+
         public List<E_Factura> BuscarFactura(string criterio)
         {
             return DV.BuscarFactura(criterio);
         }
+
+        public int ProcesarVenta(E_Venta venta, List<E_DetalleVentas> detalles)
+        {
+            try
+            {
+                decimal total = 0;
+                foreach (var detalle in detalles)
+                {
+                    // Obtener el precio del artículo desde la capa de datos
+                    decimal precio = DV.ObtenerPrecioArticulo(detalle.IdArticulo);
+                    detalle.PrecioVenta = precio;
+                    total += precio * detalle.Cantidad;
+                }
+
+                venta.Total = total;
+
+                int idVenta = DV.InsertarVenta(venta);
+
+                // Iterar sobre los detalles para insertarlos con el ID de la venta
+                foreach (var detalle in detalles)
+                {
+                    detalle.IdVenta = idVenta;
+                    DV.InsertarDetalleVenta(detalle);
+                }
+
+                return idVenta; // Retornar el ID de la venta creada
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al procesar la venta: " + ex.Message);
+            }
+        }
+
+        // Método para obtener el precio de un artículo (passthrough a la capa de datos)
+        public decimal ObtenerPrecioArticulo(int idArticulo)
+        {
+            try
+            {
+                return DV.ObtenerPrecioArticulo(idArticulo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el precio del artículo: " + ex.Message);
+            }
+        }
+
+        //Posible implementacion
+        //public List<E_DetalleVenta> ListarDetallesVenta(int idVenta)
+        //{
+        //    try
+        //    {
+        //        return DV.ListarDetallesVenta(idVenta);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error al listar los detalles de la venta: " + ex.Message);
+        //    }
+        //}
     }
+
+
+
 
     public class NumeroATexto
     {

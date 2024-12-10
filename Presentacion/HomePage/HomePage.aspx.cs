@@ -68,7 +68,45 @@ namespace Presentacion.HomePage
             //E_Articulo e = new N_Articulo().BuscarArticuloPorID(1); //DEBUG ONLY
             //List<E_Articulo> f = new N_Articulo().ListarArticulos(); //DEBUG ONLY
             //List<E_Apartados> g = new N_Apartados().ListarDetalleApartado(2); //DEBUG ONLY
-            List<E_Apartados> h = new N_Apartados().ObtenerApartadosPorVencer(); //DEBUG ONLY
+            //List<E_Apartados> h = new N_Apartados().ObtenerApartadosPorVencer(); //DEBUG ONLY
+
+            // ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION
+            // ASI SE CREAN VENTAS
+
+            /*N_Ventas nventas = new N_Ventas();
+            // Crear los detalles de la venta
+            List<E_DetalleVentas> detalles = new List<E_DetalleVentas>()
+            {
+                new E_DetalleVentas { IdArticulo = 1, IdTalla = 2, Cantidad = 3, Descuento = 0 },
+                new E_DetalleVentas { IdArticulo = 3, IdTalla = 1, Cantidad = 1, Descuento = 0 }
+            };
+
+            // Crear el objeto E_Venta y asignar los valores correspondientes
+            E_Venta venta = new E_Venta
+            {
+                IdUsuario = 2,
+                IdTipoVenta = "2",
+                TipoComprobante = "Factura",
+                SerieComprobante = "A23S",
+                NumeroComprobante = "84845",
+                FechaHora = DateTime.Now,
+                Impuesto = 8.0,
+                Estado = true
+            };
+
+            try
+            {
+                // Pasar el objeto venta y la lista de detalles al ProcesarVenta
+                int idVenta = nventas.ProcesarVenta(venta, detalles);
+                System.Diagnostics.Debug.WriteLine("Venta procesada con exito. ID de venta: " + idVenta);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR ProcesarVenta (PRESENTACION)");
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }*/
+
+
 
             bool hasGenero = int.TryParse(Request.QueryString["genero"], out int genero);
             bool hasCategoria = int.TryParse(Request.QueryString["categoria"], out int categoria);

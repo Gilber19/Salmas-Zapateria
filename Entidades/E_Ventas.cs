@@ -13,6 +13,19 @@ namespace Entidades
         private double descuento;
         private int cantidad;
         private double importe;
+        public int IdVenta { get; set; }
+        public int IdUsuario { get; set; }
+        public string TipoVenta { get; set; }
+        public decimal Total { get; set; }
+        public DateTime Fecha{ get; set; }
+        public string IdTipoVenta { get; set; }
+        public string TipoComprobante { get; set; }
+        public string SerieComprobante { get; set; }
+        public string NumeroComprobante { get; set; }
+        public DateTime FechaHora { get; set; }
+        public double Impuesto{ get; set; }
+        public bool Estado { get; set; }
+
         #endregion
 
         #region Constructores
@@ -25,8 +38,42 @@ namespace Entidades
             cantidad = 0;
             importe = 0;
             descuento = 0;
+            IdVenta = 0;
+            IdUsuario = 0;
+            TipoVenta = string.Empty;
+            Total = 0;
+            Fecha = DateTime.Today;
+            IdTipoVenta = string.Empty;
+            TipoComprobante = string.Empty;
+            SerieComprobante = string.Empty;
+            NumeroComprobante = string.Empty;
+            FechaHora = DateTime.Today;
+            Impuesto = 0;
+            Estado = true;
+
         }
-        public E_Venta(int idArticulo, string codigoArticulo, string nombreArticulo, double precioVenta, int cantidad, double importe, double descuento)
+
+        public E_Venta(
+            int idArticulo,
+            string codigoArticulo,
+            string nombreArticulo,
+            double precioVenta,
+            int cantidad,
+            double importe,
+            double descuento,
+            int idVenta,
+            int idUsuario,
+            string tipoVenta,
+            decimal total,
+            DateTime fecha,
+            string idTipoVenta,
+            string tipoComprobante,
+            string serieComprobante,
+            string numeroComprobante,
+            DateTime fechaHora,
+            double impuesto,
+            bool estado
+        )
         {
             this.idArticulo = idArticulo;
             this.codigoArticulo = codigoArticulo;
@@ -35,7 +82,20 @@ namespace Entidades
             this.cantidad = cantidad;
             this.importe = importe;
             this.descuento = descuento;
+            this.IdVenta = idVenta;
+            this.IdUsuario = idUsuario;
+            this.TipoVenta = tipoVenta;
+            this.Total = total;
+            this.Fecha = fecha;
+            this.IdTipoVenta = idTipoVenta;
+            this.TipoComprobante = tipoComprobante;
+            this.SerieComprobante = serieComprobante;
+            this.NumeroComprobante = numeroComprobante;
+            this.FechaHora = fechaHora;
+            this.Impuesto = impuesto;
+            this.Estado = estado;
         }
+
         #endregion
 
         #region Encapsulamiento

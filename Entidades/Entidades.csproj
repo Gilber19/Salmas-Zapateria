@@ -48,6 +48,7 @@
     <Compile Include="E_Clientes.cs" />
     <Compile Include="E_Compras.cs" />
     <Compile Include="E_DetalleApartado.cs" />
+    <Compile Include="E_DetalleVentas.cs" />
     <Compile Include="E_Imagenes.cs" />
     <Compile Include="E_Pagos.cs" />
     <Compile Include="E_Personas.cs" />
