@@ -42,5 +42,20 @@ namespace Negocios
             }
         }
 
+        public bool AbonarApartado(int idApartado, int abono)
+        {
+            try
+            {
+                return DA.AbonarApartado(idApartado, abono);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ERROR AbonarApartado (NEGOCIOS)");
+
+                Console.WriteLine("Error al buscar por criterio: ", ex.Message);
+                return false;
+
+            }
+        }
     }
 }
