@@ -148,14 +148,13 @@ namespace Presentacion.AgregarArticulo
                     NombreArticulo = txtNombre.Text.Trim(),
                     DescripcionArticulo = txtDescripcion.Text.Trim(),
                     IdCategoria = int.Parse(ddlCategoria.SelectedValue),
-                    SubCategoria = ddlSubcategoria.SelectedValue,
+                    SubCategoria = ddlSubcategoria.Text,
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
                     Talla = string.Join(",", T.idtallas),
                     Stock = string.Join(",", T.stocks),
                     Imagenes = string.Join(",", imagenes),
-
                 };
 
                 _articulo = articulo;

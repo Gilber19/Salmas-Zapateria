@@ -26,7 +26,8 @@ namespace Datos
 
                     // Parámetros del procedimiento almacenado
                     cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
-                    cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo);
+                    // cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo);
+                    // cmd.Parameters.AddWithValue("@IdSubCategoria", 0);
                     cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
                     cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
                     cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
@@ -47,6 +48,7 @@ namespace Datos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine("ERROR INSERTAR ARTICULO (DATOS)" + ex.Message);
                     throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
                 }
             }
