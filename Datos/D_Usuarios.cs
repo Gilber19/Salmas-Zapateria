@@ -68,6 +68,7 @@ namespace Datos
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine("ERROR NuevoRegistroUsuario (DATOS)");
                     throw new Exception("Error al registrar el usuario", ex);
                 }
             }
