@@ -3,11 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
    
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f8f9fa;
-            }
-
             .row-header {
                 display: flex;
                 justify-content: space-between;
@@ -31,9 +26,9 @@
                 color: white;
             }
 
-                .btn-back:hover {
-                    background-color: #b88204;
-                }
+            .btn-back:hover {
+                background-color: #b88204;
+            }
 
             .apartados-container {
                 margin-top: 20px;
@@ -56,14 +51,14 @@
                 padding: 10px;
             }
 
-                .apartado-item img {
-                    border-radius: 10px;
-                    max-width: 270px;
-                    max-height: 270px;
-                    object-fit: cover;
-                    display: block;
-                    margin: 0 auto;
-                }
+            .apartado-item img {
+                border-radius: 10px;
+                max-width: 270px;
+                max-height: 270px;
+                object-fit: cover;
+                display: block;
+                margin: 0 auto;
+            }
 
             .apartado-details {
                 flex-grow: 1;
@@ -71,10 +66,10 @@
                 text-align: left;
             }
 
-                .apartado-details h5 {
-                    margin: 0;
-                    font-size: 16px;
-                }
+            .apartado-details h5 {
+                margin: 0;
+                font-size: 16px;
+            }
 
             .btn-detalle {
                 background-color: #ECA400;
@@ -82,9 +77,9 @@
                 color: white;
             }
 
-                .btn-detalle:hover {
-                    background-color: #b88204;
-                }
+            .btn-detalle:hover {
+                background-color: #b88204;
+            }
 
             .error-message {
                 color: red;
@@ -95,14 +90,7 @@
                 max-width: 20px;
             }
         </style>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalle Cliente</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    </head>
 
-    <body>
         <div class="container mt-4">
             <div class="row mt-3">
                 <!-- Columna izquierda -->
@@ -147,13 +135,9 @@
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
 </asp:Content>
