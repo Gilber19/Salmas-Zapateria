@@ -7,47 +7,47 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Presentacion.AgregarVenta
+namespace Presentacion.Apartados
 {
 
 
-    public partial class AgregarVenta
+    public partial class Apartados
     {
 
         /// <summary>
-        /// Control lblMensaje.
+        /// Control formApartados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensaje;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formApartados;
 
         /// <summary>
-        /// Control RepeaterHistorial.
+        /// Control rptApartados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterHistorial;
+        protected global::System.Web.UI.WebControls.Repeater rptApartados;
 
         /// <summary>
-        /// Control txtCodigo.
+        /// Control litTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigo;
+        protected global::System.Web.UI.WebControls.Literal litTotal;
 
         /// <summary>
-        /// Control btnGuardar.
+        /// Control btnApartar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnApartar;
     }
 }

@@ -28,6 +28,16 @@ namespace Presentacion.PaginasMaestras
                 lbHistorialVentas.Visible = esAdministrador;
                 lbExportarInventario.Visible = esAdministrador;
                 lbClientes.Visible = esAdministrador;
+
+                // Mostrar el ícono de bolsa si el usuario es Cliente
+                if (usuario.NombreRolLogueado == "Cliente")
+                {
+                    hlBag.Visible = true;
+                }
+                else
+                {
+                    hlBag.Visible = false;
+                }
             }
             else
             {

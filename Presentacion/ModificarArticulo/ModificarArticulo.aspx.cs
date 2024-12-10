@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 using Entidades;
 using Negocios;
+using MigraDoc.DocumentObjectModel.Tables;
+using static PdfSharp.Capabilities.Features;
 
 namespace Presentacion.ModificarArticulo
 {
@@ -103,16 +106,16 @@ namespace Presentacion.ModificarArticulo
                 // Populate Categoría and set selected value
                 ddlCategoria.SelectedValue = _articulo.IdCategoria.ToString();
                 CargarSubcategorias(_articulo.IdCategoria);
-                
-                // Set Subcategoría
-                if (_articulo.SubCategoria != null && ddlSubcategoria.Items.FindByValue(_articulo.SubCategoria.ToString()) != null)
-                {
-                    ddlSubcategoria.SelectedValue = _articulo.SubCategoria.ToString();
-                }
-                else
-                {
-                    ddlSubcategoria.SelectedIndex = 0;
-                }
+
+                //// Set Subcategoría
+                //if (_articulo.SubCategoria != null && ddlSubcategoria.Items.FindByValue(_articulo.SubCategoria.ToString()) != null)
+                //{
+                //    ddlSubcategoria.SelectedValue = _articulo.SubCategoria.ToString();
+                //}
+                //else
+                //{
+                //    ddlSubcategoria.SelectedIndex = 0;
+                //}
 
                 txtCodigoArticulo.Text = _articulo.CodigoArticulo;
                 txtPrecio.Text = _articulo.PrecioVenta.ToString("N2");
@@ -192,19 +195,59 @@ namespace Presentacion.ModificarArticulo
                 var stockPorTalla = new List<E_Tallas>();
                 foreach (ListItem item in ddlTallas.Items)
                 {
-                    string[] partes = item.Text.Split(' ');
-                    if (partes.Length >= 2)
+                    string texto = item.Text.Trim();
+
+                    // Verifica si contiene "Stock:"
+                    if (texto.Contains("Stock:"))
                     {
-                        string talla = partes[0];
-                        T.idtallas.Add(NT.ObtenerIdTalla(talla));
-                        if (int.TryParse(partes[1], out int stock))
+                        string[] partes = texto.Split(new[] { '-', ':' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        if (partes.Length >= 2)
                         {
-                            T.stocks.Add(stock.ToString());
-                            stockPorTalla.Add(new E_Tallas
+                            string talla = partes[0].Trim(); // Talla está antes del separador
+                            string talla1 = NT.ObtenerIdTalla(talla); // Primera palabra como Talla
+                            if (talla1 != "34")
                             {
-                                Talla = talla,
-                                Stock = stock
-                            });
+                                T.idtallas.Add(talla1);
+                            }
+
+                            // Obtén el stock desde la última parte
+                            string ultimaParte = partes[partes.Length - 1].Trim();
+
+                            if (int.TryParse(ultimaParte, out int stock))
+                            {
+                                T.stocks.Add(stock.ToString());
+                                stockPorTalla.Add(new E_Tallas
+                                {
+                                    Talla = talla,
+                                    Stock = stock
+                                });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Supón que está en el formato "Talla Stock"
+                        string[] partes = texto.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        if (partes.Length == 2)
+                        {
+                            string talla = partes[0].Trim(); // Primera palabra como Talla
+                            string talla1 = NT.ObtenerIdTalla(talla); // Primera palabra como Talla
+                            if (talla1 != "34")
+                            {
+                                T.idtallas.Add(talla1);
+                            }
+
+                            if (int.TryParse(partes[1].Trim(), out int stock))
+                            {
+                                T.stocks.Add(stock.ToString());
+                                stockPorTalla.Add(new E_Tallas
+                                {
+                                    Talla = talla,
+                                    Stock = stock
+                                });
+                            }
                         }
                     }
                 }
@@ -223,19 +266,65 @@ namespace Presentacion.ModificarArticulo
                     imagenes.Add(rutaImagenSecundaria);
                 }
 
+                if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out idArticulo))
+                {
+                }
+
+                //E_Articulo articulo = new E_Articulo
+                //{
+                //    IdArticulo = idArticulo,
+                //    NombreArticulo = txtNombre.Text.Trim(),
+                //    DescripcionArticulo = txtDescripcion.Text.Trim(),
+                //    IdCategoria = int.Parse(ddlCategoria.SelectedValue),
+                //    SubCategoria = ddlSubcategoria.SelectedValue,
+                //    CodigoArticulo = txtCodigoArticulo.Text.Trim(),
+                //    Genero = int.Parse(ddlGenero.SelectedValue),
+                //    PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
+                //    Talla = string.Join(",", T.idtallas),
+                //    Stock = string.Join(",", T.stocks),
+                //    Imagenes = string.Join(",", imagenes),
+
+                //};
+
+                _articulo.IdArticulo = idArticulo;
+                System.Diagnostics.Debug.WriteLine("IdArticulo: " + _articulo.IdArticulo);
+
                 _articulo.NombreArticulo = txtNombre.Text.Trim();
+                System.Diagnostics.Debug.WriteLine("NombreArticulo: " + _articulo.NombreArticulo);
+
                 _articulo.DescripcionArticulo = txtDescripcion.Text.Trim();
+                System.Diagnostics.Debug.WriteLine("DescripcionArticulo: " + _articulo.DescripcionArticulo);
+
                 _articulo.Genero = int.Parse(ddlGenero.SelectedValue);
+                System.Diagnostics.Debug.WriteLine("Genero: " + _articulo.Genero);
+
                 _articulo.IdCategoria = int.Parse(ddlCategoria.SelectedValue);
+                System.Diagnostics.Debug.WriteLine("IdCategoria: " + _articulo.IdCategoria);
+
                 _articulo.SubCategoria = ddlSubcategoria.SelectedValue;
+                System.Diagnostics.Debug.WriteLine("SubCategoria: " + _articulo.SubCategoria);
+
+                _articulo.StockInt = int.Parse(_articulo.SubCategoria);
+                System.Diagnostics.Debug.WriteLine("SubCategoria: " + _articulo.StockInt);
+
                 _articulo.CodigoArticulo = txtCodigoArticulo.Text.Trim();
+                System.Diagnostics.Debug.WriteLine("CodigoArticulo: " + _articulo.CodigoArticulo);
+
                 _articulo.PrecioVenta = double.Parse(txtPrecio.Text.Trim());
-                _articulo.Talla = string.Join(", ", T.idtallas);
-                _articulo.Stock = string.Join(", ", T.stocks);
+                System.Diagnostics.Debug.WriteLine("PrecioVenta: " + _articulo.PrecioVenta);
+
+                _articulo.Talla = string.Join(",", T.idtallas); // Listo
+                System.Diagnostics.Debug.WriteLine("Talla: " + _articulo.Talla);
+
+                _articulo.Stock = string.Join(",", T.stocks); // Listo
+                System.Diagnostics.Debug.WriteLine("Stock: " + _articulo.Stock);
+
                 _articulo.Imagenes = string.Join(",", imagenes);
+                System.Diagnostics.Debug.WriteLine("Imagenes: " + _articulo.Imagenes);
 
-                N_Articulos.ModificarArticulo(_articulo);
 
+                string hola = N_Articulos.ModificarArticulo(_articulo);
+                Response.Redirect("~/HomePage/HomePage.aspx");
                 lblMensaje.Text = "Artículo modificado correctamente.";
                 lblMensaje.CssClass = "alert alert-success";
                 lblMensaje.Visible = true;
@@ -284,7 +373,7 @@ namespace Presentacion.ModificarArticulo
             string nombreArchivo = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(archivo.FileName);
             string ruta = System.IO.Path.Combine(carpeta, nombreArchivo);
             archivo.SaveAs(ruta);
-            return "~/Recursos/Imagenes/Articulos/" + nombreArchivo;
+            return archivo.FileName.Replace("System.Web.UI.WebControls.FileUpload", "");
         }
 
         protected void EliminarImagen_Click(object sender, EventArgs e)
