@@ -15,22 +15,51 @@ namespace Presentacion.GestionDeUsuarios
         {
 
         }
+
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            E_SesionUsuario usuario = new E_SesionUsuario();
-
             if (AutenticarUsuario(tbCorreoElectronico.Text.Trim(), tbPassWord.Text.Trim()))
             {
-                usuario.NombreUsuario = "Nombre de Usuario";
-                usuario.NombreRolLogueado = "Administrador";
-                usuario.EmailUsuario = "admin@salmaszapateria.com";
+                N_Usuario negocioUsuario = new N_Usuario();
 
-                Session["snSesionUsuario"] = usuario;
+                E_Usuario usuarioInfo = negocioUsuario.RetornarId(tbCorreoElectronico.Text.Trim()).FirstOrDefault();
 
-                Response.Redirect("/HomePage/HomePage.aspx");
+                if (usuarioInfo != null)
+                {
+                    E_SesionUsuario usuario = new E_SesionUsuario
+                    {
+                        IdUsuario = usuarioInfo.IdUsuario,
+                        IdRolLogueado = usuarioInfo.IdRol,
+                        NombreUsuario = usuarioInfo.NombreUsuario,
+                    };
+
+                    switch (usuario.IdRolLogueado)
+                    {
+                        case 1:
+                            usuario.NombreRolLogueado = "Administrador";
+                            break;
+                        case 2:
+                            usuario.NombreRolLogueado = "Cliente";
+                            break;
+                        case 3:
+                            usuario.NombreRolLogueado = "Empleado";
+                            break;
+                    }
+
+                    usuario.EmailUsuario = tbCorreoElectronico.Text.Trim();
+
+                    Session["snSesionUsuario"] = usuario;
+                    Response.Redirect("/HomePage/HomePage.aspx");
+                }
+                else
+                {
+                    lblMensaje.Text = "Error al recuperar la información del usuario.";
+                }
             }
             else
+            {
                 lblMensaje.Text = "El correo o la contraseña es incorrecto.";
+            }
         }
 
         private bool AutenticarUsuario(string usuario, string password)

@@ -68,6 +68,7 @@ namespace Presentacion.HomePage
             //E_Articulo e = new N_Articulo().BuscarArticuloPorID(1); //DEBUG ONLY
             //List<E_Articulo> f = new N_Articulo().ListarArticulos(); //DEBUG ONLY
             //List<E_Apartados> g = new N_Apartados().ListarDetalleApartado(2); //DEBUG ONLY
+            List<E_Apartados> h = new N_Apartados().ObtenerApartadosPorVencer(); //DEBUG ONLY
 
             bool hasGenero = int.TryParse(Request.QueryString["genero"], out int genero);
             bool hasCategoria = int.TryParse(Request.QueryString["categoria"], out int categoria);

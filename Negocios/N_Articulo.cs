@@ -23,6 +23,7 @@ namespace Negocios
 
             return datosArticulo.InsertarArticulo(articulo);
         }
+
         public string BorrarArticulo(int idArticulo)
         {
             string Mensaje = string.Empty;
@@ -42,11 +43,12 @@ namespace Negocios
                 }
                 catch (Exception ex)
                 {
-                    Mensaje = "Error: Ocurrió un error inesperado." + ex.Message;
+                    Mensaje = "Error: Ocurrió un error inesperado. " + ex.Message;
                 }
             }
             return Mensaje;
         }
+
         public string ModificarArticulo(E_Articulo Articulo)
         {
             string Mensaje = string.Empty;
