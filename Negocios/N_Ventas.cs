@@ -20,7 +20,7 @@ namespace Negocios
             return DV.BuscarFactura(criterio);
         }
 
-        public int ProcesarVenta(E_Venta venta, List<E_DetalleVentas> detalles)
+        public int ProcesarVenta(E_Venta venta, List<E_DetalleVentas> detalles, decimal montoAbonado)
         {
             try
             {
@@ -35,9 +35,23 @@ namespace Negocios
 
                 venta.Total = total;
 
+                // Insertar la venta y obtener el ID de la venta
                 int idVenta = DV.InsertarVenta(venta);
 
-                // Iterar sobre los detalles para insertarlos con el ID de la venta
+                // Verificar si se debe crear un apartado
+                if (montoAbonado > 0) 
+                {
+                    // Verificar si el IdTipoVenta cumple con los requisitos para un apartado
+                    if (venta.IdTipoVenta == "3") // 3 es el tipo de venta que puede ser un apartado
+                    {
+                        // Crear un apartado (si cumple los requisitos)
+                        DateTime fechaApartado = DateTime.Now;
+                        DateTime fechaVencimiento = fechaApartado.AddMonths(1); // el apartado vence en un mes
+                        DV.InsertarApartado(venta.IdUsuario, idVenta, montoAbonado, fechaApartado, fechaVencimiento);
+                    }
+                }
+
+                // Insertar los detalles de la venta
                 foreach (var detalle in detalles)
                 {
                     detalle.IdVenta = idVenta;
@@ -48,11 +62,12 @@ namespace Negocios
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine("ERROR ProcesarVenta (NEGOCIOS)");
                 throw new Exception("Error al procesar la venta: " + ex.Message);
             }
         }
 
-        // Método para obtener el precio de un artículo (passthrough a la capa de datos)
+
         public decimal ObtenerPrecioArticulo(int idArticulo)
         {
             try

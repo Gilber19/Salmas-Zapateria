@@ -72,9 +72,8 @@ namespace Presentacion.HomePage
 
             // ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION ATENCION
             // ASI SE CREAN VENTAS
-
-            /*N_Ventas nventas = new N_Ventas();
-            // Crear los detalles de la venta
+            
+            N_Ventas nventas = new N_Ventas();
             List<E_DetalleVentas> detalles = new List<E_DetalleVentas>()
             {
                 new E_DetalleVentas { IdArticulo = 1, IdTalla = 2, Cantidad = 3, Descuento = 0 },
@@ -84,27 +83,31 @@ namespace Presentacion.HomePage
             // Crear el objeto E_Venta y asignar los valores correspondientes
             E_Venta venta = new E_Venta
             {
-                IdUsuario = 2,
-                IdTipoVenta = "2",
-                TipoComprobante = "Factura",
-                SerieComprobante = "A23S",
-                NumeroComprobante = "84845",
-                FechaHora = DateTime.Now,
-                Impuesto = 8.0,
-                Estado = true
+                IdUsuario = 1,               
+                IdTipoVenta = "3",             
+                TipoComprobante = "Factura", 
+                SerieComprobante = "A001",   
+                NumeroComprobante = "12345", 
+                FechaHora = DateTime.Now,    
+                Impuesto = 8.0,            
+                Estado = true                
             };
+
+            // Monto abonado (esta me la mandan ustedes desde front)
+            decimal montoAbonado = 100.00m;
 
             try
             {
-                // Pasar el objeto venta y la lista de detalles al ProcesarVenta
-                int idVenta = nventas.ProcesarVenta(venta, detalles);
-                System.Diagnostics.Debug.WriteLine("Venta procesada con exito. ID de venta: " + idVenta);
+                // Pasar el objeto venta, la lista de detalles y el monto abonado al método ProcesarVenta
+                int idVenta = nventas.ProcesarVenta(venta, detalles, montoAbonado);
+                System.Diagnostics.Debug.WriteLine("Venta procesada con éxito. ID de venta: " + idVenta);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine("ERROR ProcesarVenta (PRESENTACION)");
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-            }*/
+            }
+            //*/
 
 
 

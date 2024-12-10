@@ -220,7 +220,41 @@ namespace Datos
             }
         }
 
+        public void InsertarApartado(int idUsuario, int idVenta, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("IBM_Apartados", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
+                    cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@IdVenta", idVenta);
+                    cmd.Parameters.AddWithValue("@MontoAbonado", montoAbonado);
+                    cmd.Parameters.AddWithValue("@FechaApartado", fechaApartado);
+                    cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                    cmd.Parameters.AddWithValue("@Estado", "Pendiente");
+
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR InsertarVenta (DATOS)");
+
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+            }
+        }
 
 
 
