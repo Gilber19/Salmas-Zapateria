@@ -124,7 +124,10 @@ namespace Presentacion.AgregarArticulo
                         }
                     }
                 }
-
+                System.Diagnostics.Debug.WriteLine("{TALLAS Y STOCK} "
+    + string.Join(", ", T.idtallas)
+    + " | "
+    + string.Join(", ", T.stocks));
                 List<string> imagenes = new List<string>();
                 
                 if (fuImagenPrincipal.HasFile)
@@ -149,7 +152,6 @@ namespace Presentacion.AgregarArticulo
                     CodigoArticulo = txtCodigoArticulo.Text.Trim(),
                     Genero = int.Parse(ddlGenero.SelectedValue),
                     PrecioVenta = double.Parse(txtPrecio.Text.Trim()),
-                    IdTalla = "1",
                     Talla = string.Join(",", T.idtallas),
                     Stock = string.Join(",", T.stocks),
                     Imagenes = string.Join(",", imagenes),
@@ -157,7 +159,7 @@ namespace Presentacion.AgregarArticulo
                 };
 
                 _articulo = articulo;
-
+                System.Diagnostics.Debug.WriteLine("{TALLAS Y STOCK EN ARTICULO} " + articulo.Talla + articulo.Stock);
                 // Insert article
                 N_Articulos.InsertarArticulo(articulo);
 
