@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/mpSinLogueo.master" AutoEventWireup="true" CodeBehind="RegistraUsuarios.aspx.cs" Inherits="Presentacion.GestionDeUsuarios.RegistraUsuarios" %>
+﻿<%@ Page Title="Salma's Zapatería" Language="C#" MasterPageFile="~/PaginasMaestras/mpSinLogueo.master" AutoEventWireup="true" CodeBehind="RegistraUsuarios.aspx.cs" Inherits="Presentacion.GestionDeUsuarios.RegistraUsuarios" %>
 
 <%@ Register Src="~/Recursos/Controles/wucAlfabeticoReq.ascx" TagPrefix="uc1" TagName="wucAlfabeticoReq" %>
 <%@ Register Src="~/Recursos/Controles/wucTextoRequerido.ascx" TagPrefix="uc1" TagName="wucTextoRequerido" %>

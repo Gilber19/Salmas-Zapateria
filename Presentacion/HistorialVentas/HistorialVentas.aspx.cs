@@ -11,6 +11,11 @@ namespace Presentacion.HistorialVentas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["snSesionUsuario"] == null || ((Entidades.E_SesionUsuario)Session["snSesionUsuario"]).NombreRolLogueado != "Administrador")
+            {
+                Response.Redirect("~/HomePage/HomePage.aspx");
+            }
+
             if (!IsPostBack)
             {
                 CargarNombreUsuario();

@@ -19,7 +19,7 @@ namespace Presentacion.PaginasMaestras
                 usuario = (E_SesionUsuario)Session["snSesionUsuario"];
 
                 lblTipoUsuario.Text = usuario.NombreRolLogueado;
-                lblNombreUsuario.Text = usuario.NombreUsuario;
+                lblNombreUsuario.Text = usuario.NombreUsuario; 
 
                 lbLogOut.Visible = true;
 
@@ -73,7 +73,7 @@ namespace Presentacion.PaginasMaestras
             return generoId.ToString() == selectedGenero ? "nav-link active" : "nav-link";
         }
 
-        protected void BtnHistorialVentas_Click(object sender, EventArgs e)
+        protected void lbHistorialVentas_Click(object sender, EventArgs e)
         {
             if (EsAdministrador())
             {
@@ -99,7 +99,7 @@ namespace Presentacion.PaginasMaestras
 
         protected void lbClientes_Click(object sender, EventArgs e)
         {
-            if (EsAdministrador())
+            if (EsAdministrador()) 
             {
                 Response.Redirect("~/Clientes/Clientes.aspx");
             }
@@ -117,7 +117,7 @@ namespace Presentacion.PaginasMaestras
             Response.Redirect("~/GestionDeUsuarios/ValidaUsuarios.aspx");
         }
 
-        private bool EsAdministrador()
+        protected bool EsAdministrador()
         {
             if (Session["snSesionUsuario"] is E_SesionUsuario usuario)
             {
@@ -126,7 +126,7 @@ namespace Presentacion.PaginasMaestras
             return false;
         }
 
-        private void MostrarMensajeAccesoDenegado()
+        protected void MostrarMensajeAccesoDenegado()
         {
             // Implementa la lógica para mostrar un mensaje al usuario.
             // Puede ser redirigir a una página de error o mostrar un popup.

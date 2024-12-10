@@ -16,7 +16,7 @@
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
-            }
+            } 
 
             .navbar-brand img {
                 border-radius: 50%;
@@ -105,7 +105,7 @@
                         <div class="dropdown-item-text fw-bold" style="color: #000;">
                             <asp:Label ID="lblTipoUsuario" runat="server" Text="Tipo de Usuario"></asp:Label>
                         </div>
-                    </li>
+                    </li> 
                     <li>
                         <div class="dropdown-item-text" style="color: #000;">
                             <asp:Label ID="lblNombreUsuario" runat="server" Text="Nombre de Usuario"></asp:Label>
@@ -124,14 +124,14 @@
                         </asp:LinkButton>
                     </li>
                     <li>
-                        <asp:LinkButton ID="lbClientes" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbBtnClientes_Click" Visible="true">Clientes <i class="fa fa-power-off" aria-hidden="true"></i>
+                        <asp:LinkButton ID="lbClientes" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbClientes_Click" Visible="true">Clientes <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnLogOut_Click" Visible="False">
+                        <asp:LinkButton ID="lbLogOut" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbLogOut_Click" Visible="False">
                             Cerrar sesion <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>

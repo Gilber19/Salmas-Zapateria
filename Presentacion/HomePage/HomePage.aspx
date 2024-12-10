@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Presentacion.HomePage.HomePage" %>
+﻿<%@ Page Title="Salma's Zapatería" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="Presentacion.HomePage.HomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
     <style>

@@ -12,9 +12,14 @@ namespace Presentacion.ExportarInventario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarNombreUsuario();
+            if (Session["snSesionUsuario"] == null || ((Entidades.E_SesionUsuario)Session["snSesionUsuario"]).NombreRolLogueado != "Administrador")
+            {
+                Response.Redirect("~/HomePage/HomePage.aspx");
+            }
 
+            CargarNombreUsuario();
         }
+
         private void CargarNombreUsuario()
         {
             if (Session["snSesionUsuario"] != null)

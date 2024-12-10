@@ -23,6 +23,11 @@ namespace Presentacion.ModificarArticulo
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["snSesionUsuario"] == null || ((Entidades.E_SesionUsuario)Session["snSesionUsuario"]).NombreRolLogueado != "Administrador")
+            {
+                Response.Redirect("~/HomePage/HomePage.aspx");
+            }
+
             if (!IsPostBack)
             {
                 if (Request.QueryString["id"] != null && int.TryParse(Request.QueryString["id"], out idArticulo))
