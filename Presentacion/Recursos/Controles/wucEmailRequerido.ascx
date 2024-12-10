@@ -27,7 +27,7 @@
 
 <div class="form-group">
   <div class="col-12">
-    <asp:Label ID="lblTitulo" runat="server" CssClass="fw-bold m-2"></asp:Label>
+    <asp:Label ID="lblTitulo" runat="server" CssClass="fw-bold"></asp:Label>
     <asp:TextBox ID="tbEmail" runat="server" CssClass="form-control" ></asp:TextBox>
 
     <asp:RegularExpressionValidator

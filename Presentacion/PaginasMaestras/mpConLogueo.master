@@ -64,11 +64,11 @@
                 gap: 10px;
             }
 
-                .social-icons a {
-                    color: black;
-                    font-size: 24px;
-                    text-decoration: none;
-                }
+            .social-icons a {
+                color: black;
+                font-size: 24px;
+                text-decoration: none;
+            }
         </style>
 
         <nav class="navbar navbar-dark">
@@ -82,16 +82,16 @@
                 <!-- Navigation Links -->
                 <ul class="navbar-nav flex-row main-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="HomePage.aspx?genero=1">Hombre</a>
+                        <a class="nav-link" href="/HomePage/HomePage.aspx?genero=1">Hombre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="HomePage.aspx?genero=2">Mujer</a>
+                        <a class="nav-link" href="/HomePage/HomePage.aspx?genero=2">Mujer</a>
                     </li>
                 </ul>
             </div>
 
             <!-- Logo -->
-            <a class="navbar-brand" href="/Homepage/Homepage.aspx">
+            <a class="navbar-brand" href="/HomePage/HomePage.aspx">
                 <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="Logo">
             </a>
 
@@ -153,7 +153,7 @@
                         <ItemTemplate>
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #000 !important"
-                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>'>
+                                    href='/HomePage/HomePage.aspx?genero=<%# !string.IsNullOrEmpty(Request.QueryString["genero"]) ? Request.QueryString["genero"] : "1" %>&categoria=<%# Eval("IdCategoria")%>'>
                                     <%# Eval("NombreCategoria") %>
                                 </a>
                                 <asp:Repeater ID="rptSubcategorias" runat="server">
@@ -161,7 +161,7 @@
                                         <ul class="nav flex-column ms-3">
                                             <li class="nav-item">
                                                 <a class="nav-link" style="color: #000 !important"
-                                                    href='HomePage.aspx?genero=<%# Request.QueryString["genero"] %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("SubCategoria") %>'>
+                                                    href='/HomePage/HomePage.aspx?genero=<%# !string.IsNullOrEmpty(Request.QueryString["genero"]) ? Request.QueryString["genero"] : "1" %>&categoria=<%# Eval("IdCategoria") %>&subcategoria=<%# Eval("IdSubCategoria") %>'>
                                                     <%# Eval("SubCategoria") %>
                                                 </a>
                                             </li>
