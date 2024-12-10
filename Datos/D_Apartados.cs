@@ -39,7 +39,8 @@ namespace Datos
                             FechaApartado = Convert.ToDateTime(reader["FechaApartado"]),
                             FechaVencimiento = Convert.ToDateTime(reader["FechaVencimiento"]),
                             Estado = reader["Estado"].ToString(),
-                            ImagenesArticulo = reader["ImagenesArticulos"].ToString()
+                            ImagenesArticulo = reader["ImagenesArticulos"].ToString(),
+                            NombresArticulos = reader["NombresArticulos"].ToString()
                         };
 
                         Apartado.ImagenesArticulo = "/Recursos/Imagenes/Articulos/" + Apartado.ImagenesArticulo;
@@ -96,7 +97,6 @@ namespace Datos
                             TotalAbonado = Convert.ToDouble(reader["TotalAbonado"]),
                             Adeudo = Convert.ToDouble(reader["Adeudo"]),
                             ImagenesArticulo = reader["ImagenesArticulos"].ToString(),
-                            NombresArticulos = reader["NombresArticulos"].ToString()
                         };
 
                         Apartado.ImagenesArticulo = "/Recursos/Imagenes/Articulos/" + Apartado.ImagenesArticulo;
