@@ -49,5 +49,42 @@ namespace Datos
 
       return LstClientes;
     }
-  }
+    public List<E_ddlClientes> ListarClientesPorNombre(string Nombre)
+        {
+            List<E_ddlClientes> LstClientes = new List<E_ddlClientes>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("ObtenerClientesPorNombre", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                AbrirConexion();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_ddlClientes clientes = new E_ddlClientes
+                        {
+                            IdPersona = Convert.ToInt32(reader["IdPersona"]),
+                            NombrePersona = reader["NombrePersona"].ToString()
+                        };
+                        LstClientes.Add(clientes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstClientes;
+        }
+    }
 }
