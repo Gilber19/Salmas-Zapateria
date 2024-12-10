@@ -26,5 +26,21 @@ namespace Negocios
                 return null;
             }
         }
+
+        public List<E_Apartados> ListarDetalleApartado(int idUsuario)
+        {
+            try
+            {
+                return DA.ListarDetalleApartado(idUsuario);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ERROR ListarDetalleApartado (NEGOCIOS)");
+
+                Console.WriteLine("Error al buscar por criterio: ", ex.Message);
+                return null;
+            }
+        }
+
     }
 }
