@@ -83,40 +83,41 @@ namespace Datos
 
         public bool ModificarArticulo(E_Articulo articulo)
         {
-            try
+            using (SqlConnection conexion = new SqlConnection(connectionString))
             {
-                SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion);
-                cmd.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("IBM_Articulos", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
 
-                // Parámetros del procedimiento almacenado
-                cmd.Parameters.AddWithValue("@Accion", "MODIFICAR");
-                cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo);
-                cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
-                cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
-                cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
-                cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
-                cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
-                cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo
-                cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
-                cmd.Parameters.AddWithValue("@Imagen", articulo.Imagenes);
-                cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla);
-                cmd.Parameters.AddWithValue("@Talla", articulo.Talla);
-                cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
-                cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
-                cmd.Parameters.AddWithValue("@Estado", articulo.Estado); // Se inserta activo por defecto
-                cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+                    // Parámetros del procedimiento almacenado
+                    cmd.Parameters.AddWithValue("@Accion", "MODIFICAR");
+                    cmd.Parameters.AddWithValue("@IdArticulo", articulo.IdArticulo);
+                    cmd.Parameters.AddWithValue("@IdCategoria", articulo.IdCategoria);
+                    cmd.Parameters.AddWithValue("@CodigoArticulo", articulo.CodigoArticulo);
+                    cmd.Parameters.AddWithValue("@NombreArticulo", articulo.NombreArticulo);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", articulo.PrecioVenta);
+                    cmd.Parameters.AddWithValue("@DescripcionArticulo", articulo.DescripcionArticulo);
+                    cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
+                    cmd.Parameters.AddWithValue("@SubCategoria", "No necesario");
+                    cmd.Parameters.AddWithValue("@Imagenes", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
+                    cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
+                    cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
+                    cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+                    cmd.Parameters.AddWithValue("@Tallas", articulo.Talla);
+                    cmd.Parameters.AddWithValue("@Stocks", articulo.Stock);
+                    cmd.Parameters.AddWithValue("@IdSubCategoria", articulo.StockInt);
 
-                AbrirConexion();
-                cmd.ExecuteNonQuery();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                CerrarConexion();
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
             }
         }
         public List<E_Articulo> ListarArticulos()
