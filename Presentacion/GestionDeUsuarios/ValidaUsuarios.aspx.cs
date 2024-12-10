@@ -22,7 +22,7 @@ namespace Presentacion.GestionDeUsuarios
             if (AutenticarUsuario(tbCorreoElectronico.Text.Trim(), tbPassWord.Text.Trim()))
             {
                 usuario.NombreUsuario = "Nombre de Usuario";
-                usuario.NombreRolLogueado = "Administrador";
+                usuario.NombreRolLogueado = "Cliente";
                 usuario.EmailUsuario = "admin@salmaszapateria.com";
 
                 Session["snSesionUsuario"] = usuario;

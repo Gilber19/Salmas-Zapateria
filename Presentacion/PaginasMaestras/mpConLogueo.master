@@ -115,16 +115,16 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <asp:LinkButton ID="lbHistorialVentas" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnHistorialVentas" Visible="true">
+                        <asp:LinkButton ID="lbHistorialVentas" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbHistorialVentas_Click" Visible="true">
                             Historial de ventas <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
                     <li>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnExportarInventario" Visible="true">  Exportar Inventario <i class="fa fa-power-off" aria-hidden="true"></i>
+                        <asp:LinkButton ID="lbExportarInventario" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbExportarInventario_Click" Visible="true">  Exportar Inventario <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
                     <li>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="BtnClientes" Visible="true">Clientes <i class="fa fa-power-off" aria-hidden="true"></i>
+                        <asp:LinkButton ID="lbClientes" runat="server" CssClass="dropdown-item" CausesValidation="False" OnClick="lbBtnClientes_Click" Visible="true">Clientes <i class="fa fa-power-off" aria-hidden="true"></i>
                         </asp:LinkButton>
                     </li>
                     <li>

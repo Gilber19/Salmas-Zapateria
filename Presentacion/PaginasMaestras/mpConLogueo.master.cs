@@ -22,9 +22,17 @@ namespace Presentacion.PaginasMaestras
                 lblNombreUsuario.Text = usuario.NombreUsuario;
 
                 lbLogOut.Visible = true;
+
+                // Controlar la visibilidad de los botones según el rol
+                bool esAdministrador = usuario.NombreRolLogueado.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
+                lbHistorialVentas.Visible = esAdministrador;
+                lbExportarInventario.Visible = esAdministrador;
+                lbClientes.Visible = esAdministrador;
             }
             else
+            {
                 Response.Redirect("~/GestionDeUsuarios/ValidaUsuarios.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -65,33 +73,64 @@ namespace Presentacion.PaginasMaestras
             return generoId.ToString() == selectedGenero ? "nav-link active" : "nav-link";
         }
 
-        protected void rptGeneros_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        protected void BtnHistorialVentas_Click(object sender, EventArgs e)
         {
-            // Additional logic for rptGeneros if needed
+            if (EsAdministrador())
+            {
+                Response.Redirect("~/HistorialVentas/HistorialVentas.aspx");
+            }
+            else
+            {
+                MostrarMensajeAccesoDenegado();
+            }
         }
 
-        protected void BtnHistorialVentas(object sender, EventArgs e)
+        protected void lbExportarInventario_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/HistorialVentas/HistorialVentas.aspx");
+            if (EsAdministrador())
+            {
+                Response.Redirect("~/ExportarInventario/ExportarInventario.aspx");
+            }
+            else
+            {
+                MostrarMensajeAccesoDenegado();
+            }
         }
 
-        protected void BtnExportarInventario(object sender, EventArgs e)
+        protected void lbClientes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ExportarInventario/ExportarInventario.aspx");
+            if (EsAdministrador())
+            {
+                Response.Redirect("~/Clientes/Clientes.aspx");
+            }
+            else
+            {
+                MostrarMensajeAccesoDenegado();
+            }
         }
 
-        protected void BtnClientes(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Clientes/Clientes.aspx");
-        }
-
-
-        protected void BtnLogOut_Click(object sender, EventArgs e)
+        protected void lbLogOut_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
             Session.Abandon();
             Response.Cookies.Add(new HttpCookie("ASP.NET_SessionId", ""));
             Response.Redirect("~/GestionDeUsuarios/ValidaUsuarios.aspx");
+        }
+
+        private bool EsAdministrador()
+        {
+            if (Session["snSesionUsuario"] is E_SesionUsuario usuario)
+            {
+                return usuario.NombreRolLogueado.Equals("Administrador", StringComparison.OrdinalIgnoreCase);
+            }
+            return false;
+        }
+
+        private void MostrarMensajeAccesoDenegado()
+        {
+            // Implementa la lógica para mostrar un mensaje al usuario.
+            // Puede ser redirigir a una página de error o mostrar un popup.
+            Response.Write("<script>alert('Acceso denegado. Solo los administradores pueden acceder a esta funcionalidad.');</script>");
         }
     }
 }

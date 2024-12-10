@@ -28,11 +28,32 @@ namespace Presentacion.HomePage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindProductos();
-            if (!IsPostBack)
+            // Verifica si el usuario ha iniciado sesión
+            if (Session["snSesionUsuario"] is E_SesionUsuario usuario)
             {
-                UpdateEditMode();
+                // Verifica si el usuario es administrador
+                if (usuario.NombreRolLogueado == "Administrador")
+                {
+                    // Permite la edición
+                    btnToggleEditMode.Visible = true;
+                    IsEditMode = GetIsEditMode();
+                    UpdateEditMode();
+                }
+                else
+                {
+                    // Oculta las opciones de edición
+                    btnToggleEditMode.Visible = false;
+                    IsEditMode = false;
+                    UpdateEditMode();
+                }
             }
+            else
+            {
+                // Redirige al usuario a la página de inicio de sesión
+                Response.Redirect("~/GestionDeUsuarios/ValidaUsuarios.aspx");
+            }
+
+            BindProductos();
         }
 
         private void BindProductos()
