@@ -61,9 +61,9 @@ namespace Datos
                         comando.Parameters.AddWithValue("@Telefono", telefono);
                         comando.Parameters.AddWithValue("@IdRol", idRol);
 
-                        int count = comando.ExecuteNonQuery();
+                        comando.ExecuteNonQuery();
 
-                        return count > 0;
+                        return true;
                     }
                 }
                 catch (Exception ex)

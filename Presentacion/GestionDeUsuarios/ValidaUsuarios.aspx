@@ -22,5 +22,6 @@
     <div class="card-footer">
         <asp:LinkButton ID="BtnLogin" runat="server" class="btn text-white bg-nav form-control" OnClick="BtnLogin_Click">Ingresar</asp:LinkButton>
     </div>
+    <asp:LinkButton ID="BtnRegistrar" runat="server" class="btn text-white bg-nav form-control" PostBackUrl="~/GestionDeUsuarios/RegistraUsuarios.aspx">Registrarse</asp:LinkButton>
   </div>
 </asp:Content>

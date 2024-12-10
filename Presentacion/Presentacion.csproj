@@ -167,6 +167,7 @@
     <Content Include="AgregarVenta\AgregarVenta.aspx" />
     <Content Include="DetalleClientes\DetalleClientes.aspx" />
     <Content Include="ExportarInventario\ExportarInventario.aspx" />
+    <Content Include="GestionDeUsuarios\RegistraUsuarios.aspx" />
     <Content Include="HistorialVentas\HistorialVentas.aspx" />
     <Content Include="Recursos\Imagenes\Articulos\025f77a3-45de-4209-8e99-5156dabae35f.jpg" />
     <Content Include="Recursos\Imagenes\Articulos\0372c527-443b-4f18-91da-b9957ec1eaf4.png" />
@@ -285,6 +286,13 @@
     </Compile>
     <Compile Include="ExportarInventario\ExportarInventario.aspx.designer.cs">
       <DependentUpon>ExportarInventario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionDeUsuarios\RegistraUsuarios.aspx.cs">
+      <DependentUpon>RegistraUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionDeUsuarios\RegistraUsuarios.aspx.designer.cs">
+      <DependentUpon>RegistraUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="HistorialVentas\HistorialVentas.aspx.cs">
       <DependentUpon>HistorialVentas.aspx</DependentUpon>

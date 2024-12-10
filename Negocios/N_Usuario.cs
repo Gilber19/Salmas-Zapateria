@@ -27,6 +27,5 @@ namespace Negocios
 
             return usuario.NuevoRegistroUsuario(nombre, direccion, telefono, email, password);
         }
-
     }
 }
