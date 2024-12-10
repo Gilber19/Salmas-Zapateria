@@ -1,12 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Datos;
 
 namespace Negocios
@@ -19,11 +14,88 @@ namespace Negocios
         {
             return DV.ListarVentas();
         }
+
         public List<E_Factura> BuscarFactura(string criterio)
         {
             return DV.BuscarFactura(criterio);
         }
+
+        public int ProcesarVenta(E_Venta venta, List<E_DetalleVentas> detalles, decimal montoAbonado)
+        {
+            try
+            {
+                decimal total = 0;
+                foreach (var detalle in detalles)
+                {
+                    // Obtener el precio del artículo desde la capa de datos
+                    decimal precio = DV.ObtenerPrecioArticulo(detalle.IdArticulo);
+                    detalle.PrecioVenta = precio;
+                    total += precio * detalle.Cantidad;
+                }
+
+                venta.Total = total;
+
+                // Insertar la venta y obtener el ID de la venta
+                int idVenta = DV.InsertarVenta(venta);
+
+                // Verificar si se debe crear un apartado
+                if (montoAbonado > 0) 
+                {
+                    // Verificar si el IdTipoVenta cumple con los requisitos para un apartado
+                    if (venta.IdTipoVenta == "3") // 3 es el tipo de venta que puede ser un apartado
+                    {
+                        // Crear un apartado (si cumple los requisitos)
+                        DateTime fechaApartado = DateTime.Now;
+                        DateTime fechaVencimiento = fechaApartado.AddMonths(1); // el apartado vence en un mes
+                        DV.InsertarApartado(venta.IdUsuario, idVenta, montoAbonado, fechaApartado, fechaVencimiento);
+                    }
+                }
+
+                // Insertar los detalles de la venta
+                foreach (var detalle in detalles)
+                {
+                    detalle.IdVenta = idVenta;
+                    DV.InsertarDetalleVenta(detalle);
+                }
+
+                return idVenta; // Retornar el ID de la venta creada
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR ProcesarVenta (NEGOCIOS)");
+                throw new Exception("Error al procesar la venta: " + ex.Message);
+            }
+        }
+
+
+        public decimal ObtenerPrecioArticulo(int idArticulo)
+        {
+            try
+            {
+                return DV.ObtenerPrecioArticulo(idArticulo);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el precio del artículo: " + ex.Message);
+            }
+        }
+
+        //Posible implementacion
+        //public List<E_DetalleVenta> ListarDetallesVenta(int idVenta)
+        //{
+        //    try
+        //    {
+        //        return DV.ListarDetallesVenta(idVenta);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error al listar los detalles de la venta: " + ex.Message);
+        //    }
+        //}
     }
+
+
+
 
     public class NumeroATexto
     {

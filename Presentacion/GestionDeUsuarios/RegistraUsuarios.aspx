@@ -8,34 +8,38 @@
 <%@ Register Src="~/Recursos/Controles/wucMensajeDeError.ascx" TagPrefix="uc1" TagName="wucMensajeDeError" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphSinLogueo" runat="server">
-  <div class="container-fluid mt-5 w-25">
-    <div class="card-body">
-      <div class="row">
-        <div>
-          <h5 class="m-0">Nombre</h5> 
-          <uc1:wucAlfabeticoReq ID="wucNombre" runat="server" CssClass="form-control" />
-        </div>
-        <div>
-          <h5 class="m-0">Dirección</h5>
-          <uc1:wucTextoRequerido ID="wucDireccion" runat="server" CssClass="form-control" />
-        </div>
-        <div>
-          <h5 class="m-0">Teléfono</h5>
-            <uc1:wucTelefono ID="wucTelefono" runat="server" CssClass="form-control" />
-        </div>
-        <div>
-          <h5 class="m-0">Correo</h5> 
-          <uc1:wucEmailRequerido ID="wucCorreoElectronico" runat="server" CssClass="m-0 p-0" />
-        </div>
-        <div>
-          <h5 class="m-0">Contraseña</h5>
-          <uc1:wucPassWordReq ID="wucPassWord" runat="server" CssClass="m-0 p-0" />
-          <uc1:wucMensajeDeError ID="lblMensaje" runat="server" />
-        </div>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card-body">
+            <form>
+              <div class="form-group mb-3">
+                <label for="wucNombre" class="form-label">Nombre</label>
+                <uc1:wucAlfabeticoReq ID="wucNombre" runat="server" CssClass="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="wucDireccion" class="form-label">Dirección</label>
+                <uc1:wucTextoRequerido ID="wucDireccion" runat="server" CssClass="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="wucTelefono" class="form-label">Teléfono</label>
+                <uc1:wucTelefono ID="wucTelefono" runat="server" CssClass="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="wucCorreoElectronico" class="form-label">Correo</label>
+                <uc1:wucEmailRequerido ID="wucCorreoElectronico" runat="server" CssClass="form-control" />
+              </div>
+              <div class="form-group mb-3">
+                <label for="wucPassWord" class="form-label">Contraseña</label>
+                <uc1:wucPassWordReq ID="wucPassWord" runat="server" CssClass="form-control" />
+                <uc1:wucMensajeDeError ID="lblMensaje" runat="server" CssClass="text-danger mt-2" />
+              </div>
+              <div class="d-grid">
+                <asp:LinkButton ID="BtnLogin" runat="server" CssClass="btn btn-primary" OnClick="BtnLogin_Click">Registrar</asp:LinkButton>
+              </div>
+            </form>
+          </div>
       </div>
-    </div>
-    <div class="card-footer">
-      <asp:LinkButton ID="BtnLogin" runat="server" class="btn text-white bg-nav form-control" OnClick="BtnLogin_Click">Registrar</asp:LinkButton>
     </div>
   </div>
 </asp:Content>

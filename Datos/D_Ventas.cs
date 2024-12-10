@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 
 using Entidades;
+using System.Configuration;
+using System.Linq;
 
 namespace Datos
 {
     public class D_Ventas : D_ConexionBD
     {
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["ConexionBD"].ConnectionString;
+
         public List<E_Factura> BuscarFactura(string criterio)
         {
             List<E_Factura> lstFactura = new List<E_Factura>();
@@ -105,6 +109,153 @@ namespace Datos
             return LstFacturas;
 
         }
+
+        public int InsertarVenta(E_Venta venta)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("IBM_Ventas", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    // Parámetros del procedimiento almacenado
+                    cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.AddWithValue("@IdUsuario", venta.IdUsuario);
+                    cmd.Parameters.AddWithValue("@IdTipoVenta", venta.IdTipoVenta);
+                    cmd.Parameters.AddWithValue("@TipoComprobante", venta.TipoComprobante);
+                    cmd.Parameters.AddWithValue("@SerieComprobante", venta.SerieComprobante);
+                    cmd.Parameters.AddWithValue("@NumeroComprobante", venta.NumeroComprobante);
+                    cmd.Parameters.AddWithValue("@FechaHora", venta.FechaHora);
+                    cmd.Parameters.AddWithValue("@Impuesto", venta.Impuesto);
+                    cmd.Parameters.AddWithValue("@Total", venta.Total);
+                    cmd.Parameters.AddWithValue("@Estado", venta.Estado);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                    return Convert.ToInt32(cmd.Parameters["@IdVenta"].Value);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR InsertarVenta (DATOS)");
+
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+            }
+        }
+
+        public void InsertarDetalleVenta(E_DetalleVentas detalle)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("IBM_DetalleVentas", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    // Parámetros del procedimiento almacenado
+                    cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd.Parameters.AddWithValue("@IdVenta", detalle.IdVenta);
+                    cmd.Parameters.AddWithValue("@IdArticulo", detalle.IdArticulo);
+                    cmd.Parameters.AddWithValue("@IdTalla", detalle.IdTalla);
+                    cmd.Parameters.AddWithValue("@Cantidad", detalle.Cantidad);
+                    cmd.Parameters.AddWithValue("@Descuento", detalle.Descuento);
+                    cmd.Parameters.AddWithValue("@PrecioVenta", detalle.PrecioVenta);
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR InsertarDetalleVenta (DATOS)");
+
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
+                finally
+                {
+                    CerrarConexion();   
+                }
+            }
+        }
+
+        public decimal ObtenerPrecioArticulo(int idArticulo)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("ObtenerPrecioArticulo", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
+
+                    conexion.Open();
+
+                    return Convert.ToDecimal(cmd.ExecuteScalar());
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR ObtenerPrecioArticulo (DATOS)");
+
+                    throw new Exception("Error al obtener el precio del artículo: " + ex.Message, ex);
+                }
+                finally
+                {
+                    // Asegúrate de cerrar la conexión correctamente
+                    if (conexion.State == System.Data.ConnectionState.Open)
+                    {
+                        conexion.Close();
+                    }
+                }
+            }
+        }
+
+        public void InsertarApartado(int idUsuario, int idVenta, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento)
+        {
+            using (SqlConnection conexion = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("IBM_Apartados", conexion)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+
+                    cmd.Parameters.AddWithValue("@Accion", "INSERTAR");
+                    cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    cmd.Parameters.AddWithValue("@IdVenta", idVenta);
+                    cmd.Parameters.AddWithValue("@MontoAbonado", montoAbonado);
+                    cmd.Parameters.AddWithValue("@FechaApartado", fechaApartado);
+                    cmd.Parameters.AddWithValue("@FechaVencimiento", fechaVencimiento);
+                    cmd.Parameters.AddWithValue("@Estado", "Pendiente");
+
+
+                    conexion.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("ERROR InsertarVenta (DATOS)");
+
+                    throw new Exception("Error al insertar el artículo: " + ex.Message, ex);
+                }
+                finally
+                {
+                    CerrarConexion();
+                }
+            }
+        }
+
 
 
     }

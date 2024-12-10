@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades;
 
 namespace Negocios
 {
@@ -27,5 +29,18 @@ namespace Negocios
 
             return usuario.NuevoRegistroUsuario(nombre, direccion, telefono, email, password);
         }
+
+        public List<E_Usuario> RetornarId(string email)
+        {
+            try
+            {
+                return usuario.RetornarId(email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar el usuario", ex);
+            }
+        }
+
     }
 }

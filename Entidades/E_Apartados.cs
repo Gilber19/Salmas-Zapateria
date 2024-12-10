@@ -18,6 +18,8 @@ namespace Entidades
         private double totalAbonado;
         private double adeudo;
         private string nombresArticulos;
+        private string nombre;
+        private string telefono;
         #endregion
 
         #region Constructores
@@ -35,10 +37,11 @@ namespace Entidades
             TotalAbonado = 0;
             Adeudo = 0;
             NombresArticulos = "";
-
+            Nombre = "";
+            Telefono = "";
         }
 
-        public E_Apartados(int idApartado, int idUsuario, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento, string estado, string imagenesArticulo, int idVenta, double totalCosto, double totalAbonado, double adeudo, string nombresArticulos)
+        public E_Apartados(int idApartado, int idUsuario, decimal montoAbonado, DateTime fechaApartado, DateTime fechaVencimiento, string estado, string imagenesArticulo, int idVenta, double totalCosto, double totalAbonado, double adeudo, string nombresArticulos, string nombre, string telefono)
         {
             IdApartado = idApartado;
             IdUsuario = idUsuario;
@@ -52,6 +55,8 @@ namespace Entidades
             TotalAbonado = totalAbonado;
             Adeudo = adeudo;
             NombresArticulos = nombresArticulos;
+            Nombre = nombre;
+            Telefono = telefono;
         }
         #endregion
 
@@ -68,6 +73,8 @@ namespace Entidades
         public double TotalAbonado { get => totalAbonado; set => totalAbonado = value; }
         public double Adeudo { get => adeudo; set => adeudo = value; }
         public string NombresArticulos { get => nombresArticulos; set => nombresArticulos = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
         #endregion
 
 

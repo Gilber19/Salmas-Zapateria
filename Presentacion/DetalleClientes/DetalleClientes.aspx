@@ -1,11 +1,7 @@
 ﻿<%@ Page Title="Gestión de Clientes" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="DetalleClientes.aspx.cs" Inherits="Presentacion.DetalleClientes.DetalleClientes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Detalle Cliente</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -50,23 +46,29 @@
             .apartado-item {
                 margin-bottom: 15px;
                 display: flex;
+                align-items: center;
+                justify-content: space-between;
                 background-color: #fff;
                 border: 1px solid #ddd;
                 border-radius: 5px;
                 overflow: hidden;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                padding: 10px;
             }
 
                 .apartado-item img {
-                    border-radius: 20px;
-                    width: 200px;
-                    height: auto;
+                    border-radius: 10px;
+                    max-width: 270px;
+                    max-height: 270px;
                     object-fit: cover;
+                    display: block;
+                    margin: 0 auto;
                 }
 
             .apartado-details {
                 flex-grow: 1;
                 padding: 10px;
+                text-align: left;
             }
 
                 .apartado-details h5 {
@@ -93,7 +95,13 @@
                 max-width: 20px;
             }
         </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detalle Cliente</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
+
     <body>
         <div class="container mt-4">
             <div class="row mt-3">
@@ -110,8 +118,8 @@
                             <strong>Teléfono:</strong>
                             <asp:Label ID="LblTelefono" runat="server"></asp:Label>
                         </p>
-                        <p><strong>Límite de Crédito:</strong> $<asp:Label ID="LblLimiteCredito" runat="server"></asp:Label></p>
-                        <p><strong>Crédito Disponible:</strong> $<asp:Label ID="LblLimiteDisponible" runat="server"></asp:Label></p>
+                        <p><strong>Límite de Crédito:</strong> <asp:Label ID="LblLimiteCredito" runat="server"></asp:Label></p>
+                        <p><strong>Crédito Disponible:</strong> <asp:Label ID="LblLimiteDisponible" runat="server"></asp:Label></p>
                     </div>
                 </div>
 
@@ -121,7 +129,27 @@
                     <h4 class="mb-0">Apartados</h4>
                     <div class="apartados-container">
                         <!-- Literal para renderizar los apartados dinámicamente -->
-                        <asp:Literal ID="LiteralApartados" runat="server"></asp:Literal>
+                        <div class="apartados-container">
+                            <asp:Repeater ID="RepeaterApartados" runat="server">
+                                <ItemTemplate>
+                                    <div class='apartado-item'>
+                                        <img src='<%# Eval("ImagenesArticulo") %>' alt='Imagen Artículo' />
+                                        <div class='apartado-details'>
+                                            <p><%# Eval("NombresArticulos") %></p>
+                                            <p>ID: <%# Eval("IdApartado") %></p>
+                                            <p>Total: <%# Eval("TotalCosto") %></p>
+                                            <p>Abonado: <%# Eval("TotalAbonado") %></p>
+                                            <p>Adeudo: <%# Eval("Adeudo") %></p>
+                                            <p>Fecha de vencimiento: <%# Eval("FechaVencimiento", "{0:dd/MM/yyyy}") %></p>
+                                            <asp:TextBox ID="txtAbono" runat="server" CssClass="form-control" Placeholder="Ingrese cantidad"></asp:TextBox>
+                                            <asp:Button ID="btnAbonar" runat="server" CssClass="btn btn-detalle" Text="Abonar" CommandArgument='<%# Eval("IdApartado") %>' OnClick="BtnAbonar_Click" />
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
