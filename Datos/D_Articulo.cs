@@ -54,17 +54,14 @@ namespace Datos
 
         public bool BorrarArticulo(int idArticulo)
         {
-            E_Articulo articulo = new E_Articulo();
             try
             {
-                SqlCommand cmd = new SqlCommand("IBM_Articulo", conexion) {
+                SqlCommand cmd = new SqlCommand("IBM_Articulos", conexion)
+                {
                     CommandType = CommandType.StoredProcedure
                 };
-
-                // Parámetros del procedimiento almacenado
                 cmd.Parameters.AddWithValue("@Accion", "BORRAR");
                 cmd.Parameters.AddWithValue("@IdArticulo", idArticulo);
-
 
                 conexion.Open();
                 cmd.ExecuteNonQuery();
@@ -72,8 +69,8 @@ namespace Datos
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al borrar el Articulo: ", ex.Message);
-                return false;
+                // Propagar la excepción para manejarla en niveles superiores
+                throw new Exception("Error al borrar el Articulo: " + ex.Message, ex);
             }
             finally
             {
