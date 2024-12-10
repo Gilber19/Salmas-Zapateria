@@ -22,23 +22,24 @@
             </div>
 
           
-            <div class="col-md-6 mt-5 text-center">
+            <div class="col-md-6 mt-5 text-left">
                 <h2 class="mb-3" style="font-size: 24px; font-weight: bold;">
                     <asp:Label ID="lblNombreArticulo" runat="server" Text="Nombre del producto"></asp:Label>
                 </h2>
-                <p class="mb-1" style="font-size: 20px; color: #333; font-weight: bold;">
+                <p class="mb-4" style="font-size: 20px; color: #333; font-weight: bold;">
                     Precio:
                     <asp:Label ID="lblPrecioVenta" runat="server"></asp:Label>
                 </p>
-                <p class="mb-1" style="font-size: 16px; color: #666;">
+                <p class="mb-4" style="font-size: 16px; color: #666;">
                     <asp:Label ID="lblDescripcionArticulo" runat="server"></asp:Label>
                 </p>
-                <p class="mb-1" style="font-size: 16px; color: #666;">
+                <p class="mb-4" style="font-size: 16px; color: #666;">
                     Estado:
                     <asp:Label ID="lblEstado" runat="server"></asp:Label>
                 </p>
 
-                <div class="d-flex justify-content-center gap-3 my-3">
+                <!-- Dropdowns -->
+                <div class="d-flex justify-content-left gap-3 my-3">
                     <div>
                         <label for="ddlTalla" style="font-size: 16px;">Selecciona la talla:</label>
                         <asp:DropDownList ID="ddlTalla" runat="server" CssClass="form-select mt-1" style="width: 100%;">
@@ -55,7 +56,7 @@
                     </div>
                 </div>
 
-             
+                <!-- Add Button -->
                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click"
                     CssClass="btn btn-success w-50" style="padding: 10px 20px;" />
             </div>
