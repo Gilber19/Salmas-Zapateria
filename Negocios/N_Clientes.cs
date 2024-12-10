@@ -15,6 +15,5 @@ namespace Negocios
     D_Clientes DC = new D_Clientes();
 
    public List<E_ddlClientes> ListadoCliente() => DC.ListarClientes();
-    public List<E_ddlClientes> ListadoClientePorNombre(string Nombre) => DC.ListarClientesPorNombre(Nombre);
     }
 }
