@@ -56,5 +56,21 @@ namespace Negocios
                 return false;
             }
         }
+    
+        public List<E_Apartados> ObtenerApartadosPorVencer()
+        {
+            try
+            {
+                return DA.ObtenerApartadosPorVencer();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ERROR ObtenerApartadosPorVencer (NEGOCIOS) " + ex.Message);
+
+                Console.WriteLine("Error al buscar por criterio: ", ex.Message);
+                return null;
+            }
+        }
+
     }
 }
