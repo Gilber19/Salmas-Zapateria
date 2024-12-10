@@ -158,5 +158,55 @@ namespace Datos
             }
         }
 
+        public List<E_Apartados> ObtenerApartadosPorVencer()
+        {
+            List<E_Apartados> LstApartado= new List<E_Apartados>();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("ObtenerApartadosPorVencer", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                AbrirConexion();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_Apartados Apartado = new E_Apartados
+                        {
+                            IdApartado = Convert.ToInt32(reader["IdApartado"]),
+                            IdVenta = Convert.ToInt32(reader["IdVenta"]),
+                            Nombre = reader["Nombre"]?.ToString() ?? string.Empty,
+                            Telefono = reader["Telefono"]?.ToString() ?? string.Empty,
+                            TotalAbonado = Convert.ToDouble(reader["MontoAbonado"]),
+                            TotalCosto = Convert.ToDouble(reader["Total"]),
+                            Adeudo = Convert.ToDouble(reader["Deuda"]),
+                            FechaVencimiento = Convert.ToDateTime(reader["FechaVencimiento"]),
+                            FechaApartado = Convert.ToDateTime(reader["FechaApartado"]),
+                        };
+
+                        //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes);
+
+
+                        LstApartado.Add(Apartado);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error ObtenerApartadosPorVencer (DATOS) " + ex.Message, ex);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstApartado;
+        }
+
+
     }
 }
