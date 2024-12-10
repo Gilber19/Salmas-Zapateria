@@ -95,7 +95,8 @@ namespace Datos
                         E_Usuario Id = new E_Usuario
                         {
                             IdRol = Convert.ToInt32(reader["IdRol"].ToString()),
-                            NombreUsuario = reader["Nombre"].ToString()
+                            NombreUsuario = reader["Nombre"].ToString(),
+                            IdUsuario = Convert.ToInt32(reader["IdUsuario"].ToString())
                         };
 
                         //System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes);
