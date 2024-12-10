@@ -45,15 +45,12 @@
     <Compile Include="N_Articulo.cs" />
     <Compile Include="N_Categoria.cs" />
     <Compile Include="N_Clientes.cs" />
-    <Compile Include="N_Compras.cs" />
     <Compile Include="N_Personas.cs" />
-    <Compile Include="N_Proveedores.cs" />
     <Compile Include="N_SubCategoria.cs" />
     <Compile Include="N_Tallas.cs" />
     <Compile Include="N_Usuario.cs" />
     <Compile Include="N_Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pruebas.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">

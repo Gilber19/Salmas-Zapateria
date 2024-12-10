@@ -46,13 +46,10 @@
     <Compile Include="E_Articulo.cs" />
     <Compile Include="E_Categoria.cs" />
     <Compile Include="E_Clientes.cs" />
-    <Compile Include="E_Compras.cs" />
     <Compile Include="E_DetalleApartado.cs" />
     <Compile Include="E_DetalleVentas.cs" />
     <Compile Include="E_Imagenes.cs" />
-    <Compile Include="E_Pagos.cs" />
     <Compile Include="E_Personas.cs" />
-    <Compile Include="E_SolicitudesCredito.cs" />
     <Compile Include="E_SubCategoria.cs" />
     <Compile Include="E_Tallas.cs" />
     <Compile Include="E_Usuario.cs" />

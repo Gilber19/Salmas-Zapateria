@@ -196,36 +196,8 @@
     <Content Include="Apartados\Apartados.aspx" />
     <Content Include="HistorialVentas\HistorialVentas.aspx" />
     <Content Include="Perfil\Perfil.aspx" />
-    <Content Include="Recursos\Imagenes\Articulos\025f77a3-45de-4209-8e99-5156dabae35f.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\0372c527-443b-4f18-91da-b9957ec1eaf4.png" />
     <Content Include="Recursos\Imagenes\Articulos\eagles.png" />
-    <Content Include="Recursos\Imagenes\Articulos\0f53da8c-1b75-4a90-85b1-9673c37b7406.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\165eaed2-69aa-4451-9c5a-b69c973a837e.png" />
-    <Content Include="Recursos\Imagenes\Articulos\18a3ea13-db5c-49d9-816a-22c614227b34.png" />
-    <Content Include="Recursos\Imagenes\Articulos\26e7d20e-dfd0-46d4-89e4-b771f1499b2c.png" />
-    <Content Include="Recursos\Imagenes\Articulos\270c291a-d0cd-41eb-8a77-8d38c8556649.png" />
-    <Content Include="Recursos\Imagenes\Articulos\3634b67f-400b-4db1-b2f2-4161a51f630e.png" />
-    <Content Include="Recursos\Imagenes\Articulos\3774351a-b789-40ab-89a7-5183514f9559.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\5dc2488d-6cb2-479a-be74-e82b9a12f13c.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\6d6d78da-3134-4d03-bec3-78bee3efd217.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\75938c4a-c7b9-4469-b3be-ece8659eedfd.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\7a29978b-7e16-4803-a6a8-36d36c3d3f15.png" />
-    <Content Include="Recursos\Imagenes\Articulos\7dce6ad8-0d72-4a24-9740-b8765f39b662.png" />
-    <Content Include="Recursos\Imagenes\Articulos\84f5f115-713a-40c4-8633-2f295e26f702.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\8ad09239-801c-44a7-a1a6-ad19fdfce757.png" />
-    <Content Include="Recursos\Imagenes\Articulos\8f09d3c1-4cde-466e-a01e-b7cdc8e8ef4f.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\9145d9d7-f3bd-46e0-8457-22b0012320a2.png" />
-    <Content Include="Recursos\Imagenes\Articulos\9eaea47d-2033-4a4e-bd0e-ce59864d3859.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\BannerGN.png" />
     <Content Include="Recursos\Imagenes\Articulos\Botas.png" />
-    <Content Include="Recursos\Imagenes\Articulos\ced137b7-16aa-4075-a7e4-c9b4f20dd2af.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\cff41d62-4dc5-4183-abce-bc8fece446b1.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\da9610d5-0550-474e-9005-7520106c3f5a.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\dd124c8b461e027c1d640cb0de7abd9d.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\df466f3a-0ccc-4a95-8167-4bd73176b48a.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\df54c0ec-6695-42b2-82b5-05ebe0e20d95.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\FondoInicio.png" />
-    <Content Include="Recursos\Imagenes\Articulos\ImagenGN.png" />
     <Content Include="Recursos\Imagenes\Articulos\natagod.png" />
     <Content Include="Recursos\Imagenes\Articulos\SalmasZapateriaLogo.png" />
     <Content Include="Recursos\Imagenes\Articulos\Tenis.png" />
@@ -233,15 +205,8 @@
     <Content Include="VerArticulo\VerArticulo.aspx" />
     <Content Include="ModificarArticulo\ModificarArticulo.aspx" />
     <Content Include="HomePage\HomePage.aspx" />
-    <Content Include="Articulos\IBM_Articulo.aspx" />
-    <Content Include="Categorias\IBM_Categoria.aspx" />
     <Content Include="Clientes\Clientes.aspx" />
-    <Content Include="Compras\IBM_Compras.aspx" />
-    <Content Include="Email\EnviarEmail.aspx" />
-    <Content Include="Excel\GetExcel.aspx" />
-    <Content Include="GestionDeUsuarios\OlvidePassWord.aspx" />
     <Content Include="GestionDeUsuarios\ValidaUsuarios.aspx" />
-    <Content Include="Proveedores\IBM_Proveedores.aspx" />
     <Content Include="Recursos\Controles\cuTextoAlfaNumerico.ascx" />
     <Content Include="Recursos\Controles\wucMensajeDeError.ascx" />
     <Content Include="Recursos\Controles\wcuAlfaNumericoReq.ascx" />
@@ -269,10 +234,6 @@
     <Content Include="Recursos\CSS\Clientes.css" />
     <Content Include="Recursos\CSS\ventasCSS.css" />
     <Content Include="Recursos\Imagenes\Articulos\natagod.png" />
-    <Content Include="Recursos\Imagenes\Articulos\BannerGN.png" />
-    <Content Include="Recursos\Imagenes\Articulos\dd124c8b461e027c1d640cb0de7abd9d.jpg" />
-    <Content Include="Recursos\Imagenes\Articulos\FondoInicio.png" />
-    <Content Include="Recursos\Imagenes\Articulos\ImagenGN.png" />
     <Content Include="Recursos\Imagenes\Articulos\SalmasZapateriaLogo.png" />
     <Content Include="Recursos\Imagenes\Articulos\Tenis.png" />
     <Content Include="Recursos\Imagenes\BannerGN.png" />
@@ -280,9 +241,6 @@
     <Content Include="Recursos\Imagenes\ImagenGN.png" />
     <Content Include="Recursos\Imagenes\Tenis.png" />
     <Content Include="Recursos\Imagenes\SalmasZapateriaLogo.png" />
-    <Content Include="Ventas\Facturas.aspx" />
-    <Content Include="Ventas\ventas.aspx" />
-    <Content Include="Ventas\VerFactura.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -363,54 +321,12 @@
     <Compile Include="HomePage\HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Articulos\IBM_Articulo.aspx.cs">
-      <DependentUpon>IBM_Articulo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Articulos\IBM_Articulo.aspx.designer.cs">
-      <DependentUpon>IBM_Articulo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Categorias\IBM_Categoria.aspx.cs">
-      <DependentUpon>IBM_Categoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Categorias\IBM_Categoria.aspx.designer.cs">
-      <DependentUpon>IBM_Categoria.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Clientes\Clientes.aspx.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Clientes\Clientes.aspx.designer.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\IBM_Compras.aspx.cs">
-      <DependentUpon>IBM_Compras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\IBM_Compras.aspx.designer.cs">
-      <DependentUpon>IBM_Compras.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Email\EnviarEmail.aspx.cs">
-      <DependentUpon>EnviarEmail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Email\EnviarEmail.aspx.designer.cs">
-      <DependentUpon>EnviarEmail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Excel\GetExcel.aspx.cs">
-      <DependentUpon>GetExcel.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Excel\GetExcel.aspx.designer.cs">
-      <DependentUpon>GetExcel.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GestionDeUsuarios\OlvidePassWord.aspx.cs">
-      <DependentUpon>OlvidePassWord.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GestionDeUsuarios\OlvidePassWord.aspx.designer.cs">
-      <DependentUpon>OlvidePassWord.aspx</DependentUpon>
     </Compile>
     <Compile Include="GestionDeUsuarios\ValidaUsuarios.aspx.cs">
       <DependentUpon>ValidaUsuarios.aspx</DependentUpon>
@@ -441,13 +357,6 @@
       <DependentUpon>mpSinLogueo.master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedores\IBM_Proveedores.aspx.cs">
-      <DependentUpon>IBM_Proveedores.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Proveedores\IBM_Proveedores.aspx.designer.cs">
-      <DependentUpon>IBM_Proveedores.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Recursos\Controles\cuTextoAlfaNumerico.ascx.cs">
       <DependentUpon>cuTextoAlfaNumerico.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -609,30 +518,8 @@
     <Compile Include="Recursos\Controles\wucTextoRequerido.ascx.designer.cs">
       <DependentUpon>wucTextoRequerido.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\Facturas.aspx.cs">
-      <DependentUpon>Facturas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventas\Facturas.aspx.designer.cs">
-      <DependentUpon>Facturas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ventas\ventas.aspx.cs">
-      <DependentUpon>ventas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventas\ventas.aspx.designer.cs">
-      <DependentUpon>ventas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ventas\VerFactura.aspx.cs">
-      <DependentUpon>VerFactura.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventas\VerFactura.aspx.designer.cs">
-      <DependentUpon>VerFactura.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Facturas\Factura.pdf" />
     <Content Include="appsettings.config" />
     <None Include="packages.config" />
     <Content Include="PaginasMaestras\mpBase.Master" />
@@ -645,10 +532,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Recursos\DLL\" />
-    <Folder Include="Recursos\JavaScript\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{10f83e01-cb38-4a61-82cb-bab24d0ee640}</Project>
