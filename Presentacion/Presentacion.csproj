@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AgregarArticulo\AgregarArticulo.aspx" />
+    <Content Include="AgregarVenta\AgregarVenta.aspx" />
     <Content Include="DetalleClientes\DetalleClientes.aspx" />
     <Content Include="ExportarInventario\ExportarInventario.aspx" />
     <Content Include="HistorialVentas\HistorialVentas.aspx" />
@@ -262,6 +263,13 @@
     </Compile>
     <Compile Include="AgregarArticulo\AgregarArticulo.aspx.designer.cs">
       <DependentUpon>AgregarArticulo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarVenta\AgregarVenta.aspx.cs">
+      <DependentUpon>AgregarVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarVenta\AgregarVenta.aspx.designer.cs">
+      <DependentUpon>AgregarVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="DetalleClientes\DetalleClientes.aspx.cs">
       <DependentUpon>DetalleClientes.aspx</DependentUpon>

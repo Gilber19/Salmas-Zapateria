@@ -42,6 +42,21 @@
                 height: auto;
                 object-fit: cover;
             }
+
+        /* Estilo para el botón de agregar */
+        .add-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 
     <div class="container-fluid">
@@ -58,15 +73,24 @@
                     <li><a href="../ExportarInventario/ExportarInventario.aspx" class="text-decoration-none">Exportar inventario</a></li>
                     <li><a href="../Clientes/Clientes.aspx" class="text-decoration-none">Clientes</a></li>
                 </ul>
-
             </div>
-
 
             <!-- Label para mostrar mensajes -->
             <asp:Label ID="lblMensaje" runat="server" CssClass="alert alert-info" Visible="false"></asp:Label>
 
             <!-- Lista de Ventas -->
             <div class="col-md-9 col-lg-10 sales-list">
+                <!-- Botón Agregar al lado derecho -->
+                <div class="d-flex justify-content-end mb-3">
+                    <asp:LinkButton
+                    ID="btnAdd"
+                    runat="server"
+                    CssClass="btn btn-success me-2 mb-2"
+                    OnClick="btnAdd_Click">
+                    <i class="bi bi-plus"></i> Añadir Venta
+                </asp:LinkButton>
+                </div>
+
                 <asp:Repeater ID="RepeaterHistorial" runat="server">
                     <ItemTemplate>
                         <div class="list-group-item d-flex align-items-start gap-3">

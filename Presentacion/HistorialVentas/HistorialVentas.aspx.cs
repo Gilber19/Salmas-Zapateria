@@ -66,5 +66,10 @@ namespace Presentacion.HistorialVentas
             lblMensaje.Text = mensaje;
             lblMensaje.Visible = true;
         }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AgregarVenta/AgregarVenta.aspx");
+        }
     }
 }
