@@ -45,9 +45,9 @@
 
         /* Estilo para el botón de agregar */
         .add-button {
-            background-color: #007bff;
+            background-color: #ECA400;
             color: white;
-            padding: 10px 20px;
+            padding: 20px 20px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
@@ -55,7 +55,7 @@
         }
 
         .add-button:hover {
-            background-color: #0056b3;
+            background-color: #ECA400;
         }
     </style>
 
@@ -81,11 +81,11 @@
             <!-- Lista de Ventas -->
             <div class="col-md-9 col-lg-10 sales-list">
                 <!-- Botón Agregar al lado derecho -->
-                <div class="d-flex justify-content-end mb-3">
+                <div class="d-flex justify-content-end mb-3 mt-4">
                     <asp:LinkButton
                     ID="btnAdd"
                     runat="server"
-                    CssClass="btn btn-success me-2 mb-2"
+                    CssClass="btn btn-primary"
                     OnClick="btnAdd_Click">
                     <i class="bi bi-plus"></i> Agregar Venta
                 </asp:LinkButton>

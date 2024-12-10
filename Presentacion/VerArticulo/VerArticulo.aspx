@@ -2,6 +2,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
     <div class="container">
+        <div id="alertSuccess" runat="server" visible="true" class="mt-4 mb-4">
+            <asp:Label
+                ID="lblMensaje"
+                runat="server"
+            />
+        </div>
+
         <div class="row">
 
             <div class="col-md-6 mt-5 d-flex flex-column align-items-center gap-4">
