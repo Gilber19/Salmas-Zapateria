@@ -126,5 +126,36 @@ namespace Datos
 
         }
 
+        public bool AbonarApartado(int idApartado, int abono)
+        {
+            E_Apartados Apartado = new E_Apartados();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("AbonarApartado", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@IdApartado", idApartado);
+                cmd.Parameters.AddWithValue("@Abono", abono);
+
+                AbrirConexion();
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("ERROR AbonarApartado (DATOS)");
+
+                Console.WriteLine("Error al buscar por criterio: ", ex.Message);
+                return false;
+
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+        }
     }
 }

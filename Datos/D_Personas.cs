@@ -98,6 +98,46 @@ namespace Datos
             return LstClientes;
         }
 
+        public List<E_Personas> ListarClientesPorNombre(string Nombre)
+        {
+            List<E_Personas> LstClientes = new List<E_Personas>();
 
+            try
+            {
+                SqlCommand cmd = new SqlCommand("BuscarClientesPorNombre", conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@Nombre", Nombre);
+
+                AbrirConexion();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        E_Personas clientes = new E_Personas
+                        {
+                            Nombre = reader["Nombre"].ToString(),
+                            IdPersona = Convert.ToInt32(reader["IdPersona"]),
+                        };
+                        LstClientes.Add(clientes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                System.Diagnostics.Debug.WriteLine("ERROR ListarClientesPorNombre (DATOS)");
+
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                CerrarConexion();
+            }
+
+            return LstClientes;
+        }
     }
 }
+
