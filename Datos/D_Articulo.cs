@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using Entidades;
 using System.Configuration;
+using System.Linq;
 
 namespace Datos
 {
@@ -34,11 +35,11 @@ namespace Datos
                     cmd.Parameters.AddWithValue("@DescripcionImagen", articulo.DescripcionArticulo); // Usar el mismo campo.
                     cmd.Parameters.AddWithValue("@SubCategoria", articulo.SubCategoria);
                     cmd.Parameters.AddWithValue("@Imagenes", articulo.Imagenes); // CAMBIAR POR IDIMAGEN
-                    cmd.Parameters.AddWithValue("@IdTalla", articulo.IdTalla); // Adding the missing parameter
-                    cmd.Parameters.AddWithValue("@Stock", articulo.Stock);
                     cmd.Parameters.AddWithValue("@IdImagen", articulo.IdImagen);
                     cmd.Parameters.AddWithValue("@Estado", true); // Se inserta activo por defecto.
                     cmd.Parameters.AddWithValue("@Genero", articulo.Genero);
+                    cmd.Parameters.AddWithValue("@Tallas", articulo.Talla);
+                    cmd.Parameters.AddWithValue("@Stocks", articulo.Stock);
 
                     conexion.Open();
                     cmd.ExecuteNonQuery();
@@ -366,7 +367,13 @@ namespace Datos
                             Imagenes = reader["Imagenes"].ToString(),
 
                         };
-                        Articulo.Imagenes = "/Recursos/Imagenes/Articulos/" + Articulo.Imagenes;
+
+                        // Procesar las imágenes separadas por comas
+                        if (!string.IsNullOrEmpty(Articulo.Imagenes))
+                        {
+                            var imagenesSeparadas = Articulo.Imagenes.Split(',');
+                            Articulo.Imagenes = string.Join(",", imagenesSeparadas.Select(img => "/Recursos/Imagenes/Articulos/" + img.Trim()));
+                        }
 
                         System.Diagnostics.Debug.WriteLine("{Articulo.Stock}" + Articulo.NombreArticulo + " ::::: " + Articulo.Imagenes );
                         //Commit insano

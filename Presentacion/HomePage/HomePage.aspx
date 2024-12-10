@@ -2,21 +2,38 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
     <style>
-        .btn.dropdown-toggle::after {
-            display: none;
-        }
-        .image {
-            max-width: 100%;
-            height: auto;
-        }
-        .card {
-            position: relative;
-        }
-        .edit-buttons {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
+
+    .btn.dropdown-toggle::after {
+        display: none;
+    }
+
+    .image {
+        width: 210px;
+        height: 210px;
+        object-fit: cover;
+        border: none;
+    }
+
+    .card {
+        font-family: 'Merriweather';
+        position: relative;
+        border: none; 
+        box-shadow: none; 
+        margin: 0;
+        padding: 0;
+    }
+
+    .edit-buttons {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    .row-cols-5 > * {
+        flex: 0 0 20%; 
+        max-width: 20%;
+        padding: 0;
+    }
     </style>
 
     <div class="container mt-4">
