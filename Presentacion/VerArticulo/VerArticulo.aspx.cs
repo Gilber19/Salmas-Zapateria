@@ -34,6 +34,7 @@ namespace Presentacion.VerArticulo
 
                 if (articulo != null)
                 {
+                    Page.Title = articulo.NombreArticulo;
                     lblNombreArticulo.Text = articulo.NombreArticulo;
                     lblDescripcionArticulo.Text = articulo.DescripcionArticulo;
                     lblPrecioVenta.Text = $"${articulo.PrecioVenta:F2}";

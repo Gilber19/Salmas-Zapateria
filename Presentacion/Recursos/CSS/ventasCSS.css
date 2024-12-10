@@ -1,14 +1,25 @@
-﻿body {
-}
-
-.bg-nav {
+﻿.bg-nav {
     --bs-bg-opacity: 1;
     background-color: #001514 !important
 }
 
-.imagenvg {  
-  height: 30px;
-  width: 150px;
+body {
+    background-color: #f8f9fa;
+}
+
+.btn-primary {
+    background-color: #FFA500 !important;	
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #FF8C00 !important;	
+}
+
+h4 {
+    font-family: 'Merryweather', serif;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /*Mensaje*/

@@ -4,11 +4,35 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBase" runat="server">
-  <div class="row mb-5">
-    <div class="col-12 bg-nav text-white mb-5 p-2">
-      <h5 class="text-white text-center">Salmas Zapatería</h5>
-    </div>
-  </div>
-  <asp:ContentPlaceHolder ID="cphSinLogueo" runat="server">
-  </asp:ContentPlaceHolder>
+    <style>
+        .navbar {
+            background-color: #001514;
+            padding: 0.8rem 1rem;
+            color: white;
+            position: relative;
+            height: 65px;
+        }
+        .navbar-brand {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        } 
+
+        .navbar-brand img {
+            border-radius: 50%;
+            width: 60px;
+            aspect-ratio: 1/1;
+        }
+    </style>
+
+    <link href="../Recursos/CSS/Clientes.css" rel="stylesheet" />
+
+    <nav class="navbar navbar-dark">
+        <a class="navbar-brand text-center" href="/HomePage/HomePage.aspx">
+            <img src="/Recursos/Imagenes/SalmasZapateriaLogo.png" alt="Logo">
+        </a>
+    </nav>
+
+    <asp:ContentPlaceHolder ID="cphSinLogueo" runat="server">
+    </asp:ContentPlaceHolder>
 </asp:Content>

@@ -23,12 +23,12 @@
   ID="revAlfabetico" runat="server" ControlToValidate="tbAlfabetico" ErrorMessage="*"
   ValidationExpression="[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+"
   Display="Dynamic"
-  CssClass="text-danger font-weight-normal"><i class="text-danger fas fa-exclamation-triangle mr-2"></i>El campo tiene caracteres inválidos.</asp:RegularExpressionValidator>
+  CssClass="text-danger font-weight-normal"><i class="text-danger fas fa-exclamation-triangle"></i>El campo tiene caracteres inválidos.</asp:RegularExpressionValidator>
   
 <asp:RequiredFieldValidator
   ID="rfvtbAlfabetico" runat="server" ErrorMessage="*"
   ControlToValidate="tbAlfabetico"   
   Display="Dynamic" 
-  CssClass="text-danger font-weight-normal"><i class="text-danger fas fa-exclamation-triangle mr-2"></i>Campo requerido.
+  CssClass="text-danger font-weight-normal"><i class="text-danger fas fa-exclamation-triangle"></i>Campo requerido.
 </asp:RequiredFieldValidator>
 

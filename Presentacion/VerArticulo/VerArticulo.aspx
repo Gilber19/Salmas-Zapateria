@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Ver Artículo" Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="VerArticulo.aspx.cs" Inherits="Presentacion.VerArticulo.VerArticulo" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/PaginasMaestras/mpConLogueo.master" AutoEventWireup="true" CodeBehind="VerArticulo.aspx.cs" Inherits="Presentacion.VerArticulo.VerArticulo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphConLogueo" runat="server">
     <div class="container">
