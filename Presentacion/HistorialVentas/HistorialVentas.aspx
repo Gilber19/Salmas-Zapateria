@@ -87,7 +87,7 @@
                     runat="server"
                     CssClass="btn btn-success me-2 mb-2"
                     OnClick="btnAdd_Click">
-                    <i class="bi bi-plus"></i> Añadir Venta
+                    <i class="bi bi-plus"></i> Agregar Venta
                 </asp:LinkButton>
                 </div>
 
