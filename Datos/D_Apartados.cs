@@ -18,7 +18,7 @@ namespace Datos
 
             try
             {
-                SqlCommand cmd = new SqlCommand("ObtenerApartados", conexion)
+                SqlCommand cmd = new SqlCommand("ObtenerApartadosConTotales", conexion)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -39,8 +39,11 @@ namespace Datos
                             FechaApartado = Convert.ToDateTime(reader["FechaApartado"]),
                             FechaVencimiento = Convert.ToDateTime(reader["FechaVencimiento"]),
                             Estado = reader["Estado"].ToString(),
+                            TotalCosto = Convert.ToDouble(reader["TotalCosto"]),
+                            TotalAbonado = Convert.ToDouble(reader["TotalAbonado"]),
+                            Adeudo = Convert.ToDouble(reader["Adeudo"]),
                             ImagenesArticulo = reader["ImagenesArticulos"].ToString(),
-                            NombresArticulos = reader["NombresArticulos"].ToString()
+                            NombresArticulos = reader["NombresArticulos"].ToString(),
                         };
 
                         Apartado.ImagenesArticulo = "/Recursos/Imagenes/Articulos/" + Apartado.ImagenesArticulo;
