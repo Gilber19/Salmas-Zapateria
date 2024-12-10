@@ -95,7 +95,8 @@ namespace Datos
                             TotalCosto = Convert.ToDouble(reader["TotalCosto"]),
                             TotalAbonado = Convert.ToDouble(reader["TotalAbonado"]),
                             Adeudo = Convert.ToDouble(reader["Adeudo"]),
-                            ImagenesArticulo = reader["ImagenesArticulos"].ToString()
+                            ImagenesArticulo = reader["ImagenesArticulos"].ToString(),
+                            NombresArticulos = reader["NombresArticulos"].ToString()
                         };
 
                         Apartado.ImagenesArticulo = "/Recursos/Imagenes/Articulos/" + Apartado.ImagenesArticulo;
